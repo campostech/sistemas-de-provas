@@ -1,0 +1,8 @@
+#body{
+    width: 100%;
+    background-repeat: no-repeat;
+    background-image: url(../logo_impressao.jpg);
+    background-size: cover !important;
+    background-position: center center;
+    
+}
