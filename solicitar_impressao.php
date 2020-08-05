@@ -178,7 +178,7 @@
 													<div class="input-group-prepend">
 														<span class="input-group "></span>
 													</div>
-													<input type="text" name="nome" class="form-control" placeholder=" Ex: Ciencia da Computação">
+													<input type="text" name="curso" class="form-control" placeholder=" Ex: Ciencia da Computação" required>
 												</div>
 
 											</div>
@@ -188,7 +188,7 @@
 													<div class="input-group-prepend ">
 														<span class="input-group "></span>
 													</div>
-													<input type="text" name="disciplina" class="form-control" placeholder="Ex: Redes de Computadores">
+													<input type="text" name="disciplina" class="form-control" placeholder="Ex: Redes de Computadores" required>
 												</div>
 											</div>
 										</div>
@@ -197,16 +197,15 @@
 											<div class="col-md-3">
 
 												<label>TIPO DE IMPRESSÃO</label>
-												<select class="form-control mb-3 " name="tipo" >
-													<option selected="selected">Selecione </option>
-													<option value="1">Avaliação Oficial 1</option>
-													<option value="2">Avaliação Oficial 2</option>
-													<option value="2">Avaliação Parcial 1</option>
-													<option value="2">Avaliação Parcial 2</option>
-													<option value="2">Exame Final</option>
-													<option value="2">Avaliação Substitutiva</option>
-													<option value="2">Outros...</option>
-
+												<select class="form-control mb-3 " name="tipo" required>
+													<option selected="selected" value="">Selecione </option>
+													<option value="O1">Avaliação Oficial 1</option>
+													<option value="O2">Avaliação Oficial 2</option>
+													<option value="P1">Avaliação Parcial 1</option>
+													<option value="P2">Avaliação Parcial 2</option>
+													<option value="EF">Exame Final</option>
+													<option value="AS">Avaliação Substitutiva</option>
+													<option value="0">Outros...</option>
 												</select>
 											</div>
 										
@@ -215,8 +214,8 @@
 												<label>QUANTIDADE</label>
 												<div class="input-group  ">
 													<label for="sel1" ></label>
- 														 <select class="form-control mb-3" id="sel1" name="quantidade">
- 														 	<option>Selecione</option>
+ 														 <select class="form-control mb-3" id="sel1" name="quantidade" required>
+ 														 	<option  value="">Selecione</option>
    															<option>1</option>
     														<option>2</option>
     														<option>3</option>
@@ -257,7 +256,7 @@
 											<form>
 										  	<div class="form-group">
 										    	<label for="exampleFormControlFile1">SELECIONE O ARQUIVO PARA ENVIO</label>
-										    	<input type="file" class="form-control-file" id="exampleFormControlFile1">
+										    	<input type="file" class="form-control-file" id="exampleFormControlFile1" required>
 										  	</div>
 										</form>
 										</div>
