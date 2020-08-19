@@ -5,10 +5,10 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<title>Sistema de Provas</title>
 		<link rel="icon" href="print.png">
-
+ 
 		<!-- Tell the browser to be responsive to screen width -->
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-
+ 
 		<!-- Font Awesome -->
 		<link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
 		<!-- Ionicons -->
@@ -45,7 +45,7 @@
 							<img src="dist/img/user2-160x160.jpg" class="img-user img-circle elevation-3" alt="User Image">
 							<span>Sander Eto</span>
 						</a>
-						
+ 
 						<div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
 							<a href="#" class="dropdown-item">
 								<!-- Message Start -->
@@ -56,13 +56,13 @@
 						<a href="#" class="dropdown-item">
 							Sair
 						</a>
-						
+ 
 					</li>
-				
+ 
 				</ul>
 			</nav>
 	<!-- /.navbar -->
-
+ 
 	<!-- Main Sidebar Container -->
 			<aside class="main-sidebar elevation-4 sidebar-no-expand sidebar-light-orange">
 				<!-- Brand Logo -->
@@ -73,7 +73,7 @@
 						style="opacity: .8">
 					<span class="brand-text font-weight-light">AdminLTE 3</span>
 				</a>
-
+ 
 				<!-- Sidebar -->
 				<div class="sidebar">
 				<!-- Sidebar user (optional) -->
@@ -85,7 +85,7 @@
 							<a href="#" class="d-block">Alexander Pierce</a>
 						</div>
 					</div>
-
+ 
 				<!-- Sidebar Menu -->
 					<nav class="mt-2">
 						<ul class="nav nav-pills nav-sidebar text-sm flex-column" data-widget="treeview" role="menu" data-accordion="false">
@@ -178,9 +178,9 @@
 													<div class="input-group-prepend">
 														<span class="input-group "></span>
 													</div>
-													<input type="text" name="curso" class="form-control" placeholder=" Ex: Ciencia da Computação" required>
+													<input type="text" name="nome" class="form-control" placeholder=" Ex: Ciencia da Computação">
 												</div>
-
+ 
 											</div>
 											<div class="col-md-6">
 												<label >DISCIPLINA</label>         
@@ -188,83 +188,67 @@
 													<div class="input-group-prepend ">
 														<span class="input-group "></span>
 													</div>
-													<input type="text" name="disciplina" class="form-control" placeholder="Ex: Redes de Computadores" required>
+													<input type="text" name="discpiplina" class="form-control" placeholder="Ex: Redes de Computadores" required>
 												</div>
 											</div>
 										</div>
 										<div class="row">
-											
+ 
 											<div class="col-md-3">
-
+ 
 												<label>TIPO DE IMPRESSÃO</label>
-												<select class="form-control mb-3 " name="tipo" required>
-													<option selected="selected" value="">Selecione </option>
+												<select class="form-control mb-3 " name="tipo_de_impressao" required>
+													<option selected="" disabled>Selecione </option>
 													<option value="O1">Avaliação Oficial 1</option>
 													<option value="O2">Avaliação Oficial 2</option>
 													<option value="P1">Avaliação Parcial 1</option>
 													<option value="P2">Avaliação Parcial 2</option>
 													<option value="EF">Exame Final</option>
 													<option value="AS">Avaliação Substitutiva</option>
-													<option value="0">Outros...</option>
+													<option value="OU">Outros...</option>
+ 
 												</select>
 											</div>
-										
+ 
 										<div class="col-md-3  ">
-
+ 
 												<label>QUANTIDADE</label>
-												<div class="input-group  ">
-													<label for="sel1" ></label>
- 														 <select class="form-control mb-3" id="sel1" name="quantidade" required>
- 														 	<option  value="">Selecione</option>
-   															<option>1</option>
-    														<option>2</option>
-    														<option>3</option>
-   															<option>4</option>
-   															<option>5</option>
-   															<option>6</option>
-   															<option>7</option>
-   															<option>8</option>
-   															<option>9</option>
-   															<option>10</option>
-   															<option>11</option>
-   															<option>12</option>
-   															<option>13</option>
-   															<option>14</option>
-   															<option>15</option>
-  														</select>	
+												<div class="input-group mb-3">
+													<div class="input-group-prepend ">
+														<span class="input-group "></span>
+													</div>
+													<input type="number" name="quantidade" class="form-control" placeholder="100" required>
 												</div>
 										</div>
 										<div class="col-md-6">
+ 
 													<label>FRENTE E VERSO ?</label>
-													   <div class="form-check">
-														<input class="form-check-input" type="radio" name="frenteverso" id="conjuntoSim" value="true" checked>
-														<label class="form-check-label" for="conjuntoSim">
-															SIM
-														</label>
-														</div>
-														<div class="form-check">
-														<input class="form-check-input" type="radio" name="frenteverso" id="conjuntoNao" value="false">
-														<label class="form-check-label" for="conjuntoNao">
-															NÃO
-														</label>
-													</div> 
+													<div class="form-check">
+                          								<input class="form-inline-check-input  " type="radio" id="check_frente_verso" name="check_frente_verso" value=1>
+                          								<label class="form-check-label">Sim</label>      
+                       								</div>
+                       								<div class="form-check">
+                          								<input class="form-inline-check-input" type="radio" id="check_frente_verso" name="check_frente_verso" value=0>
+                          								<label class="form-check-label">Não</label>
+                       								</div>
 											</div>
-
+ 
 									</div>
 									<div class="row">
 										<div class="col-md-6">
 											<form>
 										  	<div class="form-group">
 										    	<label for="exampleFormControlFile1">SELECIONE O ARQUIVO PARA ENVIO</label>
-										    	<input type="file" class="form-control-file" id="exampleFormControlFile1" required>
+										    	<input type="file" class="form-control-file" id="exampleFormControlFile1">
 										  	</div>
 										</form>
 										</div>
-										
+ 
 									</div>
-									
+ 
 										<div class="text-right">
-											<button type="submit" class="btn btn-app">
+ 
+											<button type="submit" class="btn btn-app" name="salvar-solicitacao">
 												<i class="fas fa-save"></i> Salvar
 											</button>
 										</div>
@@ -287,7 +271,7 @@
 				<strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong> All rights
 				reserved.
 			</footer>
-
+ 
 			<!-- Control Sidebar -->
 			<aside class="control-sidebar control-sidebar-dark">
 				<!-- Control sidebar content goes here -->
@@ -295,7 +279,7 @@
 			<!-- /.control-sidebar -->
 		</div>
 		<!-- ./wrapper -->
-
+ 
 		<!-- jQuery -->
 		<script src="plugins/jquery/jquery.min.js"></script>
 		<!-- Bootstrap 4 -->
@@ -319,17 +303,6 @@
 			"info": true,
 			"autoWidth": false,
 			});
-		});
-
-
-		$('input[type=file]').change(function () {
-			var splitNomeArquivo = this.files[0]["name"].split(".");
-			var posicaoExtensao = splitNomeArquivo.length - 1;
-			var extencao = splitNomeArquivo[posicaoExtensao];
-			if(extencao.toLowerCase() !== "pdf"){
-				alert("É NECESSÁRIO QUE O ARQUIVO DE PROVA SEJA DO TIPO PDF");
-				$('input[type=file]').val("");
-			}
 		});
 		</script>
 	</body>
