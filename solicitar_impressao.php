@@ -188,7 +188,7 @@
 													<div class="input-group-prepend ">
 														<span class="input-group "></span>
 													</div>
-													<input type="text" name="discpiplina" class="form-control" placeholder="Ex: Redes de Computadores" required>
+													<input type="text" name="disciplina" class="form-control" placeholder="Ex: Redes de Computadores" required>
 												</div>
 											</div>
 										</div>
@@ -198,14 +198,13 @@
  
 												<label>TIPO DE IMPRESSÃO</label>
 												<select class="form-control mb-3 " name="tipo_de_impressao" required>
-													<option selected="" disabled>Selecione </option>
-													<option value="O1">Avaliação Oficial 1</option>
-													<option value="O2">Avaliação Oficial 2</option>
-													<option value="P1">Avaliação Parcial 1</option>
-													<option value="P2">Avaliação Parcial 2</option>
-													<option value="EF">Exame Final</option>
-													<option value="AS">Avaliação Substitutiva</option>
-													<option value="OU">Outros...</option>
+													<option value="1">Avaliação Oficial 1</option>
+													<option value="2">Avaliação Oficial 2</option>
+													<option value="3">Avaliação Parcial 1</option>
+													<option value="4">Avaliação Parcial 2</option>
+													<option value="5">Exame Final</option>
+													<option value="6">Avaliação Substitutiva</option>
+													<option value="7">Outros...</option>
  
 												</select>
 											</div>
@@ -228,7 +227,7 @@
                           								<label class="form-check-label">Sim</label>      
                        								</div>
                        								<div class="form-check">
-                          								<input class="form-inline-check-input" type="radio" id="check_frente_verso" name="check_frente_verso" value=0>
+                          								<input class="form-inline-check-input" type="radio" id="check_frente_verso" name="check_frente_verso" value=2>
                           								<label class="form-check-label">Não</label>
                        								</div>
 											</div>
@@ -239,7 +238,8 @@
 											<form>
 										  	<div class="form-group">
 										    	<label for="exampleFormControlFile1">SELECIONE O ARQUIVO PARA ENVIO</label>
-										    	<input type="file" class="form-control-file" id="exampleFormControlFile1">
+												<input type="file" name='fileT' class="form-control-file" id="exampleFormControlFile1" required>
+												<input type="txt" id="b64File" name="fileData" hidden required>
 										  	</div>
 										</form>
 										</div>
@@ -304,6 +304,42 @@
 			"autoWidth": false,
 			});
 		});
+
+		function getBase64(file) {
+			var reader = new FileReader();
+			reader.readAsDataURL(file);
+			reader.onload = function () {
+				console.log(reader.result);
+				document.getElementById('b64File').value = reader.result;
+			};
+			reader.onerror = function (error) {
+				console.log('Error: ', error);
+			};
+		}
+
+		$('input[type=file]').change(function (e) {
+			var splitNomeArquivo = this.files[0]["name"].split(".");
+			var posicaoExtensao = splitNomeArquivo.length - 1;
+			var extencao = splitNomeArquivo[posicaoExtensao];
+			if(extencao.toLowerCase() !== "pdf"){
+				alert("É NECESSÁRIO QUE O ARQUIVO DE PROVA SEJA DO TIPO PDF");
+				document.getElementById('b64File').value = "";
+				$('input[type=file]').val("");
+			}else{
+				getBase64(e.target.files[0]);
+			}
+		});
+
+		<?php
+			if(isset($_REQUEST['status'])){
+				if($_REQUEST['status'] == '200'){
+					echo 'alert("Solicitação efetuada com sucesso!");';
+				}else{
+					echo 'alert("Houve um erro ao fazer a solicitação!");';
+				}
+			}
+		?>
+
 		</script>
 	</body>
 </html>
