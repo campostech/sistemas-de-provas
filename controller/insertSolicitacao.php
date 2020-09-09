@@ -11,7 +11,7 @@ require_once('../adminphp/conecta.php');
 
 $valores_form = [];
 $valores_validos = true;
-$urlRedirect = "http://localhost:9999/sistemaprovas/solicitar_impressao.php?status=";
+$urlRedirect = "../solicitar_impressao.php?status=";
 $status = "403";
 
 if(isset($_REQUEST['salvar-solicitacao']) ){
@@ -27,11 +27,12 @@ if(isset($_REQUEST['salvar-solicitacao']) ){
                     $valor = intval($valor);
                 }
                 else{
-                    // echo "Campo ".$indice." inválido";
+                    // echo "Campo ".$indice." inválido";      
+                    $valores_validos = false;              
+                    break;
                 }                
             }            
-            $valores_form[$indice] = $valor;
-            //array_push($valores_form, $valor);
+            $valores_form[$indice] = $valor;            
         }
     }
 
@@ -44,9 +45,8 @@ if(isset($_REQUEST['salvar-solicitacao']) ){
         VALUES ('03087411275', '$valores_form[tipo_de_impressao]', '$valores_form[nome]', '$valores_form[disciplina]', '$valores_form[quantidade]', '$valores_form[check_frente_verso]', '1', '$valores_form[fileData]')";
         $select =  mysqli_query($conexao,$query);
         
-        $urlRedirect = "http://localhost:9999/sistemaprovas/solicitar_impressao.php?status=";
+        $urlRedirect = "../solicitar_impressao.php?status=";
         if($select){
-            // echo "Inserido com sucesso.";
             $status = "200";
         }else{
             // echo mysqli_errno($conexao). " ".mysqli_error($conexao);

@@ -19,6 +19,7 @@
 		<link rel="stylesheet" href="dist/css/adminlte.min.css">
 		<!-- Google Font: Source Sans Pro -->
 		<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+		<link rel="stylesheet" href="css/alerta.css">
 		<link rel="stylesheet" href="cadastro.css">
 	</head>
 	<body class="hold-transition sidebar-mini text-sm accent-orange">
@@ -145,6 +146,31 @@
 			</aside>
 			<div class="content-wrapper">
 				<!-- Content Header (Page header) -->
+				<!--Mensagem de Alerta do cadastro-->
+				<div class="alerta-cadastro">
+					<?php
+						if(isset($_REQUEST['status'])){
+							if($_REQUEST['status'] == '200'){
+							echo '
+							<div class="alert alert-success alert-dismissible fade show" role="alert">							
+								Usuário inserido com sucesso.
+								<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+								</button>
+							</div>';							
+							}else{
+								echo '
+								<div class="alert alert-danger alert-dismissible fade show" role="alert">							
+									Erro ao inserir o usuário, verifiquei e tente novamente.
+									<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+									</button>
+								</div>';
+							}
+						}				
+					?>
+				</div>				
+
 				<section class="content-header">
 					<div class="container-fluid">
 						<div class="row mb-2">
@@ -329,17 +355,6 @@
 				getBase64(e.target.files[0]);
 			}
 		});
-
-		<?php
-			if(isset($_REQUEST['status'])){
-				if($_REQUEST['status'] == '200'){
-					echo 'alert("Solicitação efetuada com sucesso!");';
-				}else{
-					echo 'alert("Houve um erro ao fazer a solicitação!");';
-				}
-			}
-		?>
-
 		</script>
 	</body>
 </html>
