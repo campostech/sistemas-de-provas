@@ -197,7 +197,7 @@
 								<h3 class="card-title">Cadastro de Usuários</h3>
 							</div>
 							<!-- /.card-header -->
-							<form method="POST" action="controller/insertUsers.php">
+							<form method="POST" action="controller/insertUsers.php" onsubmit="return verificarSenha();"> 
 								<div class="card-body">
 									<div class="row">
 										<div class="col-md-6">
@@ -258,7 +258,7 @@
 									</div>
 									<p class="senhaInvalida">A senha deve conter no mínimo 8 dígitos e ser igual a confirmação de senha!</p>
 									<div class="text-right">
-										<button onclick="verificarSenha();" class="btn btn-app" name="salvar-usuario">
+										<button type="submit" class="btn btn-app" name="salvar-usuario">
 											<i class="fas fa-save"></i> Salvar
 										</button>
 									</div>
@@ -319,9 +319,10 @@
 		function verificarSenha(){
 			if(document.getElementsByName('password')[0].value === document.getElementsByName('cpassword')[0].value && document.getElementsByName('password')[0].value.length > 7){
 				document.getElementsByClassName('senhaInvalida')[0].style.display = 'none';
-				document.getElementById('newUserForm').submit();
+				return true;
 			}else{
 				document.getElementsByClassName('senhaInvalida')[0].style.display = 'block';
+				return false;
 			}
 		}
 	</script>
