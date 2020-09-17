@@ -147,29 +147,31 @@
 			<div class="content-wrapper">
 				<!-- Content Header (Page header) -->
 				<!--Mensagem de Alerta do cadastro-->
-				<div class="alerta-cadastro">
-					<?php
-						if(isset($_REQUEST['status'])){
-							if($_REQUEST['status'] == '200'){
-							echo '
-							<div class="alert alert-success alert-dismissible fade show" role="alert">							
-								Usuário inserido com sucesso.
-								<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-								<span aria-hidden="true">&times;</span>
-								</button>
-							</div>';							
-							}else{
+				<div class="alerta-cadastro-container">
+					<div class="alerta-cadastro">
+						<?php
+							if(isset($_REQUEST['status'])){
+								if($_REQUEST['status'] == '200'){
 								echo '
-								<div class="alert alert-danger alert-dismissible fade show" role="alert">							
-									Erro ao inserir o usuário, verifiquei e tente novamente.
+								<div class="alert alert-success alert-dismissible fade show" role="alert">							
+									Solicitação enviada com sucesso.
 									<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 									<span aria-hidden="true">&times;</span>
 									</button>
-								</div>';
-							}
-						}				
-					?>
-				</div>				
+								</div>';							
+								}else{
+									echo '
+									<div class="alert alert-danger alert-dismissible fade show" role="alert">							
+										Erro ao enviar solicitação, verifique e tente novamente.
+										<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+										</button>
+									</div>';
+								}
+							}				
+						?>
+					</div>				
+				</div>
 
 				<section class="content-header">
 					<div class="container-fluid">

@@ -1,6 +1,10 @@
 <?php
+
+
+session_start();
 // Adiciona o arquivo de conexão
 require_once('../adminphp/conecta.php');
+require_once('../adminphp/verificausuario.php');
 
 // echo $_REQUEST['fileData']."<br>";
 // $img = $_REQUEST['fileData']; // Your data 'data:image/png;base64,AAAFBfj42Pj4';
@@ -37,19 +41,22 @@ if(isset($_REQUEST['salvar-solicitacao']) ){
     }
 
     if(!$valores_validos){
-        // echo 'Não é possível continuar, pois um ou mais valores estão incorretos.';
+        $status = "403";
+ //       echo 'Não é possível continuar, pois um ou mais valores estão incorretos.';
     }else{
-        //var_dump($valores_form);
+        $data = date("Y-m-d");
+        $cpf = cpfUsuarioLogado();
+        
         //continua o código 
-        $query = "INSERT INTO impressoes (CPF_PROFESSOR, ID_TIPO_IMPRESSOES, CURSO, DISCIPLINA, QUANTIDADE, FRENTE_VERSO, STATUS, B64FILE) 
-        VALUES ('03087411275', '$valores_form[tipo_de_impressao]', '$valores_form[nome]', '$valores_form[disciplina]', '$valores_form[quantidade]', '$valores_form[check_frente_verso]', '1', '$valores_form[fileData]')";
+        $query = "INSERT INTO impressoes (CPF_PROFESSOR, ID_TIPO_IMPRESSOES, CURSO, DISCIPLINA, QUANTIDADE, FRENTE_VERSO, STATUS, B64FILE, DATA_SOLICITACAO) 
+        VALUES ('$cpf', '$valores_form[tipo_de_impressao]', '$valores_form[nome]', '$valores_form[disciplina]', '$valores_form[quantidade]', '$valores_form[check_frente_verso]', '1', '$valores_form[fileData]', '$data')";
         $select =  mysqli_query($conexao,$query);
         
         $urlRedirect = "../solicitar_impressao.php?status=";
         if($select){
             $status = "200";
         }else{
-            // echo mysqli_errno($conexao). " ".mysqli_error($conexao);
+//            echo mysqli_errno($conexao). " ".mysqli_error($conexao);
         }
     }
 }
