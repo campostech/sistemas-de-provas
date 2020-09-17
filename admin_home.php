@@ -204,7 +204,11 @@ require_once('controller/getAdminData.php');
 														</tr>
 													</thead>
 													<tbody>
-														<?= $table_data ?>														
+													<?php if(!empty($table_data)){
+															echo $table_data;
+															} 
+													?>
+														
 													</tbody>
 													<tfoot>
 
