@@ -1,0 +1,54 @@
+{
+    "admin": {
+      "0": {
+        "name": "Dashboard",
+        "icon": "fa-tachometer-alt",
+        "url": "https://www.exemplo.com/index.php"
+      },
+      "1": {
+        "name": "Cadastro",
+        "icon": "fa-user",
+        "chields": {
+          "0": {
+            "name": "Novo Cadastro",
+            "url": "https://www.exemplo.com/novo_cadastro.php"
+          },
+          "1": {
+            "name": "Consultar Cadastro",
+            "url": "https://www.exemplo.com/consultar_cadastro.php"
+          }
+        }
+      },
+      "2": {
+        "name": "Solicitações",
+        "icon": "fa-print",
+        "url": "https://www.exemplo.com/solicitacoes.php"
+      }
+    },
+    "professor": {
+      "0": {
+        "name": "Dashboard",
+        "icon": "fa-tachometer-alt",
+        "url": "https://www.exemplo.com/index.php"
+      },
+      "1": {
+        "name": "Informações Perfil",
+        "icon": "fa-user",
+        "url": "https://www.exemplo.com/meu_perfil.php"
+      },
+      "2": {
+        "name": "Solicitações",
+        "icon": "fa-print",
+        "chields": {
+          "0": {
+            "name": "Nova Solicitação",
+            "url": "https://www.exemplo.com/nova_solicitacao.php"
+          },
+          "1": {
+            "name": "Consultar Solicitações",
+            "url": "https://www.exemplo.com/minhas_solicitacoes.php"
+          }
+        }
+      }
+    }
+  }
