@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 4.9.2
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Tempo de geração: 17-Set-2020 às 18:09
--- Versão do servidor: 10.4.13-MariaDB
--- versão do PHP: 7.4.7
+-- Host: 127.0.0.1:3308
+-- Tempo de geração: 18-Set-2020 às 21:45
+-- Versão do servidor: 8.0.18
+-- versão do PHP: 7.3.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -27,18 +28,23 @@ SET time_zone = "+00:00";
 -- Estrutura da tabela `impressoes`
 --
 
-CREATE TABLE `impressoes` (
-  `ID` int(11) NOT NULL,
+DROP TABLE IF EXISTS `impressoes`;
+CREATE TABLE IF NOT EXISTS `impressoes` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
   `CPF_PROFESSOR` bigint(20) NOT NULL,
   `ID_TIPO_IMPRESSOES` int(11) NOT NULL,
   `CURSO` varchar(100) DEFAULT NULL,
   `DISCIPLINA` varchar(100) DEFAULT NULL,
   `QUANTIDADE` int(3) DEFAULT NULL,
   `FRENTE_VERSO` tinyint(1) DEFAULT NULL,
-  `STATUS` int(2) DEFAULT 1,
-  `B64FILE` longtext DEFAULT NULL,
-  `DATA_SOLICITACAO` date NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `STATUS` int(2) DEFAULT '1',
+  `B64FILE` longtext,
+  `DATA_SOLICITACAO` date NOT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `fk_professor` (`CPF_PROFESSOR`),
+  KEY `fk_tipo_impressoes` (`ID_TIPO_IMPRESSOES`),
+  KEY `fk_l_id` (`STATUS`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `impressoes`
@@ -55,10 +61,12 @@ INSERT INTO `impressoes` (`ID`, `CPF_PROFESSOR`, `ID_TIPO_IMPRESSOES`, `CURSO`, 
 -- Estrutura da tabela `perfis`
 --
 
-CREATE TABLE `perfis` (
-  `ID` int(11) NOT NULL,
-  `DESCRICAO` varchar(100) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+DROP TABLE IF EXISTS `perfis`;
+CREATE TABLE IF NOT EXISTS `perfis` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `DESCRICAO` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `perfis`
@@ -74,10 +82,12 @@ INSERT INTO `perfis` (`ID`, `DESCRICAO`) VALUES
 -- Estrutura da tabela `solicitacao_status`
 --
 
-CREATE TABLE `solicitacao_status` (
-  `ID` int(11) NOT NULL,
-  `STATUS` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+DROP TABLE IF EXISTS `solicitacao_status`;
+CREATE TABLE IF NOT EXISTS `solicitacao_status` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `STATUS` varchar(30) NOT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `solicitacao_status`
@@ -86,7 +96,8 @@ CREATE TABLE `solicitacao_status` (
 INSERT INTO `solicitacao_status` (`ID`, `STATUS`) VALUES
 (1, 'Pendente'),
 (2, 'Resolvida'),
-(3, 'Recusada');
+(3, 'Recusada'),
+(4, 'Cancelado');
 
 -- --------------------------------------------------------
 
@@ -94,10 +105,12 @@ INSERT INTO `solicitacao_status` (`ID`, `STATUS`) VALUES
 -- Estrutura da tabela `tipos_impressoes`
 --
 
-CREATE TABLE `tipos_impressoes` (
-  `ID` int(11) NOT NULL,
-  `DESCRICAO` varchar(100) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+DROP TABLE IF EXISTS `tipos_impressoes`;
+CREATE TABLE IF NOT EXISTS `tipos_impressoes` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `DESCRICAO` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `tipos_impressoes`
@@ -118,85 +131,23 @@ INSERT INTO `tipos_impressoes` (`ID`, `DESCRICAO`) VALUES
 -- Estrutura da tabela `users`
 --
 
-CREATE TABLE `users` (
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE IF NOT EXISTS `users` (
+  `ID` int(11) NOT NULL,
   `CPF` bigint(20) NOT NULL,
   `NOME` varchar(100) NOT NULL,
   `EMAIL` varchar(100) NOT NULL,
   `SENHA` varchar(100) NOT NULL,
-  `ID_PERFIL` int(11) NOT NULL
+  `ID_PERFIL` int(11) NOT NULL,
+  PRIMARY KEY (`CPF`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `users`
 --
 
-INSERT INTO `users` (`CPF`, `NOME`, `EMAIL`, `SENHA`, `ID_PERFIL`) VALUES
-(76648028068, 'Eduardo Professor', 'email@eduardo.com', '25d55ad283aa400af464c76d713c07ad', 2);
-
---
--- Índices para tabelas despejadas
---
-
---
--- Índices para tabela `impressoes`
---
-ALTER TABLE `impressoes`
-  ADD PRIMARY KEY (`ID`),
-  ADD KEY `fk_professor` (`CPF_PROFESSOR`),
-  ADD KEY `fk_tipo_impressoes` (`ID_TIPO_IMPRESSOES`),
-  ADD KEY `fk_l_id` (`STATUS`);
-
---
--- Índices para tabela `perfis`
---
-ALTER TABLE `perfis`
-  ADD PRIMARY KEY (`ID`);
-
---
--- Índices para tabela `solicitacao_status`
---
-ALTER TABLE `solicitacao_status`
-  ADD PRIMARY KEY (`ID`);
-
---
--- Índices para tabela `tipos_impressoes`
---
-ALTER TABLE `tipos_impressoes`
-  ADD PRIMARY KEY (`ID`);
-
---
--- Índices para tabela `users`
---
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`CPF`);
-
---
--- AUTO_INCREMENT de tabelas despejadas
---
-
---
--- AUTO_INCREMENT de tabela `impressoes`
---
-ALTER TABLE `impressoes`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT de tabela `perfis`
---
-ALTER TABLE `perfis`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT de tabela `solicitacao_status`
---
-ALTER TABLE `solicitacao_status`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT de tabela `tipos_impressoes`
---
-ALTER TABLE `tipos_impressoes`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+INSERT INTO `users` (`ID`, `CPF`, `NOME`, `EMAIL`, `SENHA`, `ID_PERFIL`) VALUES
+(0, 76648028068, 'Eduardo Professor', 'email@eduardo.com', '25d55ad283aa400af464c76d713c07ad', 2);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
