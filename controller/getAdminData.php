@@ -53,15 +53,10 @@
            }
         }
         else{
-
-            echo "Sem nada ?";
-            
-  
         }
               
     }
-    else{    
-        echo mysqli_errno($conexao)." ".mysqli_error($conexao);          
+    else{            
     }
 
 
