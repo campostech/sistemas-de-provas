@@ -50,6 +50,7 @@
 									</button>
 								</div>';
 						} else {
+							
 							echo '
 									<div class="alert alert-danger alert-dismissible fade show" role="alert">							
 										Erro ao inserir o usuário, verifiquei e tente novamente.

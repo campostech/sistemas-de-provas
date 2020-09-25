@@ -71,7 +71,6 @@ else{
         //echo mysqli_errno($conexao). " ".mysqli_error($conexao);
     }    
 }
-
 header("Location: ".$urlRedirect.$status);
 exit();
 
