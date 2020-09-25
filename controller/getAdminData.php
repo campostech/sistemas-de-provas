@@ -15,7 +15,7 @@
     //$query_mysql = "SELECT * FROM impressoes where status = 1 order by id desc limit 1";
     $query_mysql = "SELECT * FROM impressoes 
                     LEFT JOIN users ON users.CPF = impressoes.CPF_PROFESSOR 
-                    where status = 1 order by id limit 10";
+                    where impressoes.status = 1 order by impressoes.id limit 10";
     $select = mysqli_query($conexao, $query_mysql);
 
 
@@ -53,11 +53,10 @@
            }
         }
         else{
-  
         }
               
     }
-    else{              
+    else{            
     }
 
 
