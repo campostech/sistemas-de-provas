@@ -68,3 +68,13 @@
     color: #222;
 
 }
+
+.btn-acoes{
+    color: white !important;
+    text-decoration: none;
+}
+
+.graficos{
+    width: 100%;
+    height: 100%;
+}
