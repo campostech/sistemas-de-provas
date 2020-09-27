@@ -27,7 +27,7 @@ if(isset($_POST)){
                 
                 //valida o cpf e transforma só em numero, isso se tiver valido
                 if($indice == 'cpf' && validaCpf($valor)){
-                    $valor = intval(preg_replace( '/[^0-9]/is', '', $valor));
+                    $valor = preg_replace( '/[^0-9]/is', '', $valor);
                 }
                 
                 //valida e transforma o valor de perfil pra inteiro 
@@ -60,7 +60,7 @@ else{
 
     //QUERY que será executada no bando de dados
     $query = "INSERT INTO users (CPF, NOME, EMAIL, SENHA, ID_PERFIL) 
-              VALUES ($valores_form[cpf],'$valores_form[nome]','$valores_form[email]','$senha',$valores_form[perfil])";
+              VALUES ('$valores_form[cpf]','$valores_form[nome]','$valores_form[email]','$senha',$valores_form[perfil])";
 
     
     $select =  mysqli_query($conexao,$query);
@@ -71,7 +71,6 @@ else{
         //echo mysqli_errno($conexao). " ".mysqli_error($conexao);
     }    
 }
-
 header("Location: ".$urlRedirect.$status);
 exit();
 

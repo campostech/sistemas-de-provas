@@ -48,8 +48,8 @@ if(isset($_REQUEST['salvar-solicitacao']) ){
         $cpf = cpfUsuarioLogado();
         
         //continua o código 
-        $query = "INSERT INTO impressoes (CPF_PROFESSOR, ID_TIPO_IMPRESSOES, CURSO, DISCIPLINA, QUANTIDADE, FRENTE_VERSO, STATUS, B64FILE, DATA_SOLICITACAO) 
-        VALUES ('$cpf', '$valores_form[tipo_de_impressao]', '$valores_form[nome]', '$valores_form[disciplina]', '$valores_form[quantidade]', '$valores_form[check_frente_verso]', '1', '$valores_form[fileData]', '$data')";
+        $query = "INSERT INTO impressoes (ID_TIPO_IMPRESSOES, CURSO, DISCIPLINA, QUANTIDADE, FRENTE_VERSO, STATUS, B64FILE, DATA_SOLICITACAO, ID_PROFESSOR) 
+        VALUES ('$valores_form[tipo_de_impressao]', '$valores_form[nome]', '$valores_form[disciplina]', '$valores_form[quantidade]', '$valores_form[check_frente_verso]', '1', '$valores_form[fileData]', '$data', 1)";
         $select =  mysqli_query($conexao,$query);
         
         $urlRedirect = "../solicitar_impressao.php?status=";
