@@ -1,7 +1,7 @@
 <?php
 session_start();
 include_once("adminphp/conecta.php");
-$result_usuario = "SELECT * FROM users WHERE ID = '0'";
+$result_usuario = "SELECT * FROM users WHERE ID = '1'";
 $resultado_usuario = mysqli_query($conexao, $result_usuario);
 $row_usuario = mysqli_fetch_assoc($resultado_usuario);
 
@@ -103,9 +103,9 @@ $row_usuario = mysqli_fetch_assoc($resultado_usuario);
 							<!-- /.card-header -->
 							<form method="POST" action="controller/edituser.php" onsubmit="return verificarSenha();"> 
 
-								<input type="hidden" name="ID" value="<?php echo $row_usuario['ID'];?>" 
-
-								<div class>
+										<input type="hidden" name="id" value="<?php echo $row_usuario['ID'];?>"
+									
+									<div class>
 												<!-- IMAGEM
 												<div class="imgtop">
 													<img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2 " alt="User Image">
@@ -118,14 +118,16 @@ $row_usuario = mysqli_fetch_assoc($resultado_usuario);
 													<br>
 												</div>				
 												-->
-								</div>
-									
+									</div>
+											
+											
 
+								<div class="container card-body jumbotron " >
 
-							<div class="container card-body jumbotron " >
-
-										
+												
+												
 											<div class="row">												
+
 
 												<div class="col-md-6">
 													<label>NOME</label>
@@ -171,17 +173,21 @@ $row_usuario = mysqli_fetch_assoc($resultado_usuario);
 																	<span class="input-group-text "><i class="fas fa-address-card"></i></span>
 																</div>
 														
-															<!--
-															<input type="text" name="perfil" class="form-control" value="<?php echo $row_usuario['ID_PERFIL'];?>" required onkeydown="fMasc(this, mCPF)" maxlength="14">																									
-															-->							
-														
+															
+															<input type="text" name="perfil" class="form-control" value="<?php $row_usuario['ID_PERFIL'];																														
+															if($row_usuario['ID_PERFIL'] == '1'){
+
+															    echo "Administrador";
+																
+															}
+															elseif($row_usuario['ID_PERFIL'] == '2'){
+															echo "Professor";
+																
+															}
+															
+															?>" required onkeydown="fMasc(this, mCPF)" maxlength="14" disabled>											
 													
-														
-															<input type="text" name="perfil" class="form-control" value="<?php echo "Administrador";?>" required onkeydown="fMasc(this, mCPF)" maxlength="14" disabled>
-														
-															<!--
-															<input type="text" name="perfil" class="form-control" value="<?php echo "Professor";?>" required onkeydown="fMasc(this, mCPF)" maxlength="14" disabled>
-															-->
+															
 															</div>																												
 												</div>	
 											
@@ -198,7 +204,7 @@ $row_usuario = mysqli_fetch_assoc($resultado_usuario);
 															<div class="input-group-prepend ">
 																<span class="input-group-text "><i class="fas fa-lock"></i></span>
 															</div>
-														<input type="password" name="password" class="form-control"  required>
+														<input type="password" name="password" class="form-control" value="<?php $row_usuario['SENHA'];?>"  required>
 														
 													</div>
 												</div>
@@ -211,7 +217,7 @@ $row_usuario = mysqli_fetch_assoc($resultado_usuario);
 															<div class="input-group-prepend ">
 																<span class="input-group-text "><i class="fas fa-lock"></i></span>
 															</div>
-														<input type="password" name="cpassword" class="form-control"  required>
+														<input type="password" name="cpassword" class="form-control" value="<?php $row_usuario['SENHA'];?>"  required>
 														</div>
 													
 												</div>
@@ -230,27 +236,22 @@ $row_usuario = mysqli_fetch_assoc($resultado_usuario);
 
 
 											<div id="aparecersenha1" style="display:none">
-											<button type="submit" class="btn btn-app elevation-1" name="salvar-usuario">
+											<button type="submit" class="btn btn-app elevation-1" >
 											<i class="fas fa-save"></i> Salvar
 											</button>											
 											</div>
 
-											<!--
-											<button type="submit" class="btn btn-app" name="salvar-usuario">
-												<i class="fas fa-save"></i> Salvar
-											</button>
-											-->
 											
 										</div>
 										</div>
 								
-									</div>
-								<!-- /.card-body -->
+								</div>
+								
 							</form>
 						</div>
-						<!-- /.card -->
+						
 					</div>
-					<!-- /.col -->
+					
 				</div>
 				<!-- /.row -->
 			</section>
@@ -328,3 +329,13 @@ $row_usuario = mysqli_fetch_assoc($resultado_usuario);
 </body>
 
 </html>
+
+
+
+
+
+
+
+
+
+
