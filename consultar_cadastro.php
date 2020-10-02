@@ -1,3 +1,7 @@
+<?php
+require_once('adminphp/validaSessao.php');
+
+?>
 <!DOCTYPE html>
 <html>
 <head>

@@ -36,7 +36,7 @@ if ($select) {
                             <td>" . $valor['CURSO'] . "</td>
                             <td>" . $valor['DISCIPLINA'] . "</td>
                             <td>" . $valor['QUANTIDADE'] . "</td>
-                            <td><a href='solicitacoes.php?solicitacao_id=" . $valor['ID'] . "' value='" . $valor['ID'] . "'class='btn btn-info btn-lg btn-acoes' name='ver-mais-button'>Ver mais</a>                            
+                            <td><a href='solicitacoes.php?id=" . $valor['ID'] . "' value='" . $valor['ID'] . "'class='btn btn-info btn-lg btn-acoes' name='ver-mais-button'>Ver mais</a>                            
                         </tr>";
         }
     } else {

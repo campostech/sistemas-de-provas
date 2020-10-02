@@ -1,11 +1,12 @@
 <?php
 //Centralizador de funções de validação.
 
-function validaCPF($cpf) {
- 
+function validaCPF($cpf)
+{
+
     // Extrai somente os números
-    $cpf = preg_replace( '/[^0-9]/is', '', $cpf );
-     
+    $cpf = preg_replace('/[^0-9]/is', '', $cpf);
+
     // Verifica se foi informado todos os digitos corretamente
     if (strlen($cpf) != 11) {
         return false;
@@ -30,20 +31,21 @@ function validaCPF($cpf) {
 }
 
 
-function validaSenha($senha, $confirmacao_de_senha=""){
-    
+function validaSenha($senha, $confirmacao_de_senha = "")
+{
+
     $isValido = true;
-    
+
     //verifica se a senha está vazia
-    if(empty($senha) or empty($confirmacao_de_senha)){
+    if (empty($senha) or empty($confirmacao_de_senha)) {
         $isValido = false;
     }
     //verifica se a senha e a confirmação sao iguais
-    else if($senha != $confirmacao_de_senha){
+    else if ($senha != $confirmacao_de_senha) {
         $isValido = false;
     }
     //verifica o tamanho da senha
-    else if (strlen($senha) < 8){
+    else if (strlen($senha) < 8) {
         $isValido = false;
     }
 
@@ -52,4 +54,14 @@ function validaSenha($senha, $confirmacao_de_senha=""){
 
 
 
-?>
+
+
+function formataCpf($cpf){    
+    $bloco_1 = substr($cpf, 0, 3);
+    $bloco_2 = substr($cpf, 3, 3);
+    $bloco_3 = substr($cpf, 6, 3);
+    $dig_verificador = substr($cpf, -2);
+    $cpf_formatado = $bloco_1 . "." . $bloco_2 . "." . $bloco_3 . "-" . $dig_verificador;
+    return $cpf_formatado;
+}
+

@@ -11,15 +11,6 @@ $cache_expire = session_cache_expire();
 session_start();
 
 
-//Função que verifica se o login está ativo, caso não estejá redireciona para o INDEX
-function verificaLogin(){
-    if(!(verificaLoginAtivo())){
-        header('Location: index.php');
-        die();
-    }     
-}
-
-
 function verificaNivel(){
 if($_SESSION['PERFIL'] == 1){
     header('Location: inicial_adm.php');
@@ -77,6 +68,16 @@ function logaUsuario($cpf){
   $_SESSION['msg']= "";
   $_SESSION['LOGIN']= true;
  }
+
+
+ //get sessão
+//se valor da sessao for informado retornará o valor da sessão especifico.
+ function getSessao($valor=""){
+    if(!empty($valor)){
+        return $_SESSION[$valor];
+    }
+    return $_SESSION;     
+ }
  
  
  //Destroi a sessão ou sejá logout.
@@ -97,3 +98,6 @@ if($_SESSION['PERFIL'] > 1){
      die();
 }
  }
+
+
+ 

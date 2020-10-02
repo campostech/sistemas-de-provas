@@ -1,4 +1,5 @@
 <?php
+require_once('adminphp/validaSessao.php');
 require_once('adminphp/conecta.php');
 require_once('controller/getAdminData.php');
 require_once('controller/getAdminGraficosData.php');
@@ -186,8 +187,8 @@ require_once('controller/getAdminGraficosData.php');
 	<script>
 		var jsonUsuarioData = <?= $json_usuario_data; ?>;
 		var jsonStatusData = <?= $json_status_data; ?>;
-		montaGrafico(jsonUsuarioData, 'solicitacao-por-usuario', 'pie')
-		montaGrafico(jsonStatusData, 'solicitacao-por-status', 'pie')
+		var montaGraficoUser = montaGrafico(jsonUsuarioData, 'solicitacao-por-usuario', 'pie')
+		var montaGraficoStatus = montaGrafico(jsonStatusData, 'solicitacao-por-status', 'pie')
 	</script>
 
 </body>

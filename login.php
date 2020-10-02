@@ -1,8 +1,10 @@
 <?php
-    require_once ('./adminphp/verificausuario.php');
+require_once('adminphp/verificausuario.php');
+$d_none = isset($_REQUEST['status']) ? "" : "d-none";
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -30,8 +32,11 @@
 	<script src="global_assets/js/plugins/forms/styling/uniform.min.js"></script>
 
 	<script src="assets/js/app.js"></script>
-    <script src="global_assets/js/demo_pages/login.js"></script>
-    <link rel="stylesheet" href="css/login.css">
+	<script src="global_assets/js/demo_pages/login.js"></script>
+	<link rel="stylesheet" href="css/login.css">
+	<link href="css/style.css" rel="stylesheet" type="text/css">
+	<link href="css/alerta.css" rel="stylesheet" type="text/css">
+
 	<!-- /theme JS files -->
 
 </head>
@@ -40,8 +45,18 @@
 
 	<!-- Main navbar -->
 	
-	<!-- /main navbar -->
 
+	<!-- /main navbar -->
+	<div class="alerta-cadastro-container alerta-login-pagina <?php echo $d_none; ?>">
+		<div clas="alerta-cadastro">
+			<div class="alert alert-warning alert-dismissible fade show" role="alert">
+				Usuário não autenticado. Favor fazer login imediatamente.
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>'
+		</div>
+	</div>
 
 	<!-- Page content -->
 	<div class="page-content" id="body">
@@ -82,7 +97,7 @@
 								<a href="#">Esqueceu sua Senha ?</a>
 							</div>
 
-							
+
 						</div>
 					</div>
 				</form>
@@ -93,7 +108,7 @@
 
 
 			<!-- Footer -->
-			
+
 			<!-- /footer -->
 
 		</div>
@@ -103,4 +118,5 @@
 	<!-- /page content -->
 
 </body>
+
 </html>
