@@ -20,9 +20,11 @@
 </head>
 <body class="hold-transition sidebar-mini text-sm accent-orange">
 <div class="wrapper">
-  
+  <script>var file = ""; var fileName = ""; var dataQuery = []; var idQuery = 0;</script>
   <?php
     require_once('case.php');
+    require_once('adminphp/conecta.php');
+    require_once('controller/getSolicitacoesData.php');
     cabecalho();
     nav();
   ?>
@@ -30,6 +32,33 @@
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
+
+    <div class="alerta-cadastro-container">
+      <div class="alerta-cadastro mt-2">
+        <?php
+        if (isset($_REQUEST['status'])) {
+          if ($_REQUEST['status'] == '200') {
+            echo '
+              <div class="alert alert-success alert-dismissible fade show" role="alert">
+                Status atualizado com sucesso.
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+              </div>';
+          } else {
+            echo '
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                  Erro na atualização do Status, verifique e tente novamente.
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>';
+          }
+        }
+        ?>
+      </div>
+    </div>
+
     <section class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
@@ -42,35 +71,40 @@
 
     <div id="infoModal" class="modal fade" role="dialog">
 	<div class="modal-dialog">
-  
+
 	  <!-- Modal content-->
 	  <div class="modal-content">
 		<div class="modal-header">
-		  <h4 class="modal-title" style="text-align: center;">Nome do Professor - PENDENTE </h4>
+		  <h4 class="modal-title" style="text-align: center;" id="modalTitle">Nome do Professor - PENDENTE </h4>
       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
 		</div>
 		<div class="modal-body">
 			<div class="container">
-				Professor: Sauer<br>
-        Disciplina: Redes e Arquitetura<br>
-        Curso: Ciências da Computação<br>
-        Tipo de Impressão: OFICIAL 2<br>
-        Quantidade: 80<br>
-        Frente e Verso: SIM<br>
-        Status: Pendente<br>
-        Data de Solicitação: 17/09/2020<br>
-        <button type="button" class="btn btn-info" onclick="" >Baixar Arquivo</button>
+        <div class="container" id="modalInfo">
+  				Professor: Sauer<br>
+          Disciplina: Redes e Arquitetura<br>
+          Curso: Ciências da Computação<br>
+          Tipo de Impressão: OFICIAL 2<br>
+          Quantidade: 80<br>
+          Frente e Verso: SIM<br>
+          Status: Pendente<br>
+          Data de Solicitação: 17/09/2020<br>
+        </div>
+        <button type="button" class="btn btn-info" onclick="downloadPDF();" >Baixar Arquivo</button>
         </div>
 		</div>
 		<div class="modal-footer">
-      <select class="form-control mb-3 optionStatus" name="status_impressao" style="display:none;" required>
-        <option value="1" style='background-color: blue; color: white;'>Pendente</option>
-        <option value="2" style='background-color: green; color: white;'>Resolvido</option>
-        <option value="3" style='background-color: red; color: white;'>Recusado</option>
-      </select>
-      <button type="button" class="btn btn-success optionStatus" onclick="optionStatus('none');" style="display:none;">Salvar</button>
+      <div class="input-group-prepend ">
+        <select class="form-control mb-3 optionStatus" onChange="selectedStatus()" name="status_impressao" id="dropStatus" style="display:none;" required>
+          <option value="1" style='background-color: blue; color: white;'>Pendente</option>
+          <option value="2" style='background-color: green; color: white;'>Resolvido</option>
+          <option value="3" style='background-color: red; color: white;'>Recusado</option>
+        </select>
+        <input type="text" class="form-control optionStatus" value="" placeholder="Motivo" required id="obsStatus" disabled style="display:none;">
+      </div>
+      <button type="button" class="btn btn-success optionStatus" onclick="saveStatus();" style="display:none;">Salvar</button>
       <button type="button" class="btn btn-danger optionStatus" onclick="optionStatus('none');" style="display:none;">Cancelar</button>
       <button type="button" class="btn btn-warning" onclick="optionStatus('block');" id="optionStatusBtn">Mudar Status</button>
 		  </div>
@@ -83,7 +117,7 @@
       <div class="row">
         <div class="col-12">
           <div class="card">
-            
+
           <!-- /.card -->
 
           <div class="card">
@@ -93,65 +127,31 @@
             <!-- /.card-header -->
             <div class="card-body">
               <table id="example1" class="table table-bordered table-striped">
+                <?php
+                if (empty($table_data)) {
+                  echo $no_data;
+                }
+                ?>
+                <table class="table table-bordered table-striped" <?php if (empty($table_data)) {
+                                            echo "style='display:none;'";
+                                          }
+                                          ?>>
                 <thead>
                 <tr>
                   <th>Professor</th>
                   <th>Disciplina</th>
                   <th>Tipo Impressão</th>
+                  <th>Quantidade</th>
                   <th>Status</th>
                   <th>Solicitado em</th>
                   <th>Ver Mais</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                  <td>Sauer</td>
-                  <td>Redes e Arquitetura</td>
-                  <td>OFICIAL 2</td>
-                  <td>Pendente</td>
-                  <td>17/09/20</td>
-                  <td><button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#infoModal">Opções</button></td>
-                </tr>
-                <tr>
-                  <td>Sauer</td>
-                  <td>Redes e Arquitetura</td>
-                  <td>OFICIAL 2</td>
-                  <td>Pendente</td>
-                  <td>17/09/20</td>
-                  <td><button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#infoModal">Opções</button></td>
-                </tr>
-                <tr>
-                  <td>Sauer</td>
-                  <td>Redes e Arquitetura</td>
-                  <td>OFICIAL 2</td>
-                  <td>Pendente</td>
-                  <td>17/09/20</td>
-                  <td><button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#infoModal">Opções</button></td>
-                </tr>
-                <tr>
-                  <td>Sauer</td>
-                  <td>Redes e Arquitetura</td>
-                  <td>OFICIAL 2</td>
-                  <td>Pendente</td>
-                  <td>17/09/20</td>
-                  <td><button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#infoModal">Opções</button></td>
-                </tr>
-                <tr>
-                  <td>Sauer</td>
-                  <td>Redes e Arquitetura</td>
-                  <td>OFICIAL 2</td>
-                  <td>Pendente</td>
-                  <td>17/09/20</td>
-                  <td><button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#infoModal">Opções</button></td>
-                </tr>
-                <tr>
-                  <td>Sauer</td>
-                  <td>Redes e Arquitetura</td>
-                  <td>OFICIAL 2</td>
-                  <td>Pendente</td>
-                  <td>17/09/20</td>
-                  <td><button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#infoModal">Opções</button></td>
-                </tr>
+                  <?php if (!empty($table_data)) {
+                    echo $table_data;
+                  }
+                  ?>
                 </tbody>
               </table>
             </div>
@@ -204,11 +204,61 @@
   });
 
   function optionStatus (value){
-    var optionsMenu = document.getElementsByClassName("optionStatus"); 
+    var optionsMenu = document.getElementsByClassName("optionStatus");
     for(var i = 0; i < optionsMenu.length; i++){
       optionsMenu[i].style.display = value; // depending on what you're doing
     }
     document.getElementById('optionStatusBtn').style.display = value == 'none' ? 'block' : 'none';
+  }
+
+  function downloadPDF() {
+    const linkSource = `data:application/pdf;base64,${file}`;
+    const downloadLink = document.createElement("a");
+    downloadLink.href = linkSource;
+    downloadLink.download = fileName;
+    downloadLink.click();
+  }
+
+  function showInfo(id){
+    idQuery = id;
+    var v = dataQuery[id];
+    file = v["B64FILE"];
+    fileName = v["NOME"] + " - " + v["DISCIPLINA"] + " - " + v["DESCRICAO"];
+
+    document.getElementById('modalTitle').innerHTML = v["NOME"] + " - " + v["STATUS"];
+    document.getElementById('modalInfo').innerHTML = 'Professor: '+v["NOME"]+'<br>Disciplina: '+v["DISCIPLINA"]+'<br>Curso: '+v["CURSO"]+'<br>Tipo de Impressão: '+v["DESCRICAO"]+'<br>Quantidade: '+v["QUANTIDADE"]+'<br>Frente e Verso: '+(v["FRENTE_VERSO"] == '1' ? 'SIM' : 'NÃO')+'<br>Status: '+v["STATUS"]+'<br>Data de Solicitação: '+v["DATA_SOLICITACAO"]+'<br>'+((v["OBS"] == null || v["OBS"] == "") ? '<br>' : ('Observação ADMIN: ' + v["OBS"] + '<br>'));
+    $('#infoModal').modal('show');
+  }
+
+  function selectedStatus(){
+    var inputMotivo = document.getElementById('obsStatus');
+    inputMotivo.value = "";
+    inputMotivo.disabled= (document.getElementById('dropStatus').value != 3);
+  }
+
+  function saveStatus(){
+    var inputValue = document.getElementById('obsStatus').value;
+    var dropValue = document.getElementById('dropStatus').value;
+    if(dropValue == 3 && inputValue == ""){
+      alert("Insira o motivo de negar a solicitação!");
+      return;
+    }
+    window.location.href = "controller/changeStatus.php?id="+idQuery+"&status="+dropValue+(dropValue == 3 ? "&obs="+inputValue : '');
+  }
+
+  function findGetParameter(parameterName) {
+    var result = null,
+        tmp = [];
+    var items = location.search.substr(1).split("&");
+    for (var index = 0; index < items.length; index++) {
+        tmp = items[index].split("=");
+        if (tmp[0] === parameterName) result = decodeURIComponent(tmp[1]);
+    }
+    return result;
+  }
+
+  if(findGetParameter('id') != null){
+    showInfo(findGetParameter('id'));
   }
 </script>
 </body>

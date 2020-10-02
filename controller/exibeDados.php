@@ -1,8 +1,8 @@
-<?php 
-
+<?php
+/*
 //QUERY que será executada no bando de dados
 
-$query = "SELECT id, descricao, data_solicitacao, status FROM IMPRESSOES 
+$query = "SELECT id, descricao, data_solicitacao, status FROM IMPRESSOES
                 JOIN tipos_impressoes ON impressoes.id_tipo_impressoes = tipos_impressoes.id";
 //                JOIN solicitacao_status ON impressoes.status = solicitacao_status.stats";
 
@@ -24,5 +24,5 @@ while ( mysql_fetch_array($select)){
     </tr>
 
 }
-
+*/
 ?>

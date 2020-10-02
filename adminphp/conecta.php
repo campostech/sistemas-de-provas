@@ -1,5 +1,5 @@
-<?php 
-define('HOST','localhost:3308');
+<?php
+define('HOST','localhost');
 define('USUARIO','root');
 define('SENHA','');
 define('DB','sistema_provas');
@@ -8,7 +8,7 @@ define('DB','sistema_provas');
 
 //Cria conexão com banco de dados
 $conexao = mysqli_connect(HOST, USUARIO ,SENHA , DB) or die ('Sem conexão');
-
+$conexao -> set_charset("utf8");
 //$conexao = mysqli_connect("basemapeamento.mysql.dbaas.com.br", "basemapeamento", "A2000pwd", "basemapeamento");
 
 
