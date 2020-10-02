@@ -1,3 +1,10 @@
+<?php
+	require_once('adminphp/validaSessao.php');
+	if($_SESSION['PERFIL'] != 1){
+		require_once('controller/logout.php');
+	}
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -26,7 +33,7 @@
 
 <body class="hold-transition sidebar-mini text-sm accent-orange">
 	<div class="wrapper">
-		
+
 		<?php
 			require_once('case.php');
 			cabecalho();
@@ -42,17 +49,17 @@
 					<?php
 					if (isset($_REQUEST['status'])) {
 						if ($_REQUEST['status'] == '200') {
-							echo ' 
-								<div class="alert alert-success alert-dismissible fade show" role="alert">							
+							echo '
+								<div class="alert alert-success alert-dismissible fade show" role="alert">
 									Usuário inserido com sucesso.
 									<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 									<span aria-hidden="true">&times;</span>
 									</button>
 								</div>';
 						} else {
-							
+
 							echo '
-									<div class="alert alert-danger alert-dismissible fade show" role="alert">							
+									<div class="alert alert-danger alert-dismissible fade show" role="alert">
 										Erro ao inserir o usuário, verifiquei e tente novamente.
 										<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 										<span aria-hidden="true">&times;</span>
@@ -88,7 +95,7 @@
 								<h3 class="card-title">Cadastro de Usuários</h3>
 							</div>
 							<!-- /.card-header -->
-							<form method="POST" action="controller/insertUsers.php" onsubmit="return verificarSenha();"> 
+							<form method="POST" action="controller/insertUsers.php" onsubmit="return verificarSenha();">
 								<div class="card-body">
 									<div class="row">
 										<div class="col-md-6">

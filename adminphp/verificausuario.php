@@ -12,18 +12,18 @@ session_start();
 
 
 function verificaNivel(){
-if($_SESSION['PERFIL'] == 1){
-    header('Location: inicial_adm.php');
-}else if($_SESSION['PERFIL'] == 2){
-    header('Location : inicial_professor.php');
-}
+  if($_SESSION['PERFIL'] == 1){
+      header('Location: inicial_adm.php');
+  }else if($_SESSION['PERFIL'] == 2){
+      header('Location : inicial_professor.php');
+  }
 }
 
 
 //Função que verifica se o login está ativo
 function verificaLoginAtivo(){
     if($_SESSION['LOGIN'] == true){
-        return $_SESSION['LOGIN'];    
+        return $_SESSION['LOGIN'];
     }else{
         return false;
     }
@@ -47,7 +47,7 @@ function cpfUsuarioLogado(){
 //    if($_SESSION['RESERVAR'] ==1){
 //        return true;
 //    } else {
-//    return false;    
+//    return false;
 //    }
 // }
 
@@ -57,16 +57,18 @@ function logaUsuario($cpf){
    $_SESSION['LOGIN']= true;
 
  }
- 
- 
- //Cria sessão com os dados basicos 
- function criaSessao($cpf, $nome , $email,$perfil){
+
+
+ //Cria sessão com os dados basicos
+ function criaSessao($id, $cpf, $nome , $email,$perfil, $urlDefault){
+  $_SESSION['ID']= $id;
   $_SESSION['CPF']= $cpf;
   $_SESSION['NOME']= $nome;
   $_SESSION['USUARIO']= $email;
   $_SESSION['PERFIL']= $perfil;
   $_SESSION['msg']= "";
   $_SESSION['LOGIN']= true;
+  $_SESSION['URL']= $urlDefault;
  }
 
 
@@ -76,10 +78,10 @@ function logaUsuario($cpf){
     if(!empty($valor)){
         return $_SESSION[$valor];
     }
-    return $_SESSION;     
+    return $_SESSION;
  }
- 
- 
+
+
  //Destroi a sessão ou sejá logout.
  function logout(){
      $_SESSION['PERFIL']=0;
@@ -90,14 +92,11 @@ function logaUsuario($cpf){
      die();
  }
 
- 
-  //Cria sessão com os dados basicos 
+
+  //Cria sessão com os dados basicos
  function verificaAdm(){
 if($_SESSION['PERFIL'] > 1){
      logout();
      die();
 }
  }
-
-
- 

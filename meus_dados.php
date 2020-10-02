@@ -1,11 +1,10 @@
 <?php
-session_start();
 include_once("adminphp/conecta.php");
-$result_usuario = "SELECT * FROM users WHERE ID = '1'";
+require_once('adminphp/validaSessao.php');
+$idUser = $_SESSION['ID'];
+$result_usuario = "SELECT * FROM users WHERE ID = $idUser";
 $resultado_usuario = mysqli_query($conexao, $result_usuario);
 $row_usuario = mysqli_fetch_assoc($resultado_usuario);
-
-
 ?>
 
 <!DOCTYPE html>

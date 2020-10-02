@@ -44,7 +44,7 @@ $d_none = isset($_REQUEST['status']) ? "" : "d-none";
 <body>
 
 	<!-- Main navbar -->
-	
+
 
 	<!-- /main navbar -->
 	<div class="alerta-cadastro-container alerta-login-pagina <?php echo $d_none; ?>">

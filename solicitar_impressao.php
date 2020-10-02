@@ -1,3 +1,10 @@
+<?php
+	require_once('adminphp/validaSessao.php');
+	if($_SESSION['PERFIL'] != 2){
+		logout();
+	}
+?>
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -5,10 +12,10 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<title>Sistema de Provas</title>
 		<link rel="icon" href="print.png">
- 
+
 		<!-- Tell the browser to be responsive to screen width -->
 		<meta name="viewport" content="width=device-width, initial-scale=1">
- 
+
 		<!-- Font Awesome -->
 		<link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
 		<!-- Ionicons -->
@@ -46,7 +53,7 @@
 							<img src="dist/img/user2-160x160.jpg" class="img-user img-circle elevation-3" alt="User Image">
 							<span>Sander Eto</span>
 						</a>
- 
+
 						<div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
 							<a href="#" class="dropdown-item">
 								<!-- Message Start -->
@@ -57,13 +64,13 @@
 						<a href="#" class="dropdown-item">
 							Sair
 						</a>
- 
+
 					</li>
- 
+
 				</ul>
 			</nav>
 	<!-- /.navbar -->
- 
+
 	<!-- Main Sidebar Container -->
 			<aside class="main-sidebar elevation-4 sidebar-no-expand sidebar-light-orange">
 				<!-- Brand Logo -->
@@ -74,7 +81,7 @@
 						style="opacity: .8">
 					<span class="brand-text font-weight-light">AdminLTE 3</span>
 				</a>
- 
+
 				<!-- Sidebar -->
 				<div class="sidebar">
 				<!-- Sidebar user (optional) -->
@@ -86,7 +93,7 @@
 							<a href="#" class="d-block">Alexander Pierce</a>
 						</div>
 					</div>
- 
+
 				<!-- Sidebar Menu -->
 					<nav class="mt-2">
 						<ul class="nav nav-pills nav-sidebar text-sm flex-column" data-widget="treeview" role="menu" data-accordion="false">
@@ -153,24 +160,24 @@
 							if(isset($_REQUEST['status'])){
 								if($_REQUEST['status'] == '200'){
 								echo '
-								<div class="alert alert-success alert-dismissible fade show" role="alert">							
+								<div class="alert alert-success alert-dismissible fade show" role="alert">
 									Solicitação enviada com sucesso.
 									<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 									<span aria-hidden="true">&times;</span>
 									</button>
-								</div>';							
+								</div>';
 								}else{
 									echo '
-									<div class="alert alert-danger alert-dismissible fade show" role="alert">							
+									<div class="alert alert-danger alert-dismissible fade show" role="alert">
 										Erro ao enviar solicitação, verifique e tente novamente.
 										<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 										<span aria-hidden="true">&times;</span>
 										</button>
 									</div>';
 								}
-							}				
+							}
 						?>
-					</div>				
+					</div>
 				</div>
 
 				<section class="content-header">
@@ -208,10 +215,10 @@
 													</div>
 													<input type="text" name="nome" class="form-control" placeholder=" Ex: Ciencia da Computação">
 												</div>
- 
+
 											</div>
 											<div class="col-md-6">
-												<label >DISCIPLINA</label>         
+												<label >DISCIPLINA</label>
 												<div class="input-group mb-3">
 													<div class="input-group-prepend ">
 														<span class="input-group "></span>
@@ -221,9 +228,9 @@
 											</div>
 										</div>
 										<div class="row">
- 
+
 											<div class="col-md-3">
- 
+
 												<label>TIPO DE IMPRESSÃO</label>
 												<select class="form-control mb-3 " name="tipo_de_impressao" required>
 													<option value="1">Avaliação Oficial 1</option>
@@ -233,12 +240,12 @@
 													<option value="5">Exame Final</option>
 													<option value="6">Avaliação Substitutiva</option>
 													<option value="7">Outros...</option>
- 
+
 												</select>
 											</div>
- 
+
 										<div class="col-md-3  ">
- 
+
 												<label>QUANTIDADE</label>
 												<div class="input-group mb-3">
 													<div class="input-group-prepend ">
@@ -248,18 +255,18 @@
 												</div>
 										</div>
 										<div class="col-md-6">
- 
+
 													<label>FRENTE E VERSO ?</label>
 													<div class="form-check">
                           								<input class="form-inline-check-input  " type="radio" id="check_frente_verso" name="check_frente_verso" value=1>
-                          								<label class="form-check-label">Sim</label>      
+                          								<label class="form-check-label">Sim</label>
                        								</div>
                        								<div class="form-check">
                           								<input class="form-inline-check-input" type="radio" id="check_frente_verso" name="check_frente_verso" value=2>
                           								<label class="form-check-label">Não</label>
                        								</div>
 											</div>
- 
+
 									</div>
 									<div class="row">
 										<div class="col-md-6">
@@ -271,11 +278,11 @@
 										  	</div>
 										</form>
 										</div>
- 
+
 									</div>
- 
+
 										<div class="text-right">
- 
+
 											<button type="submit" class="btn btn-app" name="salvar-solicitacao">
 												<i class="fas fa-save"></i> Salvar
 											</button>
@@ -299,7 +306,7 @@
 				<strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong> All rights
 				reserved.
 			</footer>
- 
+
 			<!-- Control Sidebar -->
 			<aside class="control-sidebar control-sidebar-dark">
 				<!-- Control sidebar content goes here -->
@@ -307,7 +314,7 @@
 			<!-- /.control-sidebar -->
 		</div>
 		<!-- ./wrapper -->
- 
+
 		<!-- jQuery -->
 		<script src="plugins/jquery/jquery.min.js"></script>
 		<!-- Bootstrap 4 -->

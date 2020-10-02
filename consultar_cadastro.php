@@ -1,7 +1,10 @@
 <?php
 require_once('adminphp/validaSessao.php');
-
+if($_SESSION['PERFIL'] != 1){
+  logout();
+}
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,7 +36,7 @@ require_once('adminphp/validaSessao.php');
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
       </li>
-      
+
     </ul>
 
 
@@ -208,7 +211,7 @@ require_once('adminphp/validaSessao.php');
               </li>
             </ul>
           </li>
-          
+
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
@@ -225,7 +228,7 @@ require_once('adminphp/validaSessao.php');
           <div class="col-sm-6">
             <h1> Pesquisar Cadastros</h1>
           </div>
-          
+
         </div>
       </div><!-- /.container-fluid -->
     </section>
@@ -235,7 +238,7 @@ require_once('adminphp/validaSessao.php');
       <div class="row">
         <div class="col-12">
           <div class="card">
-            
+
           <!-- /.card -->
 
           <div class="card">
