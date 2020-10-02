@@ -10,6 +10,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- Font Awesome -->
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
   <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
@@ -212,6 +215,10 @@
     <!-- /.sidebar -->
   </aside>
 
+  
+
+
+
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -245,8 +252,12 @@
 
             </div>
             <!-- /.card-header -->
+            <!-- Modal -->
+ 
             <div class="card-body">
               <table id="example1" class="table table-bordered table-striped">
+
+              
                 <thead>
                 <tr>
                   <th>Nome</th>
@@ -265,8 +276,8 @@
                     <a href="">
                     <button type="button" class="btn btn-outline-secondary">Editar</button>
                     </a>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Excluir</button>
+                    <a >
+                    <button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#confirma_exclusao" data-whatever="@getbootstrap">Excluir</button>
                     </a>
                   </td>
                 </tr>
@@ -278,8 +289,8 @@
                     <a href="">
                     <button type="button" class="btn btn-outline-secondary">Editar</button>
                     </a>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Excluir</button>
+                    <a >
+                    <button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#confirma_exclusao" data-whatever="@getbootstrap">Excluir</button>
                     </a>
                   </td>
                  </tr>
@@ -293,8 +304,8 @@
                     <a href="">
                     <button type="button" class="btn btn-outline-secondary">Editar</button>
                     </a>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Excluir</button>
+                    <a >
+                    <button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#confirma_exclusao" data-whatever="@getbootstrap">Excluir</button>
                     </a>
                   </td>
                 </tr>
@@ -308,8 +319,8 @@
                     <a href="">
                     <button type="button" class="btn btn-outline-secondary">Editar</button>
                     </a>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Excluir</button>
+                    <a>
+                    <button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#confirma_exclusao" data-whatever="@getbootstrap">Excluir</button>
                     </a>
                   </td>
                 </tr>
@@ -321,8 +332,8 @@
                     <a href="">
                     <button type="button" class="btn btn-outline-secondary">Editar</button>
                     </a>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Excluir</button>
+                    <a >
+                    <button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#confirma_exclusao" data-whatever="@getbootstrap">Excluir</button>
                     </a>
                   </td>
                 </tr>
@@ -334,8 +345,8 @@
                     <a href="">
                     <button type="button" class="btn btn-outline-secondary">Editar</button>
                     </a>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Excluir</button>
+                    <a >
+                    <button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#confirma_exclusao" data-whatever="@getbootstrap">Excluir</button>
                     </a>
                   </td>
                 </tr>
@@ -347,8 +358,8 @@
                     <a href="">
                     <button type="button" class="btn btn-outline-secondary">Editar</button>
                     </a>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Excluir</button>
+                    <a >
+                    <button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#confirma_exclusao" data-whatever="@getbootstrap">Excluir</button>
                     </a>
                   </td>
                 </tr>
@@ -360,657 +371,14 @@
                     <a href="">
                     <button type="button" class="btn btn-outline-secondary">Editar</button>
                     </a>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Excluir</button>
+                    <a >
+                    <button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#confirma_exclusao" data-whatever="@getbootstrap">Excluir</button>
                     </a>
                   </td>
                 </tr>
-                <tr>
-                  <td>Gecko</td>
-                  <td>Firefox 2.0</td>
-                  <td>Win 98+ / OSX.2+</td>
-                  <td>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Editar</button>
-                    </a>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Excluir</button>
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Gecko</td>
-                  <td>Firefox 3.0</td>
-                  <td>Win 2k+ / OSX.3+</td>
-                  <td>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Editar</button>
-                    </a>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Excluir</button>
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Gecko</td>
-                  <td>Camino 1.0</td>
-                  <td>OSX.2+</td>
-                  <td>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Editar</button>
-                    </a>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Excluir</button>
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Gecko</td>
-                  <td>Camino 1.5</td>
-                  <td>OSX.3+</td>
-                  <td>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Editar</button>
-                    </a>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Excluir</button>
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Gecko</td>
-                  <td>Netscape 7.2</td>
-                  <td>Win 95+ / Mac OS 8.6-9.2</td>
-                  <td>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Editar</button>
-                    </a>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Excluir</button>
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Gecko</td>
-                  <td>Netscape Browser 8</td>
-                  <td>Win 98SE+</td>
-                  <td>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Editar</button>
-                    </a>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Excluir</button>
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Gecko</td>
-                  <td>Netscape Navigator 9</td>
-                  <td>Win 98+ / OSX.2+</td>
-                                    <td>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Editar</button>
-                    </a>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Excluir</button>
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Gecko</td>
-                  <td>Mozilla 1.0</td>
-                  <td>Win 95+ / OSX.1+</td>
-                  <td>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Editar</button>
-                    </a>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Excluir</button>
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Gecko</td>
-                  <td>Mozilla 1.1</td>
-                  <td>Win 95+ / OSX.1+</td>
-                  <td>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Editar</button>
-                    </a>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Excluir</button>
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Gecko</td>
-                  <td>Mozilla 1.2</td>
-                  <td>Win 95+ / OSX.1+</td>
-                  <td>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Editar</button>
-                    </a>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Excluir</button>
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Gecko</td>
-                  <td>Mozilla 1.3</td>
-                  <td>Win 95+ / OSX.1+</td>
-                  <td>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Editar</button>
-                    </a>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Excluir</button>
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Gecko</td>
-                  <td>Mozilla 1.4</td>
-                  <td>Win 95+ / OSX.1+</td>
-                  <td>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Editar</button>
-                    </a>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Excluir</button>
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Gecko</td>
-                  <td>Mozilla 1.5</td>
-                  <td>Win 95+ / OSX.1+</td>
-                  <td>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Editar</button>
-                    </a>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Excluir</button>
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Gecko</td>
-                  <td>Mozilla 1.6</td>
-                  <td>Win 95+ / OSX.1+</td>
-                  <td>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Editar</button>
-                    </a>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Excluir</button>
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Gecko</td>
-                  <td>Mozilla 1.7</td>
-                  <td>Win 98+ / OSX.1+</td>
-                  <td>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Editar</button>
-                    </a>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Excluir</button>
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Gecko</td>
-                  <td>Mozilla 1.8</td>
-                  <td>Win 98+ / OSX.1+</td>
-                  <td>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Editar</button>
-                    </a>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Excluir</button>
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Gecko</td>
-                  <td>Seamonkey 1.1</td>
-                  <td>Win 98+ / OSX.2+</td>
-                  <td>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Editar</button>
-                    </a>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Excluir</button>
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Gecko</td>
-                  <td>Epiphany 2.20</td>
-                  <td>Gnome</td>
-                  <td>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Editar</button>
-                    </a>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Excluir</button>
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Webkit</td>
-                  <td>Safari 1.2</td>
-                  <td>OSX.3</td>
-                  <td>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Editar</button>
-                    </a>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Excluir</button>
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Webkit</td>
-                  <td>Safari 1.3</td>
-                  <td>OSX.3</td>
-                  <td>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Editar</button>
-                    </a>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Excluir</button>
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Webkit</td>
-                  <td>Safari 2.0</td>
-                  <td>OSX.4+</td>
-                  <td>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Editar</button>
-                    </a>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Excluir</button>
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Webkit</td>
-                  <td>Safari 3.0</td>
-                  <td>OSX.4+</td>
-                  <td>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Editar</button>
-                    </a>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Excluir</button>
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Webkit</td>
-                  <td>OmniWeb 5.5</td>
-                  <td>OSX.4+</td>
-                  <td>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Editar</button>
-                    </a>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Excluir</button>
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Webkit</td>
-                  <td>iPod Touch / iPhone</td>
-                  <td>iPod</td>
-                  <td>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Editar</button>
-                    </a>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Excluir</button>
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Webkit</td>
-                  <td>S60</td>
-                  <td>S60</td>
-                  <td>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Editar</button>
-                    </a>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Excluir</button>
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Presto</td>
-                  <td>Opera 7.0</td>
-                  <td>Win 95+ / OSX.1+</td>
-                  <td>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Editar</button>
-                    </a>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Excluir</button>
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Presto</td>
-                  <td>Opera 7.5</td>
-                  <td>Win 95+ / OSX.2+</td>
-                  <td>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Editar</button>
-                    </a>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Excluir</button>
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Presto</td>
-                  <td>Opera 8.0</td>
-                  <td>Win 95+ / OSX.2+</td>
-                  <td>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Editar</button>
-                    </a>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Excluir</button>
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Presto</td>
-                  <td>Opera 8.5</td>
-                  <td>Win 95+ / OSX.2+</td>
-                  <td>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Editar</button>
-                    </a>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Excluir</button>
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Presto</td>
-                  <td>Opera 9.0</td>
-                  <td>Win 95+ / OSX.3+</td>
-                  <td>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Editar</button>
-                    </a>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Excluir</button>
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Presto</td>
-                  <td>Opera 9.2</td>
-                  <td>Win 88+ / OSX.3+</td>
-                  <td>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Editar</button>
-                    </a>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Excluir</button>
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Presto</td>
-                  <td>Opera 9.5</td>
-                  <td>Win 88+ / OSX.3+</td>
-                  <td>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Editar</button>
-                    </a>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Excluir</button>
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Presto</td>
-                  <td>Opera for Wii</td>
-                  <td>Wii</td>
-                  <td>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Editar</button>
-                    </a>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Excluir</button>
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Presto</td>
-                  <td>Nokia N800</td>
-                  <td>N800</td>
-                  <td>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Editar</button>
-                    </a>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Excluir</button>
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Presto</td>
-                  <td>Nintendo DS browser</td>
-                  <td>Nintendo DS</td>
-                  <td>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Editar</button>
-                    </a>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Excluir</button>
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>KHTML</td>
-                  <td>Konqureror 3.1</td>
-                  <td>KDE 3.1</td>
-                  <td>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Editar</button>
-                    </a>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Excluir</button>
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>KHTML</td>
-                  <td>Konqureror 3.3</td>
-                  <td>KDE 3.3</td>
-                  <td>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Editar</button>
-                    </a>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Excluir</button>
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>KHTML</td>
-                  <td>Konqureror 3.5</td>
-                  <td>KDE 3.5</td>
-                  <td>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Editar</button>
-                    </a>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Excluir</button>
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Tasman</td>
-                  <td>Internet Explorer 4.5</td>
-                  <td>Mac OS 8-9</td>
-                  <td>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Editar</button>
-                    </a>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Excluir</button>
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Tasman</td>
-                  <td>Internet Explorer 5.1</td>
-                  <td>Mac OS 7.6-9</td>
-                  <td>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Editar</button>
-                    </a>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Excluir</button>
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Tasman</td>
-                  <td>Internet Explorer 5.2</td>
-                  <td>Mac OS 8-X</td>
-                  <td>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Editar</button>
-                    </a>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Excluir</button>
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Misc</td>
-                  <td>NetFront 3.1</td>
-                  <td>Embedded devices</td>
-                  <td>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Editar</button>
-                    </a>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Excluir</button>
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Misc</td>
-                  <td>NetFront 3.4</td>
-                  <td>Embedded devices</td>
-                  <td>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Editar</button>
-                    </a>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Excluir</button>
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Misc</td>
-                  <td>Dillo 0.8</td>
-                  <td>Embedded devices</td>
-                  <td>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Editar</button>
-                    </a>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Excluir</button>
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Misc</td>
-                  <td>Links</td>
-                  <td>Text only</td>
-                  <td>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Editar</button>
-                    </a>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Excluir</button>
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Misc</td>
-                  <td>Lynx</td>
-                  <td>Text only</td>
-                  <td>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Editar</button>
-                    </a>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Excluir</button>
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Misc</td>
-                  <td>IE Mobile</td>
-                  <td>Windows Mobile 6</td>
-                  <td>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Editar</button>
-                    </a>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Excluir</button>
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Misc</td>
-                  <td>PSP browser</td>
-                  <td>PSP</td>
-                  <td>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Editar</button>
-                    </a>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Excluir</button>
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Other browsers</td>
-                  <td>All others</td>
-                  <td>-</td>
-                  <td>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Editar</button>
-                    </a>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Excluir</button>
-                    </a>
-                  </td>
-                </tr>
+                
                 </tbody>
-                <tfoot>
-                <tr>
-                  <th>Nome</th>
-                  <th>CPF</th>
-                  <th>E-mail</th>
-                  <th>Ações</th>
-                </tr>
-                </tfoot>
+                
               </table>
             </div>
             <!-- /.card-body -->
@@ -1023,13 +391,52 @@
     </section>
     <!-- /.content -->
   </div>
+<!-- MODAL -->
+  <div class="modal" id="confirma_exclusao" tabindex="-1" role="dialog" aria-labelledby="confirma_exclusao" aria-hidden="true">
+                      <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="confirma_exclusao">Deseja realmente excluir o cadastro ?</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                          <p>Para remoção do cadastro insira a senha de acesso ao sistema:</p>
+                          <div class="row">
+                            <div class="col-md-6">
+                              <label>SENHA</label>
+                              <div class="input-group mb-3">
+                                <div class="input-group-prepend ">
+                                  <span class="input-group-text "><i class="fas fa-lock"></i></span>
+                                </div>
+                                <input type="password" name="password" class="form-control"  required>
+                              </div>
+                            </div>
+                            <div class="col-md-6">
+                              <label>CONFIRMAÇÃO DE SENHA</label>
+                              <div class="input-group mb-3">
+                                <div class="input-group-prepend ">
+                                  <span class="input-group-text "><i class="fas fa-lock"></i></span>
+                                </div>
+                                <input type="password" name="cpassword" class="form-control"  required>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Fechar</button>
+                            <button type="button" class="btn btn-outline-secondary">Salvar mudanças</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    </div>
   <!-- /.content-wrapper -->
   <footer class="main-footer">
     <div class="float-right d-none d-sm-block">
-      <b>Version</b> 3.0.1
+      <b>Version</b> 
     </div>
-    <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong> All rights
-    reserved.
+    
   </footer>
 
   <!-- Control Sidebar -->
@@ -1052,6 +459,10 @@
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
 <!-- page script -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
 <script>
   $(function () {
     $("#example1").DataTable();

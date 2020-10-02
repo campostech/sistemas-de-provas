@@ -1,3 +1,8 @@
+<?php
+require_once('adminphp/conecta.php');
+require_once('controller/exibeDados.php');
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -259,277 +264,9 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>Oficial 1</td>
-                  <td>21/03/2020</td>
-                  <td>Urgente</td>
-                  <td>Pendente</td>
-                  <td>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Cancelar</button>
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td>Oficial 1</td>
-                  <td>21/03/2020</td>
-                  <td>Urgente</td>
-                  <td>Pendente</td>
-                  <td>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Cancelar</button>
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>Oficial 1</td>
-                  <td>21/03/2020</td>
-                  <td>Urgente</td>
-                  <td>Pendente</td>
-                  <td>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Cancelar</button>
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>4</td>
-                  <td>Oficial 1</td>
-                  <td>21/03/2020</td>
-                  <td>Preciso da solicitação frente e verso</td>
-                  <td>Concluído</td>
-                  <td>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Cancelar</button>
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>5</td>
-                  <td>Oficial 1</td>
-                  <td>21/03/2020</td>
-                  <td>Urgente</td>
-                  <td>Pendente</td>
-                  <td>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Cancelar</button>
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>6</td>
-                  <td>Oficial 1</td>
-                  <td>21/03/2020</td>
-                  <td>Urgente</td>
-                  <td>Pendente</td>
-                  <td>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Cancelar</button>
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>7</td>
-                  <td>Oficial 1</td>
-                  <td>21/03/2020</td>
-                  <td>Urgente</td>
-                  <td>Pendente</td>
-                  <td>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Cancelar</button>
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>8</td>
-                  <td>Oficial 1</td>
-                  <td>21/03/2020</td>
-                  <td>Urgente</td>
-                  <td>Pendente</td>
-                  <td>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Cancelar</button>
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>9</td>
-                  <td>Oficial 1</td>
-                  <td>21/03/2020</td>
-                  <td>Urgente</td>
-                  <td>Pendente</td>
-                  <td>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Cancelar</button>
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>10</td>
-                  <td>Oficial 1</td>
-                  <td>21/03/2020</td>
-                  <td>Urgente</td>
-                  <td>Pendente</td>
-                  <td>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Cancelar</button>
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>11</td>
-                  <td>Oficial 1</td>
-                  <td>21/03/2020</td>
-                  <td>Urgente</td>
-                  <td>Pendente</td>
-                  <td>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Cancelar</button>
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>12</td>
-                  <td>Oficial 1</td>
-                  <td>21/03/2020</td>
-                  <td>Urgente</td>
-                  <td>Pendente</td>
-                  <td>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Cancelar</button>
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>13</td>
-                  <td>Oficial 1</td>
-                  <td>21/03/2020</td>
-                  <td>Urgente</td>
-                  <td>Pendente</td>
-                  <td>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Cancelar</button>
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>14</td>
-                  <td>Oficial 1</td>
-                  <td>21/03/2020</td>
-                  <td>Urgente</td>
-                  <td>Pendente</td>
-                  <td>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Cancelar</button>
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>15</td>
-                  <td>Oficial 1</td>
-                  <td>21/03/2020</td>
-                  <td>Urgente</td>
-                  <td>Pendente</td>
-                  <td>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Cancelar</button>
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>16</td>
-                  <td>Oficial 1</td>
-                  <td>21/03/2020</td>
-                  <td>Urgente</td>
-                  <td>Pendente</td>
-                  <td>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Cancelar</button>
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>17</td>
-                  <td>Oficial 1</td>
-                  <td>21/03/2020</td>
-                  <td>Urgente</td>
-                  <td>Pendente</td>
-                  <td>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Cancelar</button>
-                    </a>
-                  </td>
-                </tr><tr>
-                  <td>18</td>
-                  <td>Oficial 1</td>
-                  <td>21/03/2020</td>
-                  <td>Urgente</td>
-                  <td>Pendente</td>
-                  <td>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Cancelar</button>
-                    </a>
-                  </td>
-                </tr><tr>
-                  <td>19</td>
-                  <td>Oficial 1</td>
-                  <td>21/03/2020</td>
-                  <td>Urgente</td>
-                  <td>Pendente</td>
-                  <td>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Cancelar</button>
-                    </a>
-                  </td>
-                </tr><tr>
-                  <td>20</td>
-                  <td>Oficial 1</td>
-                  <td>21/03/2020</td>
-                  <td>Urgente</td>
-                  <td>Pendente</td>
-                  <td>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Cancelar</button>
-                    </a>
-                  </td>
-                </tr><tr>
-                  <td>21</td>
-                  <td>Oficial 1</td>
-                  <td>21/03/2020</td>
-                  <td>Urgente</td>
-                  <td>Pendente</td>
-                  <td>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Cancelar</button>
-                    </a>
-                  </td>
-                </tr><tr>
-                  <td>22</td>
-                  <td>Oficial 1</td>
-                  <td>21/03/2020</td>
-                  <td>Urgente</td>
-                  <td>Pendente</td>
-                  <td>
-                    <a href="">
-                    <button type="button" class="btn btn-outline-secondary">Cancelar</button>
-                    </a>
-                  </td>
-                </tr>
+              
                 
                 </tbody>
-                <tfoot>
-                <tr>
-                  <th>ID</th>
-                  <th>Nome do Arquivo</th>
-                  <th>Data de Solicitação</th>
-                  <th>Mensagem</th>
-                  <th>Status</th>
-                  <th>Ações</th>
-                </tr>
-                </tfoot>
               </table>
             </div>
             <!-- /.card-body -->
@@ -542,6 +279,27 @@
     </section>
     <!-- /.content -->
   </div>
+
+  <!-- MODAL -->
+  <div class="modal" id="cancelar_solicitacao" tabindex="-1" role="dialog" aria-labelledby="confirma_exclusao" aria-hidden="true">
+                      <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="confirma_exclusao">Confirmar cancelamento</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                          <p><strong>Tem certeza que deseja cancelar a solicitação de impressão?</strong> </p>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Não</button>
+                            <button type="button" class="btn btn-secondary">Sim</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    </div>
   <!-- /.content-wrapper -->
   <footer class="main-footer">
     <div class="float-right d-none d-sm-block">
