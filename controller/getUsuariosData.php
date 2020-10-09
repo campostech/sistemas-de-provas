@@ -22,8 +22,8 @@ if ($select) {
 
         foreach ($dados_usuarios as $indice => $valor) {            
             $cpf = formataCpf($valor['CPF']);
-            $table_data = $table_data . '<tr>
-                                            <td>'.$valor['NOME'].'</td>
+            $table_data = $table_data . '<tr class="usuario-tabela">
+                                            <td class="info-nome">'.$valor['NOME'].'</td>
                                             <td>'.$cpf.'</td>
                                             <td>'.$valor['EMAIL'].'</td>
                                             <td>

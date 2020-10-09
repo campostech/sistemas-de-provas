@@ -35,7 +35,7 @@
     function nav(){
         $navS = '<aside class="main-sidebar elevation-4 sidebar-no-expand sidebar-light-orange">
         <!-- Brand Logo -->
-        <a href="index3.html" class="brand-link text-sm navbar-orange">
+        <a href="/index.php" class="brand-link text-sm navbar-orange">
             <img src="dist/img/AdminLTELogo.png"
                 alt="Techlab Logo"
                 class="brand-image img-circle elevation-3"
