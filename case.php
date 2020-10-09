@@ -1,5 +1,7 @@
 <?php
     function cabecalho(){
+        $icon = $_SESSION['PERFIL'] == 1 ? 'admin' : 'prof';
+
         echo '
         <!-- Navbar -->
         <nav class="main-header navbar navbar-expand text-sm border-bottom-0 navbar-light navbar-orange">
@@ -8,8 +10,8 @@
                 <!-- Messages Dropdown Menu -->
                 <li class="nav-item dropdown">
                     <a class="nav-link" data-toggle="dropdown" href="#">
-                        <img src="dist/img/user2-160x160.jpg" class="img-user img-circle elevation-3" alt="User Image" style="height: 34px; margin-top: -8px;">
-                        <span>Nome do Usuário</span>
+                        <img src="dist/img/'.$icon.'_icon.png" class="img-user img-circle elevation-3" alt="User Image" style="height: 34px; margin-top: -8px;">
+                        <span>'.explode(' ',$_SESSION['NOME'])[0].'</span>
                     </a>
     
                     <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
@@ -33,6 +35,8 @@
     }
 
     function nav(){
+        $icon = $_SESSION['PERFIL'] == 1 ? 'admin' : 'prof';
+
         $navS = '<aside class="main-sidebar elevation-4 sidebar-no-expand sidebar-light-orange">
         <!-- Brand Logo -->
         <a href="index3.html" class="brand-link text-sm navbar-orange">
@@ -48,10 +52,10 @@
         <!-- Sidebar user (optional) -->
             <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                 <div class="image">
-                    <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+                    <img src="dist/img/'.$icon.'_icon.png" class="img-circle elevation-2" alt="User Image">
                 </div>
                 <div class="info">
-                    <a href="#" class="d-block">Alexander Pierce</a>
+                    <a href="#" class="d-block">'.explode(' ',$_SESSION['NOME'])[0].'</a>
                 </div>
             </div>
     

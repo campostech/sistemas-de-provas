@@ -26,7 +26,10 @@ if ($select) {
             $botao ='';
             if($valor['STATUS'] == 'Pendente'){
                 $botao = '<button type="button" class="btn btn-outline-secondary" onclick="openRemoveModal('.$valor["ID"].');">Cancelar</button>';
+            }else if($valor['STATUS'] == 'Recusada'){
+                $botao = '<button type="button" class="btn btn-outline-info" onclick="alert(\''.str_replace('\'',"",str_replace('"',"",$valor["OBS"])).'\');">Info</button>';
             }
+
 
             $table_data = $table_data . "<tr>
                             <td>" . $valor['ID'] . "</td>
