@@ -15,7 +15,7 @@ function verificaNivel(){
   if($_SESSION['PERFIL'] == 1){
       header('Location: inicial_adm.php');
   }else if($_SESSION['PERFIL'] == 2){
-      header('Location : inicial_professor.php');
+      header('Location : professor_home.php');
   }
 }
 
@@ -64,7 +64,7 @@ function logaUsuario($cpf){
   $_SESSION['ID']= $id;
   $_SESSION['CPF']= $cpf;
   $_SESSION['NOME']= $nome;
-  $_SESSION['USUARIO']= $email;
+  $_SESSION['EMAIL']= $email;
   $_SESSION['PERFIL']= $perfil;
   $_SESSION['msg']= "";
   $_SESSION['LOGIN']= true;

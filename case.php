@@ -1,5 +1,7 @@
 <?php
     function cabecalho(){
+        $icon = $_SESSION['PERFIL'] == 1 ? 'admin' : 'prof';
+
         echo '
         <!-- Navbar -->
         <nav class="main-header navbar navbar-expand text-sm border-bottom-0 navbar-light navbar-orange">
@@ -8,18 +10,18 @@
                 <!-- Messages Dropdown Menu -->
                 <li class="nav-item dropdown">
                     <a class="nav-link" data-toggle="dropdown" href="#">
-                        <img src="dist/img/user2-160x160.jpg" class="img-user img-circle elevation-3" alt="User Image" style="height: 34px; margin-top: -8px;">
-                        <span>Nome do Usuário</span>
+                        <img src="dist/img/'.$icon.'_icon.png" class="img-user img-circle elevation-3" alt="User Image" style="height: 34px; margin-top: -8px;">
+                        <span>'.explode(' ',$_SESSION['NOME'])[0].'</span>
                     </a>
     
                     <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                        <a href="#" class="dropdown-item">
+                        <a href="'.$_SESSION['URL'].'meus_dados.php" class="dropdown-item">
                             <!-- Message Start -->
                             Meus Dados
                             <!-- Message End -->
                         </a>
                         <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
+                        <a href="'.$_SESSION['URL'].'controller/logout.php" class="dropdown-item">
                             Sair
                         </a>
     
@@ -33,6 +35,8 @@
     }
 
     function nav(){
+        $icon = $_SESSION['PERFIL'] == 1 ? 'admin' : 'prof';
+
         $navS = '<aside class="main-sidebar elevation-4 sidebar-no-expand sidebar-light-orange">
         <!-- Brand Logo -->
         <a href="/index.php" class="brand-link text-sm navbar-orange">
@@ -48,10 +52,10 @@
         <!-- Sidebar user (optional) -->
             <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                 <div class="image">
-                    <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+                    <img src="dist/img/'.$icon.'_icon.png" class="img-circle elevation-2" alt="User Image">
                 </div>
                 <div class="info">
-                    <a href="#" class="d-block">Alexander Pierce</a>
+                    <a href="#" class="d-block">'.explode(' ',$_SESSION['NOME'])[0].'</a>
                 </div>
             </div>
     
@@ -67,11 +71,11 @@
         </div>
         <!-- /.sidebar -->
         </aside>';
-    
-        $data = json_decode(file_get_contents('drawer.json'), true)['admin'];
+        $data = json_decode(file_get_contents('drawer.json'), true)[$_SESSION['PERFIL']];
         $navContent = "";
         foreach ($data as &$tab){
             if(!isset($tab['chields'])){
+                $tab['url'] = $_SESSION['URL'].$tab['url'];
                 $navContent =  $navContent.'<li class="nav-item">
                 <a href="'.$tab['url'].'" class="nav-link">
                   <i class="nav-icon fas '.$tab['icon'].'"></i>
@@ -83,6 +87,7 @@
             }else{
                 $itens = "";
                 foreach ($tab['chields'] as &$item){
+                    $item['url'] = $_SESSION['URL'].$item['url'];
                    $itens = $itens.'<li class="nav-item">
                    <a href="'.$item['url'].'" class="nav-link">
                        <i class="far fa-plus-letf nav-icon"></i>
