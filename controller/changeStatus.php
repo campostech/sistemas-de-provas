@@ -3,7 +3,7 @@ require_once('../adminphp/conecta.php');
 $urlRedirect = '../solicitacoes.php?status=';
 
 $id = $_REQUEST["id"];
-if($_REQUEST["id"] == '4')
+if($_REQUEST["status"] == '4')
   $urlRedirect = '../inicial_professor.php?status=';
 
 $status = $_REQUEST["status"];

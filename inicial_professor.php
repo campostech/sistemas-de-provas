@@ -1,6 +1,5 @@
 <?php
 require_once('adminphp/conecta.php');
-require_once('controller/exibeDados.php');
 require_once('adminphp/validaSessao.php');
 if($_SESSION['PERFIL'] != 2){
   logout();
@@ -32,8 +31,8 @@ if($_SESSION['PERFIL'] != 2){
 <body class="hold-transition sidebar-mini text-sm accent-orange">
 <div class="wrapper">
   <?php
+    require_once('controller/exibeDados.php');
     require_once('case.php');
-    require_once('adminphp/conecta.php');
     cabecalho();
     nav();
   ?>
@@ -71,21 +70,25 @@ if($_SESSION['PERFIL'] != 2){
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <table id="example1" class="table table-bordered table-striped">
+           
+               <table class="table table-bordered table-striped">
                 <thead>
                 <tr>
                   <th>ID</th>
-                  <th>Nome do Arquivo</th>
+                  <th>Tipo de Impressão</th>
                   <th>Data de Solicitação</th>
-                  <th>Mensagem</th>
+                  <th>Quantidade</th>
                   <th>Status</th>
                   <th>Ações</th>
 
                 </tr>
                 </thead>
                 <tbody>
-
-
+                  <tr>
+                    <?php
+                      echo $table_data;
+                    ?>
+                  </tr>
                 </tbody>
               </table>
             </div>
@@ -114,7 +117,7 @@ if($_SESSION['PERFIL'] != 2){
                           <p><strong>Tem certeza que deseja cancelar a solicitação de impressão?</strong> </p>
                           <div class="modal-footer">
                             <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Não</button>
-                            <button type="button" class="btn btn-secondary">Sim</button>
+                            <button type="button" class="btn btn-secondary" onclick="remove();">Sim</button>
                           </div>
                         </div>
                       </div>
@@ -144,6 +147,7 @@ if($_SESSION['PERFIL'] != 2){
 <script src="dist/js/demo.js"></script>
 <!-- page script -->
 <script>
+  var idRemocao = -1;
   $(function () {
     $("#example1").DataTable();
     $('#example2').DataTable({
@@ -155,6 +159,15 @@ if($_SESSION['PERFIL'] != 2){
       "autoWidth": false,
     });
   });
+
+  function remove(){
+    window.location.href = 'controller/changeStatus.php?id='+idRemocao+'&status=4';
+  }
+
+  function openRemoveModal(id){
+    idRemocao = id;
+    $("#cancelar_solicitacao").modal();
+  }
 </script>
 </body>
 </html>
