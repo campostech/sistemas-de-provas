@@ -4,7 +4,7 @@ $urlRedirect = '../solicitacoes.php?status=';
 
 $id = $_REQUEST["id"];
 if($_REQUEST["status"] == '4')
-  $urlRedirect = '../inicial_professor.php?status=';
+  $urlRedirect = '../minhas_solicitacoes.php?status=';
 
 $status = $_REQUEST["status"];
 $obs = isset($_REQUEST["obs"]) ? $_REQUEST["obs"] : '';

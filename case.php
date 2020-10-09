@@ -13,13 +13,13 @@
                     </a>
     
                     <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                        <a href="#" class="dropdown-item">
+                        <a href="'.$_SESSION['URL'].'meus_dados.php" class="dropdown-item">
                             <!-- Message Start -->
                             Meus Dados
                             <!-- Message End -->
                         </a>
                         <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
+                        <a href="'.$_SESSION['URL'].'controller/logout.php" class="dropdown-item">
                             Sair
                         </a>
     
@@ -67,11 +67,11 @@
         </div>
         <!-- /.sidebar -->
         </aside>';
-    
-        $data = json_decode(file_get_contents('drawer.json'), true)['admin'];
+        $data = json_decode(file_get_contents('drawer.json'), true)[$_SESSION['PERFIL']];
         $navContent = "";
         foreach ($data as &$tab){
             if(!isset($tab['chields'])){
+                $tab['url'] = $_SESSION['URL'].$tab['url'];
                 $navContent =  $navContent.'<li class="nav-item">
                 <a href="'.$tab['url'].'" class="nav-link">
                   <i class="nav-icon fas '.$tab['icon'].'"></i>
@@ -83,6 +83,7 @@
             }else{
                 $itens = "";
                 foreach ($tab['chields'] as &$item){
+                    $item['url'] = $_SESSION['URL'].$item['url'];
                    $itens = $itens.'<li class="nav-item">
                    <a href="'.$item['url'].'" class="nav-link">
                        <i class="far fa-plus-letf nav-icon"></i>

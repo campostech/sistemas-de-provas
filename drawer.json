@@ -1,9 +1,9 @@
 {
-    "admin": {
+    "1": {
       "0": {
         "name": "Dashboard",
         "icon": "fa-tachometer-alt",
-        "url": "/index.php"
+        "url": ""
       },
       "1": {
         "name": "Cadastro",
@@ -11,30 +11,30 @@
         "chields": {
           "0": {
             "name": "Novo Cadastro",
-            "url": "/novo_cadastro.php"
+            "url": "novo_cadastro.php"
           },
           "1": {
             "name": "Consultar Cadastro",
-            "url": "/consultar_cadastro.php"
+            "url": "consultar_usuarios.php"
           }
         }
       },
       "2": {
         "name": "Solicitações",
         "icon": "fa-print",
-        "url": "/solicitacoes.php"
+        "url": "solicitacoes.php"
       }
     },
-    "professor": {
+    "2": {
       "0": {
         "name": "Dashboard",
         "icon": "fa-tachometer-alt",
-        "url": "/index.php"
+        "url": "index.php"
       },
       "1": {
         "name": "Informações Perfil",
         "icon": "fa-user",
-        "url": "/meu_perfil.php"
+        "url": "meus_dados.php"
       },
       "2": {
         "name": "Solicitações",
@@ -42,11 +42,11 @@
         "chields": {
           "0": {
             "name": "Nova Solicitação",
-            "url": "/nova_solicitacao.php"
+            "url": "solicitar_impressao.php"
           },
           "1": {
             "name": "Consultar Solicitações",
-            "url": "/minhas_solicitacoes.php"
+            "url": "minhas_solicitacoes.php"
           }
         }
       }

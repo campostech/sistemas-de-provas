@@ -39,7 +39,7 @@ $row_usuario = mysqli_fetch_assoc($resultado_usuario);
   <?php
     require_once('case.php');
     cabecalho();
-    nav();
+	nav();
   ?>
 		<div class="content-wrapper">
 			<!-- Content Header (Page header) -->
