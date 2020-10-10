@@ -39,7 +39,7 @@ $row_usuario = mysqli_fetch_assoc($resultado_usuario);
   <?php
     require_once('case.php');
     cabecalho();
-    nav();
+	nav();
   ?>
 		<div class="content-wrapper">
 			<!-- Content Header (Page header) -->
@@ -76,12 +76,6 @@ $row_usuario = mysqli_fetch_assoc($resultado_usuario);
 					<div class="row mb-2">
 						<div class="col-sm-6">
 							<h1>Consultar Cadastro</h1>
-						</div>
-						<div class="col-sm-6">
-							<ol class="breadcrumb float-sm-right">
-								<li class="breadcrumb-item"><a href="#">Home</a></li>
-								<li class="breadcrumb-item active">DataTables</li>
-							</ol>
 						</div>
 					</div>
 				</div><!-- /.container-fluid -->

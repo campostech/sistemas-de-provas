@@ -33,6 +33,9 @@ $d_none = isset($table_data) && !empty($table_data) ? "" : "d-none";
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/card.css">
 </head>
 
 <body class="hold-transition sidebar-mini text-sm accent-orange">
@@ -67,20 +70,35 @@ $d_none = isset($table_data) && !empty($table_data) ? "" : "d-none";
               <div class="card">
                 <div class="card-header ">
 
+                  <div class="row">
+                    <div class="col-4">
+                      <div class="input-group mb-3">
+                        <input id="input-pesquisa-usuario" type="text" class="form-control" placeholder="Buscar Usuário" aria-describedby="pesquisar-usuario">
+                        <div class="input-group-append">
+                          <button class="btn btn-outline-secondary" type="button" id="btn-pesquisa-usuario"><i class="fas fa-search"></i></button>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-8">
+                      <a href="novo_cadastro.php ">
+                        <button type="button" class="btn btn-secondary btn-lg  ">Novo Cadastro</button>
+                      </a>
+                    </div>
 
-                  <a href="novo_cadastro.php ">
-                    <button type="button" class="btn btn-secondary btn-lg  ">Novo Cadastro</button>
-                  </a>
-
+                  </div>
 
                 </div>
                 <!-- /.card-header -->
                 <!-- Modal -->
 
                 <div class="card-body">
-                  <table id="example1" class="table table-bordered table-striped">
+                  <?php
+                  if (!empty($d_none)) {
+                    echo $no_data;
+                  }
+                  ?>
 
-
+                  <table id="example1" class="table table-bordered table-striped <?= $d_none ?>">
                     <thead>
                       <tr>
                         <th>Nome</th>
@@ -91,114 +109,12 @@ $d_none = isset($table_data) && !empty($table_data) ? "" : "d-none";
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>Ana Ricarda Vimeiro Moreira</td>
-                        <td>124.394.209-30</td>
-                        <td>anaavimiero@yahoo.com.br</td>
-                        <td>
-                          <a href="">
-                            <button type="button" class="btn btn-outline-secondary">Editar</button>
-                          </a>
-                          <a>
-                            <button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#confirma_exclusao" data-whatever="@getbootstrap">Excluir</button>
-                          </a>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Bernadete</td>
-                        <td>748.590.635-89</td>
-                        <td>bernadete@gmail.com</td>
-                        <td>
-                          <a href="">
-                            <button type="button" class="btn btn-outline-secondary">Editar</button>
-                          </a>
-                          <a>
-                            <button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#confirma_exclusao" data-whatever="@getbootstrap">Excluir</button>
-                          </a>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Trident</td>
-                        <td>Internet
-                          Explorer 5.5
-                        </td>
-                        <td>Win 95+</td>
-                        <td>
-                          <a href="">
-                            <button type="button" class="btn btn-outline-secondary">Editar</button>
-                          </a>
-                          <a>
-                            <button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#confirma_exclusao" data-whatever="@getbootstrap">Excluir</button>
-                          </a>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Trident</td>
-                        <td>Internet
-                          Explorer 6
-                        </td>
-                        <td>Win 98+</td>
-                        <td>
-                          <a href="">
-                            <button type="button" class="btn btn-outline-secondary">Editar</button>
-                          </a>
-                          <a>
-                            <button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#confirma_exclusao" data-whatever="@getbootstrap">Excluir</button>
-                          </a>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Trident</td>
-                        <td>Internet Explorer 7</td>
-                        <td>Win XP SP2+</td>
-                        <td>
-                          <a href="">
-                            <button type="button" class="btn btn-outline-secondary">Editar</button>
-                          </a>
-                          <a>
-                            <button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#confirma_exclusao" data-whatever="@getbootstrap">Excluir</button>
-                          </a>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Trident</td>
-                        <td>AOL browser (AOL desktop)</td>
-                        <td>Win XP</td>
-                        <td>
-                          <a href="">
-                            <button type="button" class="btn btn-outline-secondary">Editar</button>
-                          </a>
-                          <a>
-                            <button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#confirma_exclusao" data-whatever="@getbootstrap">Excluir</button>
-                          </a>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Gecko</td>
-                        <td>Firefox 1.0</td>
-                        <td>Win 98+ / OSX.2+</td>
-                        <td>
-                          <a href="">
-                            <button type="button" class="btn btn-outline-secondary">Editar</button>
-                          </a>
-                          <a>
-                            <button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#confirma_exclusao" data-whatever="@getbootstrap">Excluir</button>
-                          </a>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Gecko</td>
-                        <td>Firefox 1.5</td>
-                        <td>Win 98+ / OSX.2+</td>
-                        <td>
-                          <a href="">
-                            <button type="button" class="btn btn-outline-secondary">Editar</button>
-                          </a>
-                          <a>
-                            <button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#confirma_exclusao" data-whatever="@getbootstrap">Excluir</button>
-                          </a>
-                        </td>
-                      </tr>
+                      <?php
+                      if (empty($d_none)) {
+                        echo $table_data;
+                      }
+
+                      ?>
 
                     </tbody>
 
@@ -282,19 +198,7 @@ $d_none = isset($table_data) && !empty($table_data) ? "" : "d-none";
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
-  <script>
-    $(function() {
-      $("#example1").DataTable();
-      $('#example2').DataTable({
-        "paging": true,
-        "lengthChange": false,
-        "searching": false,
-        "ordering": true,
-        "info": true,
-        "autoWidth": false,
-      });
-    });
-  </script>
+  <script src="js/pesquisaUsuario.js"> </script>
 </body>
 
 </html>

@@ -36,7 +36,7 @@ $senha = md5($senha);
     if($nome["ID_PERFIL"] == 1){
       header('Location: ../admin_home.php');
       }else if($nome["ID_PERFIL"]==2){
-      header('Location: ../inicial_professor.php');
+      header('Location: ../professor_home.php');
       }
       exit();
    }else{

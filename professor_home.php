@@ -3,9 +3,9 @@ require_once('adminphp/validaSessao.php');
 require_once('adminphp/conecta.php');
 require_once('controller/getAdminData.php');
 require_once('controller/getAdminGraficosData.php');
-if($_SESSION['PERFIL'] != 1){
-	logout();
-}
+// if($_SESSION['PERFIL'] != 1){
+// 	logout();
+// }
 ?>
 
 <!DOCTYPE html>
