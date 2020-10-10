@@ -173,26 +173,26 @@ $row_usuario = mysqli_fetch_assoc($resultado_usuario);
 																</div>
 
 
-															<input type="text" name="perfil" class="form-control" value="<?php $row_usuario['ID_PERFIL'];
-															if($row_usuario['ID_PERFIL'] == '1'){
+																<input type="text" name="perfil" class="form-control" value="<?php $row_usuario['ID_PERFIL'];
+																if($row_usuario['ID_PERFIL'] == '1'){
 
-															    echo "Administrador";
+																	echo "Administrador";
 
-															}
-															elseif($row_usuario['ID_PERFIL'] == '2'){
-															echo "Professor";
+																}
+																elseif($row_usuario['ID_PERFIL'] == '2'){
+																echo "Professor";
 
-															}
+																}
 
-															?>" required onkeydown="fMasc(this, mCPF)" maxlength="14" disabled>
+																?>" required onkeydown="fMasc(this, mCPF)" maxlength="14" disabled>
 
 
 															</div>
 												</div>
+											</div>
 
-
-
-										</div>
+											
+											
 
 
 											<div class="row">
@@ -222,6 +222,18 @@ $row_usuario = mysqli_fetch_assoc($resultado_usuario);
 												</div>
 											</div>
 
+											<div class="row">
+												<div class="col-md-6" id="aparecersenha5" style="display:block">
+													<label>Senha Atual</label>
+													<div class="input-group mb-3">
+														<div class="input-group-prepend ">
+															<span class="input-group-text "><i  class="fas fa-lock"></i></span>
+														</div>
+														<input type="password" name="password" class="form-control" value="<?php echo $row_usuario['SENHA'];?>" required  id="inputedit3" disabled>
+													</div>
+												</div>
+											<div>
+
 
 
 
@@ -235,11 +247,14 @@ $row_usuario = mysqli_fetch_assoc($resultado_usuario);
 
 
 											<div id="aparecersenha1" style="display:none">
+											<div id="aparecersenha6" style="display:block">
+											<input type="button" value="Nova senha" onClick="mostra2() " class="btn btn-app elevation-1"/>
+											</div>
 											<button type="submit" class="btn btn-app elevation-1" >
 											<i class="fas fa-save"></i> Salvar
 											</button>
-											</div>
 
+											</div>
 
 										</div>
 										</div>
@@ -290,14 +305,23 @@ $row_usuario = mysqli_fetch_assoc($resultado_usuario);
 
 		function mostra(){
 
-		document.getElementById('aparecersenha').style.display = 'block';
-		document.getElementById('aparecersenha4').style.display = 'block';
+		
 		document.getElementById('aparecersenha1').style.display = 'block';
 		document.getElementById('aparecersenha2').style.display = 'none';
 		document.getElementById('inputedit1').disabled = false;
 		document.getElementById('inputedit2').disabled = false;
 		document.getElementById('inputedit3').disabled = false;
 
+		}
+
+		function mostra2(){
+
+		document.getElementById('aparecersenha').style.display = 'block';
+		document.getElementById('aparecersenha4').style.display = 'block';
+		document.getElementById('aparecersenha5').style.display = 'none';
+		document.getElementById('aparecersenha6').style.display = 'none';
+		
+		
 		}
 
 
