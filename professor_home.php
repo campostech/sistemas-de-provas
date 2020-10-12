@@ -1,11 +1,17 @@
 <?php
 require_once('adminphp/validaSessao.php');
 require_once('adminphp/conecta.php');
-require_once('controller/getAdminData.php');
-require_once('controller/getAdminGraficosData.php');
+require_once('controller/getHomeData.php');
+require_once('controller/getHomeGraficosData.php');
+require_once('controller/getHomeProfessorGrafico.php');
 // if($_SESSION['PERFIL'] != 1){
 // 	logout();
 // }
+
+$d_none = isset($table_data) && !empty($table_data) ? "" : "d-none";
+$d_none_status = $json_status_data == 0 ? "d-none" : "";
+
+
 ?>
 
 <!DOCTYPE html>
@@ -64,6 +70,7 @@ require_once('controller/getAdminGraficosData.php');
 							</div>
 							<!-- /.card-header -->
 							<div class="card-body">
+
 								<div class="row">
 									<div class='col-12'>
 										<div class="card-container">
@@ -72,14 +79,11 @@ require_once('controller/getAdminGraficosData.php');
 											</div>
 											<div class="card-container-content">
 												<?php
-												if (empty($table_data)) {
+												if (!empty($d_none)) {
 													echo $no_data;
 												}
 												?>
-												<table class="table table-bordered table-striped" <?php if (empty($table_data)) {
-																										echo "style='display:none;'";
-																									}
-																									?>>
+												<table class="table table-bordered table-striped <?= $d_none; ?>">
 													<thead>
 														<tr>
 															<th>Professor</th>
@@ -98,45 +102,31 @@ require_once('controller/getAdminGraficosData.php');
 
 													</tbody>
 													<tfoot>
-
 													</tfoot>
 												</table>
 											</div>
 										</div>
 									</div>
-
-									<div class='col-6'>
-										<div class="card-container">
-											<div class="card-container-header">
-												<p>Solicitações Por Usuário</p>
-											</div>
-											<div class="card-container-content" id="container-usuario-sem-conteudo">
-												<canvas id="solicitacao-por-usuario" class="graficos"></canvas>
-												<!-- Sem conteudo usuario-->
-												<div class="sem-conteudo" id="sem-conteudo-usuario" style="display:none;">
-													<div class="sem-conteudo-icon">
-														<i class="fas fa-mug-hot"></i>
-													</div>
-													<div class="sem-conteudo-texto">
-														<p>Nenhum registro foi carregado</p>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-
 									<div class='col-6'>
 										<div class="card-container">
 											<div class="card-container-header">
 												<p>Solicitações Por Status</p>
 											</div>
-											<div class="card-container-content" id="container-status-sem-conteudo">
+											<div class="card-container-content" id="container-status-sem-conteudo">												
 												<canvas id="solicitacao-por-status" class="graficos"></canvas>
 											</div>
 										</div>
 									</div>
-
-
+									<div class='col-6'>
+										<div class="card-container">
+											<div class="card-container-header">
+												<p>Total de Solcitações X Solicitações Resolvidas</p>
+											</div>
+											<div class="card-container-content" id="container-solicitacoes-total-sem-conteudo">
+												<canvas id="solicitacao-total-solicitacoes" class="graficos"></canvas>
+											</div>
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -182,10 +172,10 @@ require_once('controller/getAdminGraficosData.php');
 	<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 	<script src="js/graficos.js"></script>
 	<script>
-		var jsonUsuarioData = <?= $json_usuario_data; ?>;
+		var jsonTotalXConcluidas = <?= $json_totalxconcluidos_data; ?>;
 		var jsonStatusData = <?= $json_status_data; ?>;
-		var montaGraficoUser = montaGrafico(jsonUsuarioData, 'solicitacao-por-usuario', 'pie')
-		var montaGraficoStatus = montaGrafico(jsonStatusData, 'solicitacao-por-status', 'pie')
+		var montaGraficoTotalXConcluidas = montaGrafico(jsonTotalXConcluidas, 'solicitacao-total-solicitacoes', 'pie', 'container-solicitacoes-total-sem-conteudo')
+		var montaGraficoStatus = montaGrafico(jsonStatusData, 'solicitacao-por-status', 'pie', 'container-status-sem-conteudo')
 	</script>
 
 </body>

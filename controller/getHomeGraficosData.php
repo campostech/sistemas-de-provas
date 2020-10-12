@@ -34,11 +34,25 @@ if ($select_solicitacoes_usuario) {
 }
 
 
-$query_solicitacoes_por_status = "SELECT impressoes.ID, impressoes.CURSO, solicitacao_status.STATUS, solicitacao_status.color, count(*) AS COUNT_STATUS
+
+
+
+
+
+if ($_SESSION['PERFIL'] == 1) {
+    $query_solicitacoes_por_status = "SELECT impressoes.ID, impressoes.CURSO, solicitacao_status.STATUS, solicitacao_status.color, count(*) AS COUNT_STATUS
                 FROM impressoes
                 LEFT JOIN solicitacao_status ON solicitacao_status.ID = impressoes.STATUS
-                group by solicitacao_status.STATUS
-";
+                group by solicitacao_status.STATUS";
+} else {    
+    $query_solicitacoes_por_status = "SELECT impressoes.ID, impressoes.CURSO, solicitacao_status.STATUS, solicitacao_status.color, count(*) AS COUNT_STATUS
+                FROM impressoes
+                LEFT JOIN solicitacao_status ON solicitacao_status.ID = impressoes.STATUS
+                where impressoes.ID_PROFESSOR = $usuario_logado
+                group by solicitacao_status.STATUS";
+}
+
+
 
 $select_solicitacoes_status = mysqli_query($conexao, $query_solicitacoes_por_status);
 
@@ -63,5 +77,3 @@ if ($select_solicitacoes_status) {
     }
 } else {
 }
-
-?>

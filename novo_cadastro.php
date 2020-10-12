@@ -56,15 +56,22 @@
 									<span aria-hidden="true">&times;</span>
 									</button>
 								</div>';
-						} else {
-
+						} else if($_REQUEST['status']== '403'){
 							echo '
 									<div class="alert alert-danger alert-dismissible fade show" role="alert">
-										Erro ao inserir o usuário, verifiquei e tente novamente.
+										O CPF informado já está cadastrado no sistema.
 										<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 										<span aria-hidden="true">&times;</span>
 										</button>
 									</div>';
+						}else{
+							echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+										Ocorreu um erro ao cadastrar o usuário, verifique e tente novamente.
+										<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+										</button>
+									</div>';
+
 						}
 					}
 					?>

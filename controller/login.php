@@ -13,7 +13,12 @@ if(empty($_POST['cpf']) || empty($_POST['senha'])){
 $usuario =  mysqli_real_escape_string($conexao , $_POST['cpf']);
 $senha = mysqli_real_escape_string($conexao,$_POST['senha']);
 
+//se o usuario digitar o cpf com ponto e traço, irá remover e deixar só os numeros, fazendo assim o usuario conseguir logar.
+$usuario = preg_replace('/[^0-9]/is', '', $usuario);
 $senha = md5($senha);
+
+
+
 
 
 
