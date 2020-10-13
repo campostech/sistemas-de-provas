@@ -1,6 +1,4 @@
 <?php
-
-
 session_start();
 // Adiciona o arquivo de conexão
 require_once('../adminphp/conecta.php');
@@ -45,14 +43,14 @@ if(isset($_REQUEST['salvar-solicitacao']) ){
  //       echo 'Não é possível continuar, pois um ou mais valores estão incorretos.';
     }else{
         $data = date("Y-m-d");
-        $cpf = cpfUsuarioLogado();
+        $usuario_logado =  $_SESSION['ID'];
         
         //continua o código 
         $query = "INSERT INTO impressoes (ID_TIPO_IMPRESSOES, CURSO, DISCIPLINA, QUANTIDADE, FRENTE_VERSO, STATUS, B64FILE, DATA_SOLICITACAO, ID_PROFESSOR) 
-        VALUES ('$valores_form[tipo_de_impressao]', '$valores_form[nome]', '$valores_form[disciplina]', '$valores_form[quantidade]', '$valores_form[check_frente_verso]', '1', '$valores_form[fileData]', '$data', 1)";
+        VALUES ('$valores_form[tipo_de_impressao]', '$valores_form[nome]', '$valores_form[disciplina]', '$valores_form[quantidade]', '$valores_form[check_frente_verso]', '1', '$valores_form[fileData]', '$data', $usuario_logado)";
         $select =  mysqli_query($conexao,$query);
         
-        $urlRedirect = "../solicitar_impressao.php?status=";
+        $urlRedirect = $urlDefault."/solicitar_impressao.php?status=";
         if($select){
             $status = "200";
         }else{

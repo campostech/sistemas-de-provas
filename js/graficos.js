@@ -1,14 +1,8 @@
-function montaGrafico(dados, idElemento="", tipoDoGrafico="pie"){
+function montaGrafico(dados, idElemento="", tipoDoGrafico="pie", idSemConetudo=""){
     
-    if(!(!!dados)){
-        if(idElemento == 'solicitacao-por-status'){
-            document.getElementById("container-status-sem-conteudo").innerHTML = '<div class="sem-conteudo"><div class="sem-conteudo-icon"><i class="fas fa-mug-hot"></i></div><div class="sem-conteudo-texto"><p>Nenhum registro foi carregado</p></div></div>'            
-        }
-        else{
-            document.getElementById("container-usuario-sem-conteudo").innerHTML = '<div class="sem-conteudo"><div class="sem-conteudo-icon"><i class="fas fa-mug-hot"></i></div><div class="sem-conteudo-texto"><p>Nenhum registro foi carregado</p></div></div>'            
-
-        }
-        return false;
+    if(!(!!dados)){        
+        document.getElementById(idSemConetudo).innerHTML = '<div class="sem-conteudo"><div class="sem-conteudo-icon"><i class="fas fa-mug-hot"></i></div><div class="sem-conteudo-texto"><p>Nenhum registro foi carregado</p></div></div>'        
+        return false
     }
 
     let labelsIn = []
@@ -44,7 +38,7 @@ function montaGrafico(dados, idElemento="", tipoDoGrafico="pie"){
     data: {
         labels: labelsIn,
         datasets: [{
-            label: 'Solicitações por Usuário',
+            label: labelsIn,
             data: datasetIn,
             backgroundColor: colors,
             borderColor: colors,
@@ -83,5 +77,5 @@ function getRandomColor() {
 
 function random_rgba() {
     var o = Math.round, r = Math.random, s = 255;
-    return 'rgba(' + o(r()*s) + ',' + o(r()*s) + ',' + o(r()*s) + ',' + 0.8 + ')';
+    return 'rgba(' + o(r()*s) + ',' + o(r()*s) + ',' + o(r()*s) + ',' + 0.9 + ')';
 }

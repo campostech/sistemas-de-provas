@@ -1,80 +1,76 @@
-.card-container{
-    margin-top: 10px;
-    border: 1px solid #ddd;
-    width: 100%;
-
+.card-container {
+  margin-top: 10px;
+  border: 1px solid #ddd;
+  width: 100%;
+  box-shadow: 0 8px 10px -10px #222;
 }
 
-.card-container p{
-    margin: 0;
+.card-container p {
+  margin: 0;
 }
 
-.card-container-header{
-    padding: 10px;
-    font-size: 15px;
-    color: #222;
-    background-color: #ddd;
-    margin: 0;
-    
+.card-container-header {
+  padding: 10px;
+  font-size: 15px;
+  color: white;
+  background-color: #222; 
+  background-image: linear-gradient(to right, transparent,rgba(0,0,0,.7) 200%);
+  margin: 0;
 }
 
-
-.card-container-content{
-    padding: 10px;
-    
+.card-container-content {
+  padding: 10px;
 }
 
-
-.actions-colunm{
-    width: 20%;    
+.actions-colunm {
+  width: 20%;
 }
-.table-actions{    
-    display:flex;
-    flex-wrap: wrap;
-}
-
-.table-action-button{    
-    background-color: #fd7e14;
-    border: 1px solid #e37417;
-    width: 30px;
-    height: 100%;
-    color: white;
-    text-align: center;
-    padding: 2px;
-    border-radius: 2px;
-    margin: 0 5px 0 5px;        
+.table-actions {
+  display: flex;
+  flex-wrap: wrap;
 }
 
-
-.table-action-button:hover{
-    cursor: pointer;
-    background-color: #ffb914;
-    border-color: #ffc742;
+.table-action-button {
+  background-color: #fd7e14;
+  border: 1px solid #e37417;
+  width: 30px;
+  height: 100%;
+  color: white;
+  text-align: center;
+  padding: 2px;
+  border-radius: 2px;
+  margin: 0 5px 0 5px;
 }
 
-
-.sem-conteudo{
-    text-align: center;
-}
-.sem-conteudo-icon{    
-        
-    color: #ddd;
-    font-size: 100px;
-    height: 100%;
+.table-action-button:hover {
+  cursor: pointer;
+  background-color: #ffb914;
+  border-color: #ffc742;
 }
 
-.sem-conteudo-texto{
-    font-size: 16px;
-    color: #222;
-
+.sem-conteudo {
+  text-align: center;
+  border: 1px solid #ddd;
+  box-shadow: 0 8px 10px -10px #222;
+  padding-bottom: 5px;
+}
+.sem-conteudo-icon {
+  color: #ddd;
+  font-size: 100px;
+  height: 100%;
 }
 
-.btn-acoes{
-    color: white !important;
-    text-decoration: none;
+.sem-conteudo-texto {
+  font-size: 16px;
+  color: #222;
 }
 
-.graficos{
-    width: 100%;
-    height: 100%;
+.btn-acoes {
+  color: white !important;
+  text-decoration: none;
+}
+
+.graficos {
+  width: 100%;
+  height: 100%;
 }

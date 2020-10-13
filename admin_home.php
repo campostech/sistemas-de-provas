@@ -1,11 +1,13 @@
 <?php
 require_once('adminphp/validaSessao.php');
 require_once('adminphp/conecta.php');
-require_once('controller/getAdminData.php');
-require_once('controller/getAdminGraficosData.php');
+require_once('controller/getHomeData.php');
+require_once('controller/getHomeGraficosData.php');
 if($_SESSION['PERFIL'] != 1){
 	logout();
 }
+
+$d_none = isset($table_data) && !empty($table_data) ? "" : "d-none";
 ?>
 
 <!DOCTYPE html>
@@ -63,7 +65,7 @@ if($_SESSION['PERFIL'] != 1){
 								<h3 class="card-title">Resumo das Solicitações</h3>
 							</div>
 							<!-- /.card-header -->
-							<div class="card-body">
+							<div class="card-body">							
 								<div class="row">
 									<div class='col-12'>
 										<div class="card-container">
@@ -72,14 +74,11 @@ if($_SESSION['PERFIL'] != 1){
 											</div>
 											<div class="card-container-content">
 												<?php
-												if (empty($table_data)) {
+												if (!empty($d_none)) {
 													echo $no_data;
 												}
 												?>
-												<table class="table table-bordered table-striped" <?php if (empty($table_data)) {
-																										echo "style='display:none;'";
-																									}
-																									?>>
+												<table class="table table-bordered table-striped <?= $d_none; ?>" >
 													<thead>
 														<tr>
 															<th>Professor</th>
@@ -184,8 +183,8 @@ if($_SESSION['PERFIL'] != 1){
 	<script>
 		var jsonUsuarioData = <?= $json_usuario_data; ?>;
 		var jsonStatusData = <?= $json_status_data; ?>;
-		var montaGraficoUser = montaGrafico(jsonUsuarioData, 'solicitacao-por-usuario', 'pie')
-		var montaGraficoStatus = montaGrafico(jsonStatusData, 'solicitacao-por-status', 'pie')
+		var montaGraficoUser = montaGrafico(jsonUsuarioData, 'solicitacao-por-usuario', 'pie', 'container-usuario-sem-conteudo')
+		var montaGraficoStatus = montaGrafico(jsonStatusData, 'solicitacao-por-status', 'pie', 'container-status-sem-conteudo')
 	</script>
 
 </body>
