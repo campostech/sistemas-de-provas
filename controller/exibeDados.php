@@ -17,6 +17,8 @@ $select = mysqli_query($conexao, $query_mysql);
 
 if ($select) {
     $dados_solicitacoes = mysqli_fetch_all($select, MYSQLI_ASSOC);
+    $status = "200";
+    
 
     if ($dados_solicitacoes) {
         $table_data = "";
@@ -24,12 +26,12 @@ if ($select) {
         foreach ($dados_solicitacoes as $indice => $valor) {
             $valor['DATA_SOLICITACAO'] = date("d/m/Y", strtotime($valor['DATA_SOLICITACAO']));
             $botao ='';
+
             if($valor['STATUS'] == 'Pendente'){
                 $botao = '<button type="button" class="btn btn-outline-secondary" onclick="openRemoveModal('.$valor["ID"].');">Cancelar</button>';
             }else if($valor['STATUS'] == 'Recusada'){
                 $botao = '<button type="button" class="btn btn-outline-info" onclick="alert(\''.str_replace('\'',"",str_replace('"',"",$valor["OBS"])).'\');">Info</button>';
             }
-
 
             $table_data = $table_data . "<tr>
                             <td>" . $valor['ID'] . "</td>
@@ -45,9 +47,11 @@ if ($select) {
         // echo $table_data;
 
     } else {
+        $status = "403";
     }
 } else {
 }
+   
 
 
 ?>

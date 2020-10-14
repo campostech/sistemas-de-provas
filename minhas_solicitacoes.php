@@ -38,7 +38,43 @@ if($_SESSION['PERFIL'] != 2){
   ?>
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
+  
     <!-- Content Header (Page header) -->
+    <!--Mensagem de Alerta do cadastro-->
+
+			<div class="alerta-cadastro-container">
+				<div class="alerta-cadastro mt-2">
+					<?php
+					if (isset($_REQUEST['status'])) {
+						if ($_REQUEST['status'] == '200') {
+							echo '
+								<div class="alert alert-success alert-dismissible fade show" role="alert">
+									Solicitação cancelada com sucesso.
+									<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+									</button>
+								</div>';
+						} else if($_REQUEST['status']== '403'){
+							echo '
+									<div class="alert alert-danger alert-dismissible fade show" role="alert">
+										Não foi possível cancelar a solicitação.
+										<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+										</button>
+									</div>';
+						}else{
+							echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+										Ocorreu um erro cancelar a solicitação, verifique e tente novamente.
+										<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+										</button>
+									</div>';
+
+						}
+					}
+					?>
+				</div>
+			</div>
     <section class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
@@ -162,12 +198,21 @@ if($_SESSION['PERFIL'] != 2){
 
   function remove(){
     window.location.href = 'controller/changeStatus.php?id='+idRemocao+'&status=4';
+
+
+
   }
 
   function openRemoveModal(id){
     idRemocao = id;
     $("#cancelar_solicitacao").modal();
+    
   }
+
+
+
+
+
 </script>
 </body>
 </html>
