@@ -47,7 +47,7 @@ if ($select) {
                                 <td>" . $valor['CURSO'] . "</td>
                                 <td>" . $valor['DISCIPLINA'] . "</td>
                                 <td>" . $valor['QUANTIDADE'] . "</td>
-                                <td><a href='#" . $valor['ID'] . "' value='" . $valor['ID'] . "'class='btn btn-info btn-lg btn-acoes' name='ver-mais-button'>Ver Detalhes</a>                            
+                                <td><a href='minhas_solicitacoes.php?id=" . $valor['ID'] . "' value='" . $valor['ID'] . "'class='btn btn-info btn-lg btn-acoes' name='ver-mais-button'>Ver Detalhes</a>                            
                             </tr>";
             }
         }else{
