@@ -26,14 +26,14 @@ if ($select) {
                                             <td class="info-nome">'.$valor['NOME'].'</td>
                                             <td>'.$cpf.'</td>
                                             <td>'.$valor['EMAIL'].'</td>
-                                            <td>
+                                            <!-- <td>
                                                 <a href="">
                                                     <button type="button" class="btn btn-outline-secondary">Editar</button>
                                                 </a>
                                                 <a href="">
                                                     <button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#confirma_exclusao" data-whatever="@getbootstrap" value="'.$valor['ID'].'">Excluir</button>
                                                 </a>
-                                            </td>
+                                            </td> -->
                                         </tr>';
         }
     } else {
