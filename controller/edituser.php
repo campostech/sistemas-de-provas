@@ -1,16 +1,22 @@
 <?php
 
-session_start();
-
-// Adiciona o arquivo de conexão
-require_once('../adminphp/conecta.php');
+// Adiciona o arquivo de conexï¿½o
+include_once("../adminphp/conecta.php");
+require_once('../adminphp/validaSessao.php');
 require_once('../utils/validations.php');
 
+if($_POST['id'] != $_SESSION['ID'] || $_POST['cpf'] != $_SESSION['CPF']){
+    logout();
+}
 
+$pass = mysqli_real_escape_string($conexao,md5($_POST['password']));
+$id = $_POST['id'];
+$queryS = "SELECT * FROM users WHERE ID='$id' AND SENHA='$pass'";
+$selectS =  mysqli_query($conexao,$queryS);
 
 $urlRedirect = "../meus_dados.php?status=";
 $status = "200";
-$valores_validos = true;
+$valores_validos = ($selectS->num_rows != 0);
 $valores_form = [];
 
 
@@ -20,12 +26,12 @@ if(isset($_POST)){
             $valores_validos = false;
             break;
         }
-        //verificações
+        //verificaï¿½ï¿½es
         else{
-            //verifica se o indice é cpf ou perfil para validar os valores.
+            //verifica se o indice ï¿½ cpf ou perfil para validar os valores.
             if($indice == 'cpf' or $indice == 'perfil'){
                 
-                //valida o cpf e transforma só em numero, isso se tiver valido
+                //valida o cpf e transforma sï¿½ em numero, isso se tiver valido
                 if($indice == 'cpf' && validaCpf($valor)){
                     $valor = preg_replace( '/[^0-9]/is', '', $valor);
                 }
@@ -34,14 +40,14 @@ if(isset($_POST)){
                 else if($indice == 'perfil' && is_numeric($valor)){
                     $valor = intval($valor);                    
                 }
-                //se nao for nenhum dos dois irá retornar falso.
+                //se nao for nenhum dos dois irï¿½ retornar falso.
                 else{
                     $valores_validos = false;                    
                     break;
                 }
             }
             //valida a senha
-            else if($indice == 'password' && !validaSenha($valor, $_REQUEST['cpassword'])){
+            else if($indice == 'npassword' && !validaSenha($valor, $_REQUEST['cnpassword'])){
                 $valores_validos = false;                    
                 break;
             }
@@ -49,27 +55,27 @@ if(isset($_POST)){
         }
     }
 }
-
+// var_dump($_POST);
+// var_dump($selectS);
+// var_dump($valores_validos);
+// return;
 if(!$valores_validos){    
     $status = "403";    
-}
+}else{
 
-else{
-
-    $senha = mysqli_real_escape_string($conexao,md5($valores_form['password']));
+    $senha = mysqli_real_escape_string($conexao,md5($valores_form['npassword']));
 
      
     
-    //QUERY que será executada no bando de dados      
+    //QUERY que serï¿½ executada no bando de dados      
 
     $id = filter_input(INPUT_POST, 'id', FILTER_SANITIZE_NUMBER_INT);      
     $nome = filter_input(INPUT_POST, 'nome', FILTER_SANITIZE_STRING);  
     $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);    
     $senha1 = filter_input(INPUT_POST, '$senha', FILTER_SANITIZE_STRING);     
-    $cpf = filter_input(INPUT_POST, 'cpf', FILTER_SANITIZE_NUMBER_INT);
     
 
-    $query = "UPDATE users SET NOME='$nome', EMAIL='$email',SENHA='$senha',CPF='$cpf'  WHERE ID='$id'";
+    $query = "UPDATE users SET NOME='$nome', EMAIL='$email',SENHA='$senha'  WHERE ID='$id'";
     
     $select =  mysqli_query($conexao,$query);
      

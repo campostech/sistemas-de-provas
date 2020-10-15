@@ -33,7 +33,6 @@ function validaCPF($cpf)
 
 function validaSenha($senha, $confirmacao_de_senha = "")
 {
-
     $isValido = true;
 
     //verifica se a senha está vazia

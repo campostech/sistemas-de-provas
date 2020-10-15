@@ -55,7 +55,7 @@
                     <img src="dist/img/'.$icon.'_icon.png" class="img-circle elevation-2" alt="User Image">
                 </div>
                 <div class="info">
-                    <a href="#" class="d-block">'.explode(' ',$_SESSION['NOME'])[0].'</a>
+                    <a href="'.$_SESSION['URL'].'meus_dados.php" class="d-block">'.explode(' ',$_SESSION['NOME'])[0].'</a>
                 </div>
             </div>
     
