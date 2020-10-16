@@ -197,7 +197,7 @@ $row_usuario = mysqli_fetch_assoc($resultado_usuario);
 															<div class="input-group-prepend ">
 																<span class="input-group-text "><i class="fas fa-lock"></i></span>
 															</div>
-														<input type="password" name="password" class="form-control" value="<?php $row_usuario['SENHA'];?>"  required>
+														<input type="password" name="npassword" class="form-control" value=""  >
 
 													</div>
 												</div>
@@ -205,18 +205,33 @@ $row_usuario = mysqli_fetch_assoc($resultado_usuario);
 
 												<div class="col-md-6" id="aparecersenha4" style="display:none">
 
-														<label>CONFIRME SUA SENHA</label>
+														<label>CONFIRME A NOVA SENHA</label>
 														<div class="input-group mb-3">
 															<div class="input-group-prepend ">
 																<span class="input-group-text "><i class="fas fa-lock"></i></span>
 															</div>
-														<input type="password" name="cpassword" class="form-control" value="<?php $row_usuario['SENHA'];?>"  required>
+														<input type="password" name="cnpassword" class="form-control" value=""  >
 														</div>
 
 												</div>
 											</div>
+											<p class="senhaInvalida">A NOVA SENHA deve conter no mínimo 8 dígitos e ser igual a confirmação de NOVA SENHA!</p>
 
-											
+											<div class="row">
+
+
+												<div class="col-md-6">
+													<label>SUA SENHA ATUAL</label>
+
+													<div class="input-group mb-3">
+														<div class="input-group-prepend">
+															<span class="input-group-text "><i class="fas fa-user"></i></span>
+														</div>
+														<input type="password" name="password" class="form-control" value="*********" required id="inputedit4" disabled>
+													</div>
+
+												</div>
+											</div>
 
 
 
@@ -282,25 +297,26 @@ $row_usuario = mysqli_fetch_assoc($resultado_usuario);
 	<script src="dist/js/demo.js"></script>
 	<!-- page script -->
 	<script>
-
+		var trocarSenha = false;
 		function mostra(){
-
-		
-		document.getElementById('aparecersenha1').style.display = 'block';
-		document.getElementById('aparecersenha2').style.display = 'none';
-		document.getElementById('inputedit1').disabled = false;
-		document.getElementById('inputedit2').disabled = false;
-		document.getElementById('inputedit3').disabled = false;
-
+			document.getElementById('aparecersenha1').style.display = 'block';
+			document.getElementById('aparecersenha2').style.display = 'none';
+			document.getElementById('inputedit1').disabled = false;
+			document.getElementById('inputedit2').disabled = false;
+			document.getElementById('inputedit3').disabled = false;
+			document.getElementById('inputedit4').disabled = false;
+			document.getElementById('inputedit4').value = "";
 		}
 
 		function mostra2(){
-
-		document.getElementById('aparecersenha').style.display = 'block';
-		document.getElementById('aparecersenha4').style.display = 'block';		
-		document.getElementById('aparecersenha6').style.display = 'none';
-		
-		
+			document.getElementById('aparecersenha').style.display = 'block';
+			document.getElementById('aparecersenha4').style.display = 'block';		
+			document.getElementById('aparecersenha').attributes.required = "required"; 
+			document.getElementById('aparecersenha4').attributes.required = "required"; 
+			document.getElementById('aparecersenha6').style.display = 'none';
+			trocarSenha = true;
+			document.getElementsByName('cnpassword')[0].value = "";
+			document.getElementsByName('npassword')[0].value = document.getElementsByName('cnpassword')[0].value;
 		}
 
 
@@ -318,7 +334,12 @@ $row_usuario = mysqli_fetch_assoc($resultado_usuario);
 		});
 
 		function verificarSenha(){
-			if(document.getElementsByName('password')[0].value === document.getElementsByName('cpassword')[0].value && document.getElementsByName('password')[0].value.length > 7){
+			if(!trocarSenha){
+				document.getElementsByName('cnpassword')[0].value = document.getElementsByName('password')[0].value;
+				document.getElementsByName('npassword')[0].value = document.getElementsByName('cnpassword')[0].value;
+				return true;
+			}
+			if(document.getElementsByName('npassword')[0].value === document.getElementsByName('cnpassword')[0].value && document.getElementsByName('npassword')[0].value.length > 7){
 				document.getElementsByClassName('senhaInvalida')[0].style.display = 'none';
 				return true;
 			}else{

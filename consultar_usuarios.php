@@ -3,6 +3,9 @@ require_once('adminphp/validaSessao.php');
 require_once('adminphp/conecta.php');
 require_once('utils/validations.php');
 require_once('controller/getUsuariosData.php');
+if($_SESSION['PERFIL'] != 1){
+	logout();
+}
 
 $d_none = isset($table_data) && !empty($table_data) ? "" : "d-none";
 
@@ -104,7 +107,7 @@ $d_none = isset($table_data) && !empty($table_data) ? "" : "d-none";
                         <th>Nome</th>
                         <th>CPF</th>
                         <th>E-mail</th>
-                        <th>Ações</th>
+                        <!-- <th>Ações</th>-->
 
                       </tr>
                     </thead>
