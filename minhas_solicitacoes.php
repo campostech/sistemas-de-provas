@@ -28,6 +28,9 @@ if($_SESSION['PERFIL'] != 2){
   <link rel="stylesheet" href="css/alerta.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/card.css">
+  <link rel="stylesheet" href="css/alerta.css">
 </head>
 <body class="hold-transition sidebar-mini text-sm accent-orange">
 <div class="wrapper">
