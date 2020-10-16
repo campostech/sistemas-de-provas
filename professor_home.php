@@ -4,9 +4,9 @@ require_once('adminphp/conecta.php');
 require_once('controller/getHomeData.php');
 require_once('controller/getHomeGraficosData.php');
 require_once('controller/getHomeProfessorGrafico.php');
-// if($_SESSION['PERFIL'] != 1){
-// 	logout();
-// }
+if($_SESSION['PERFIL'] != 2){
+	logout();
+}
 
 $d_none = isset($table_data) && !empty($table_data) ? "" : "d-none";
 $d_none_status = $json_status_data == 0 ? "d-none" : "";

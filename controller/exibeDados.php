@@ -11,7 +11,15 @@ INNER JOIN users ON users.ID = impressoes.ID_PROFESSOR
 INNER JOIN tipos_impressoes ON tipos_impressoes.ID = impressoes.ID_TIPO_IMPRESSOES
 INNER JOIN solicitacao_status ON solicitacao_status.ID = impressoes.STATUS
 WHERE impressoes.ID_PROFESSOR = $prof order by DATA_SOLICITACAO desc";
-
+$no_data = '
+<div class="sem-conteudo">
+    <div class="sem-conteudo-icon">
+        <i class="fas fa-mug-hot"></i>
+    </div>
+    <div class="sem-conteudo-texto">
+        <p>Nenhum registro foi carregado</p>
+    </div>
+</div>';
 
 $select = mysqli_query($conexao, $query_mysql);
 

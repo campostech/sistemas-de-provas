@@ -1,8 +1,8 @@
 <?php
-session_start();
+// session_start();
 // Adiciona o arquivo de conexão
 require_once('../adminphp/conecta.php');
-require_once('../adminphp/verificausuario.php');
+// require_once('../adminphp/validaSessao.php');
 
 // echo $_REQUEST['fileData']."<br>";
 // $img = $_REQUEST['fileData']; // Your data 'data:image/png;base64,AAAFBfj42Pj4';
@@ -15,7 +15,8 @@ $valores_form = [];
 $valores_validos = true;
 $urlRedirect = "../solicitar_impressao.php?status=";
 $status = "403";
-
+// var_dump($_REQUEST);
+// return;
 if(isset($_REQUEST['salvar-solicitacao']) ){
     foreach($_REQUEST as $indice => $valor){
         if(empty($valor) && !isset($valor)){            
@@ -42,19 +43,19 @@ if(isset($_REQUEST['salvar-solicitacao']) ){
         $status = "403";
  //       echo 'Não é possível continuar, pois um ou mais valores estão incorretos.';
     }else{
-        $data = date("Y-m-d");
-        $usuario_logado =  $_SESSION['ID'];
+        $data = date("Y-m-d h:m:s");
         
         //continua o código 
         $query = "INSERT INTO impressoes (ID_TIPO_IMPRESSOES, CURSO, DISCIPLINA, QUANTIDADE, FRENTE_VERSO, STATUS, B64FILE, DATA_SOLICITACAO, ID_PROFESSOR) 
-        VALUES ('$valores_form[tipo_de_impressao]', '$valores_form[nome]', '$valores_form[disciplina]', '$valores_form[quantidade]', '$valores_form[check_frente_verso]', '1', '$valores_form[fileData]', '$data', $usuario_logado)";
+        VALUES ('$valores_form[tipo_de_impressao]', '$valores_form[nome]', '$valores_form[disciplina]', '$valores_form[quantidade]', '$valores_form[check_frente_verso]', '1', '$valores_form[fileData]', '$data', '$valores_form[idProf]')";
         $select =  mysqli_query($conexao,$query);
         
         $urlRedirect = $urlDefault."/solicitar_impressao.php?status=";
         if($select){
             $status = "200";
         }else{
-//            echo mysqli_errno($conexao). " ".mysqli_error($conexao);
+            echo mysqli_errno($conexao). " ".mysqli_error($conexao);
+            return;
         }
     }
 }

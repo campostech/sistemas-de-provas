@@ -1,7 +1,7 @@
 <?php
 	require_once('adminphp/validaSessao.php');
 	if($_SESSION['PERFIL'] != 1){
-		require_once('controller/logout.php');
+		logout();
 	}
 ?>
 
@@ -59,7 +59,7 @@
 						} else if($_REQUEST['status']== '403'){
 							echo '
 									<div class="alert alert-danger alert-dismissible fade show" role="alert">
-										O CPF informado já está cadastrado no sistema.
+										CPF informado inválido ou já cadastrado no sistema.
 										<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 										<span aria-hidden="true">&times;</span>
 										</button>

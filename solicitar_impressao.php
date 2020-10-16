@@ -94,7 +94,7 @@ if ($_SESSION['PERFIL'] != 2) {
 												<div class="input-group-prepend">
 													<span class="input-group "></span>
 												</div>
-												<input type="text" name="nome" class="form-control" placeholder=" Ex: Ciencia da Computação">
+												<input type="text" name="nome" class="form-control" placeholder=" Ex: Ciencia da Computação"  required>
 											</div>
 
 										</div>
@@ -136,10 +136,11 @@ if ($_SESSION['PERFIL'] != 2) {
 											</div>
 										</div>
 										<div class="col-md-6">
+										<input type="number" name="idProf" class="form-control" value='<?php echo $_SESSION['ID']; ?>' required hidden>
 
 											<label>FRENTE E VERSO ?</label>
 											<div class="form-check">
-												<input class="form-inline-check-input  " type="radio" id="check_frente_verso" name="check_frente_verso" value=1>
+												<input class="form-inline-check-input  " type="radio" id="check_frente_verso" name="check_frente_verso" value=1  required>
 												<label class="form-check-label">Sim</label>
 											</div>
 											<div class="form-check">
@@ -233,7 +234,7 @@ if ($_SESSION['PERFIL'] != 2) {
 			var posicaoExtensao = splitNomeArquivo.length - 1;
 			var extencao = splitNomeArquivo[posicaoExtensao];
 			if (extencao.toLowerCase() !== "pdf") {
-				alert("É NECESSÁRIO QUE O ARQUIVO DE PROVA SEJA DO TIPO PDF");
+				alert("É NECESSÁRIO QUE O ARQUIVO SEJA DO TIPO PDF");
 				document.getElementById('b64File').value = "";
 				$('input[type=file]').val("");
 			} else {

@@ -15,7 +15,7 @@ $query_mysql = "SELECT impressoes.*, users.NOME, tipos_impressoes.DESCRICAO, sol
                 INNER JOIN users ON users.ID = impressoes.ID_PROFESSOR
                 INNER JOIN tipos_impressoes ON tipos_impressoes.ID = impressoes.ID_TIPO_IMPRESSOES
                 INNER JOIN solicitacao_status ON solicitacao_status.ID = impressoes.STATUS
-                order by DATA_SOLICITACAO desc";
+                order by ID desc";
 
 $select = mysqli_query($conexao, $query_mysql);
 

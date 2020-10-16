@@ -123,11 +123,19 @@ if($_SESSION['PERFIL'] != 2){
                 <tbody>
                   <tr>
                     <?php
-                      echo $table_data;
+                      if(!empty($table_data)){
+                        echo $table_data;
+                      }
                     ?>
                   </tr>
                 </tbody>
               </table>
+              <?php
+                if(empty($table_data)){
+                  echo $no_data;
+                  echo '<script>document.getElementsByClassName("table table-bordered table-striped")[0].style.display = "none";</script>';
+                }
+              ?>
             </div>
             <!-- /.card-body -->
           </div>
