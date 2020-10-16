@@ -31,6 +31,9 @@ if($_SESSION['PERFIL'] != 1){
   <?php
     require_once('case.php');
     require_once('adminphp/conecta.php');
+    if(isset($_REQUEST['filter'])){
+      $filter = $_REQUEST['filter'];
+    }
     require_once('controller/getSolicitacoesData.php');
     cabecalho();
     nav();
@@ -133,6 +136,13 @@ if($_SESSION['PERFIL'] != 1){
             </div>
             <!-- /.card-header -->
             <div class="card-body">
+            <?php 
+              if(isset($_REQUEST['filter'])){
+                echo '<a href="solicitacoes.php" class="btn btn-info" style="color: white">Remover Filtro</a>';
+              }else{
+                echo '<a href="solicitacoes.php?filter=1" class="btn btn-info" style="color: white">Filtrar Pendentes</a>';
+              }
+            ?>
               <table id="example1" class="table table-bordered table-striped">
                 <?php
                 if (empty($table_data)) {
