@@ -106,7 +106,7 @@ if($_SESSION['PERFIL'] != 1){
           Status: Pendente<br>
           Data de Solicitação: 17/09/2020<br>
         </div>
-        <button type="button" class="btn btn-info" onclick="downloadPDF();" >Baixar Arquivo</button>
+        <a class="btn btn-info" style="color:white;" target="_blank" id="downloadLink" href="" >Baixar Arquivo</a>
         </div>
 		</div>
 		<div class="modal-footer">
@@ -233,19 +233,18 @@ if($_SESSION['PERFIL'] != 1){
   }
 
   function downloadPDF() {
-    const linkSource = `data:application/pdf;base64,${file}`;
     const downloadLink = document.createElement("a");
-    downloadLink.href = linkSource;
-    downloadLink.download = fileName;
+    downloadLink.href = '/file/'.file;
     downloadLink.click();
   }
 
   function showInfo(id){
     idQuery = id;
     var v = dataQuery[id];
-    file = v["B64FILE"];
+    file = v["FILE"];
     fileName = v["NOME"] + " - " + v["DISCIPLINA"] + " - " + v["DESCRICAO"];
 
+    document.getElementById('downloadLink').href = 'files/'+v["FILE"];
     document.getElementById('modalTitle').innerHTML = v["NOME"] + " - " + v["STATUS"];
     document.getElementById('modalInfo').innerHTML = 'Professor: '+v["NOME"]+'<br>Disciplina: '+v["DISCIPLINA"]+'<br>Curso: '+v["CURSO"]+'<br>Tipo de Impressão: '+v["DESCRICAO"]+'<br>Quantidade: '+v["QUANTIDADE"]+'<br>Frente e Verso: '+(v["FRENTE_VERSO"] == '1' ? 'SIM' : 'NÃO')+'<br>Status: '+v["STATUS"]+'<br>Data de Solicitação: '+v["DATA_SOLICITACAO"]+'<br>'+((v["OBS"] == null || v["OBS"] == "") ? '<br>' : ('Observação ADMIN: ' + v["OBS"] + '<br>'));
     $('#infoModal').modal('show');

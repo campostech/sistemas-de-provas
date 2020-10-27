@@ -85,7 +85,7 @@ if ($_SESSION['PERFIL'] != 2) {
 								<h3 class="card-title">Solicitar impressões de arquivos:</h3>
 							</div>
 							<!-- /.card-header -->
-							<form method="POST" action="controller/insertSolicitacao.php">
+							<form method="POST" action="controller/insertSolicitacao.php" enctype="multipart/form-data">
 								<div class="card-body">
 									<div class="row">
 										<div class="col-md-6">
@@ -138,7 +138,7 @@ if ($_SESSION['PERFIL'] != 2) {
 										<div class="col-md-6">
 										<input type="number" name="idProf" class="form-control" value='<?php echo $_SESSION['ID']; ?>' required hidden>
 
-											<label>FRENTE E VERSO ?</label>
+											<label>FRENTE E VERSO</label>
 											<div class="form-check">
 												<input class="form-inline-check-input  " type="radio" id="check_frente_verso" name="check_frente_verso" value=1  required>
 												<label class="form-check-label">Sim</label>
@@ -160,7 +160,6 @@ if ($_SESSION['PERFIL'] != 2) {
 												</div>
 											</form>
 										</div>
-
 									</div>
 
 									<div class="text-right">
@@ -237,9 +236,7 @@ if ($_SESSION['PERFIL'] != 2) {
 				alert("É NECESSÁRIO QUE O ARQUIVO SEJA DO TIPO PDF");
 				document.getElementById('b64File').value = "";
 				$('input[type=file]').val("");
-			} else {
-				getBase64(e.target.files[0]);
-			}
+			} 
 		});
 	</script>
 </body>

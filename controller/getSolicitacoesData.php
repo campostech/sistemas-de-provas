@@ -44,7 +44,7 @@ if ($select) {
                         "</tr>";
 
                         // unset($valor['B64FILE']);
-                        $valor['B64FILE'] = str_replace("data:application/pdf;base64,","",$valor['B64FILE']);
+                        // $valor['FILE'] = str_replace("data:application/pdf;base64,","",$valor['B64FILE']);
                         $dataQuery[$valor['ID']] = $valor;
                         $idObj++;
 
