@@ -25,3 +25,16 @@ botaoPesquisarUsuario.addEventListener("click", function () {
 });
 
 
+var botaoLimpaPesquisa = document.getElementById("btn-limpa-busca");
+botaoLimpaPesquisa.addEventListener("click", function () {
+  document.getElementById("input-pesquisa-usuario").value = ""
+  let valorPesquisa = document.getElementById("input-pesquisa-usuario").value;
+  let usuarios = document.querySelectorAll(".usuario-tabela");
+  valorPesquisa = "" 
+  for (let i = 0; i < usuarios.length; i++) {
+      let usuario = usuarios[i];
+      usuario.classList.remove("d-none");
+    }
+
+});
+

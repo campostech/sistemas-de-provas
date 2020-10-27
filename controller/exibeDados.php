@@ -4,6 +4,17 @@
 // require_once('../controller/exibeDados.php');
 // require_once('../adminphp/validaSessao.php');
 
+
+$no_data = '
+    <div class="sem-conteudo">
+        <div class="sem-conteudo-icon">
+            <i class="fas fa-mug-hot"></i>
+        </div>
+        <div class="sem-conteudo-texto">
+            <p>Nenhum Registro encontrado...</p>
+        </div>
+    </div>';
+
 //QUERY que será executada no bando de dados
 $prof = $_SESSION['ID'];
 $query_mysql = "SELECT impressoes.*, users.NOME, tipos_impressoes.DESCRICAO, solicitacao_status.STATUS FROM impressoes
@@ -11,22 +22,12 @@ INNER JOIN users ON users.ID = impressoes.ID_PROFESSOR
 INNER JOIN tipos_impressoes ON tipos_impressoes.ID = impressoes.ID_TIPO_IMPRESSOES
 INNER JOIN solicitacao_status ON solicitacao_status.ID = impressoes.STATUS
 WHERE impressoes.ID_PROFESSOR = $prof order by DATA_SOLICITACAO desc";
-$no_data = '
-<div class="sem-conteudo">
-    <div class="sem-conteudo-icon">
-        <i class="fas fa-mug-hot"></i>
-    </div>
-    <div class="sem-conteudo-texto">
-        <p>Nenhum registro foi carregado</p>
-    </div>
-</div>';
+
 
 $select = mysqli_query($conexao, $query_mysql);
 
 if ($select) {
     $dados_solicitacoes = mysqli_fetch_all($select, MYSQLI_ASSOC);
-    $status = "200";
-    
 
     if ($dados_solicitacoes) {
         $table_data = "";
@@ -34,12 +35,12 @@ if ($select) {
         foreach ($dados_solicitacoes as $indice => $valor) {
             $valor['DATA_SOLICITACAO'] = date("d/m/Y", strtotime($valor['DATA_SOLICITACAO']));
             $botao ='';
-
             if($valor['STATUS'] == 'Pendente'){
                 $botao = '<button type="button" class="btn btn-outline-secondary" onclick="openRemoveModal('.$valor["ID"].');">Cancelar</button>';
             }else if($valor['STATUS'] == 'Recusada'){
                 $botao = '<button type="button" class="btn btn-outline-info" onclick="alert(\''.str_replace('\'',"",str_replace('"',"",$valor["OBS"])).'\');">Info</button>';
             }
+
 
             $table_data = $table_data . "<tr>
                             <td>" . $valor['ID'] . "</td>
@@ -55,11 +56,9 @@ if ($select) {
         // echo $table_data;
 
     } else {
-        $status = "403";
     }
 } else {
 }
-   
 
 
 ?>

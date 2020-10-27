@@ -11,7 +11,11 @@ $no_data = '
     </div>';
 
 
-$query_busca_usuarios = "SELECT ID, NOME, EMAIL, CPF FROM users";
+
+$logged_user = $_SESSION['ID'];
+
+$query_busca_usuarios = "SELECT ID, NOME, EMAIL, CPF FROM users WHERE ID != $logged_user and users.STATUS_USER = 1"; 
+
 
 $select = mysqli_query($conexao, $query_busca_usuarios);
 
@@ -26,14 +30,9 @@ if ($select) {
                                             <td class="info-nome">'.$valor['NOME'].'</td>
                                             <td>'.$cpf.'</td>
                                             <td>'.$valor['EMAIL'].'</td>
-                                            <!-- <td>
-                                                <a href="">
-                                                    <button type="button" class="btn btn-outline-secondary">Editar</button>
-                                                </a>
-                                                <a href="">
-                                                    <button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#confirma_exclusao" data-whatever="@getbootstrap" value="'.$valor['ID'].'">Excluir</button>
-                                                </a>
-                                            </td> -->
+                                            <td>                                                                                         
+                                                <button type="button" class="btn btn-outline-secondary" onclick="openRemoveModal('.$valor["ID"].');">Remover Usuario</button>                                                
+                                            </td> 
                                         </tr>';
         }
     } else {

@@ -1,13 +1,14 @@
 <?php
 require_once('adminphp/conecta.php');
 require_once('adminphp/validaSessao.php');
-if($_SESSION['PERFIL'] != 2){
+if ($_SESSION['PERFIL'] != 2) {
   logout();
 }
 ?>
 
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -28,200 +29,197 @@ if($_SESSION['PERFIL'] != 2){
   <link rel="stylesheet" href="css/alerta.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/card.css">
 </head>
+
 <body class="hold-transition sidebar-mini text-sm accent-orange">
-<div class="wrapper">
-  <?php
+  <div class="wrapper">
+    <?php
     require_once('controller/exibeDados.php');
+    $d_none = isset($table_data) && !empty($table_data) ? "" : "d-none";
+
     require_once('case.php');
     cabecalho();
     nav();
-  ?>
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-  
-    <!-- Content Header (Page header) -->
-    <!--Mensagem de Alerta do cadastro-->
+    ?>
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
 
-			<div class="alerta-cadastro-container">
-				<div class="alerta-cadastro mt-2">
-					<?php
-					if (isset($_REQUEST['status'])) {
-						if ($_REQUEST['status'] == '200') {
-							echo '
+      <!-- Content Header (Page header) -->
+      <!--Mensagem de Alerta do cadastro-->
+
+      <div class="alerta-cadastro-container">
+        <div class="alerta-cadastro mt-2">
+          <?php
+          if (isset($_REQUEST['status'])) {
+            if ($_REQUEST['status'] == '200') {
+              echo '
 								<div class="alert alert-success alert-dismissible fade show" role="alert">
 									Solicitação cancelada com sucesso.
 									<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 									<span aria-hidden="true">&times;</span>
 									</button>
 								</div>';
-						} else if($_REQUEST['status']== '403'){
-							echo '
+            } else if ($_REQUEST['status'] == '403') {
+              echo '
 									<div class="alert alert-danger alert-dismissible fade show" role="alert">
 										Não foi possível cancelar a solicitação.
 										<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 										<span aria-hidden="true">&times;</span>
 										</button>
 									</div>';
-						}else{
-							echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+            } else {
+              echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
 										Ocorreu um erro cancelar a solicitação, verifique e tente novamente.
 										<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 										<span aria-hidden="true">&times;</span>
 										</button>
 									</div>';
-
-						}
-					}
-					?>
-				</div>
-			</div>
-    <section class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1> Cadastro de Solicitações</h1>
-          </div>
-
+            }
+          }
+          ?>
         </div>
-      </div><!-- /.container-fluid -->
-    </section>
-
-    <!-- Main content -->
-    <section class="content">
-      <div class="row">
-        <div class="col-12">
-          <div class="card">
-
-          <!-- /.card -->
-
-          <div class="card">
-            <div  class="card-header ">
-
-
-              <a href="solicitar_impressao.php ">
-                <button type="button" class="btn btn-secondary btn-lg  ">Novo Cadastro</button>
-              </a>
-
-
-            </div>
-            <!-- /.card-header -->
-            <div class="card-body">
-           
-               <table class="table table-bordered table-striped">
-                <thead>
-                <tr>
-                  <th>ID</th>
-                  <th>Tipo de Impressão</th>
-                  <th>Data de Solicitação</th>
-                  <th>Quantidade</th>
-                  <th>Status</th>
-                  <th>Ações</th>
-
-                </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <?php
-                      if(!empty($table_data)){
-                        echo $table_data;
-                      }
-                    ?>
-                  </tr>
-                </tbody>
-              </table>
-              <?php
-                if(empty($table_data)){
-                  echo $no_data;
-                  echo '<script>document.getElementsByClassName("table table-bordered table-striped")[0].style.display = "none";</script>';
-                }
-              ?>
-            </div>
-            <!-- /.card-body -->
-          </div>
-          <!-- /.card -->
-        </div>
-        <!-- /.col -->
       </div>
-      <!-- /.row -->
-    </section>
-    <!-- /.content -->
-  </div>
+      <section class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h1> Cadastro de Solicitações</h1>
+            </div>
 
-  <!-- MODAL -->
-  <div class="modal" id="cancelar_solicitacao" tabindex="-1" role="dialog" aria-labelledby="confirma_exclusao" aria-hidden="true">
-                      <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <h5 class="modal-title" id="confirma_exclusao">Confirmar cancelamento</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-                              <span aria-hidden="true">&times;</span>
-                            </button>
-                          </div>
-                          <div class="modal-body">
-                          <p><strong>Tem certeza que deseja cancelar a solicitação de impressão?</strong> </p>
-                          <div class="modal-footer">
-                            <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Não</button>
-                            <button type="button" class="btn btn-secondary" onclick="remove();">Sim</button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    </div>
+          </div>
+        </div><!-- /.container-fluid -->
+      </section>
+
+      <!-- Main content -->
+      <section class="content">
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+
+              <!-- /.card -->
+
+              <div class="card">
+                <div class="card-header ">
+
+
+                  <a href="solicitar_impressao.php ">
+                    <button type="button" class="btn btn-secondary btn-lg  ">Novo Cadastro</button>
+                  </a>
+
+
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+
+                <?php
+                  if (!empty($d_none)) {
+                    echo $no_data;
+                  }
+                  ?>
+
+                  <table class="table table-bordered table-striped <?= $d_none ?>" >
+                    <thead>
+                      <tr>
+                        <th>ID</th>
+                        <th>Tipo de Impressão</th>
+                        <th>Data de Solicitação</th>
+                        <th>Quantidade</th>
+                        <th>Status</th>
+                        <th>Ações</th>
+
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <?php
+
+                        if(empty($d_none)){
+                            echo $table_data;
+                        }                          
+                        ?>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <!-- /.card-body -->
+              </div>
+              <!-- /.card -->
+            </div>
+            <!-- /.col -->
+          </div>
+          <!-- /.row -->
+      </section>
+      <!-- /.content -->
+    </div>
+
+    <!-- MODAL -->
+    <div class="modal" id="cancelar_solicitacao" tabindex="-1" role="dialog" aria-labelledby="confirma_exclusao" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="confirma_exclusao">Confirmar cancelamento</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p><strong>Tem certeza que deseja cancelar a solicitação de impressão?</strong> </p>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Não</button>
+              <button type="button" class="btn btn-secondary" onclick="remove();">Sim</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <?php
-      rodape();
+    rodape();
     ?>
-  <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark">
-    <!-- Control sidebar content goes here -->
-  </aside>
-  <!-- /.control-sidebar -->
-</div>
-<!-- ./wrapper -->
+    <!-- Control Sidebar -->
+    <aside class="control-sidebar control-sidebar-dark">
+      <!-- Control sidebar content goes here -->
+    </aside>
+    <!-- /.control-sidebar -->
+  </div>
+  <!-- ./wrapper -->
 
-<!-- jQuery -->
-<script src="plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
-<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- DataTables -->
-<script src="plugins/datatables/jquery.dataTables.js"></script>
-<script src="plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
-<!-- AdminLTE App -->
-<script src="dist/js/adminlte.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="dist/js/demo.js"></script>
-<!-- page script -->
-<script>
-  var idRemocao = -1;
-  $(function () {
-    $("#example1").DataTable();
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false,
+  <!-- jQuery -->
+  <script src="plugins/jquery/jquery.min.js"></script>
+  <!-- Bootstrap 4 -->
+  <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- DataTables -->
+  <script src="plugins/datatables/jquery.dataTables.js"></script>
+  <script src="plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
+  <!-- AdminLTE App -->
+  <script src="dist/js/adminlte.min.js"></script>
+  <!-- AdminLTE for demo purposes -->
+  <script src="dist/js/demo.js"></script>
+  <!-- page script -->
+  <script>
+    var idRemocao = -1;
+    $(function() {
+      $("#example1").DataTable();
+      $('#example2').DataTable({
+        "paging": true,
+        "lengthChange": false,
+        "searching": false,
+        "ordering": true,
+        "info": true,
+        "autoWidth": false,
+      });
     });
-  });
 
-  function remove(){
-    window.location.href = 'controller/changeStatus.php?id='+idRemocao+'&status=4';
+    function remove() {
+      window.location.href = 'controller/changeStatus.php?id=' + idRemocao + '&status=4';
+    }
+    function openRemoveModal(id) {
+      idRemocao = id;      
+      $("#cancelar_solicitacao").modal();
 
-
-
-  }
-
-  function openRemoveModal(id){
-    idRemocao = id;
-    $("#cancelar_solicitacao").modal();
-    
-  }
-
-
-
-
-
-</script>
+    }
+  </script>
 </body>
+
 </html>

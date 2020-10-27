@@ -3,8 +3,8 @@ require_once('adminphp/validaSessao.php');
 require_once('adminphp/conecta.php');
 require_once('utils/validations.php');
 require_once('controller/getUsuariosData.php');
-if($_SESSION['PERFIL'] != 1){
-	logout();
+if ($_SESSION['PERFIL'] != 1) {
+  logout();
 }
 
 $d_none = isset($table_data) && !empty($table_data) ? "" : "d-none";
@@ -39,6 +39,7 @@ $d_none = isset($table_data) && !empty($table_data) ? "" : "d-none";
 
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/card.css">
+  <link rel="stylesheet" href="css/alerta.css">
 </head>
 
 <body class="hold-transition sidebar-mini text-sm accent-orange">
@@ -50,6 +51,34 @@ $d_none = isset($table_data) && !empty($table_data) ? "" : "d-none";
     ?>
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
+
+      <!--Mensagem de Alerta do cadastro-->
+
+      <div class="alerta-cadastro-container">
+        <div class="alerta-cadastro mt-2">
+          <?php
+          if (isset($_REQUEST['status'])) {
+            if ($_REQUEST['status'] == '200') {
+              echo '
+								<div class="alert alert-success alert-dismissible fade show" role="alert">
+									Usuário removido com sucesso.
+									<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+									</button>
+								</div>';
+            } else {
+              echo '
+									<div class="alert alert-danger alert-dismissible fade show" role="alert">
+										Erro na atualização do usuário, verifique e tente novamente.
+										<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+										</button>
+									</div>';
+            }
+          }
+          ?>
+        </div>
+      </div>
       <!-- Content Header (Page header) -->
       <section class="content-header">
         <div class="container-fluid">
@@ -80,11 +109,14 @@ $d_none = isset($table_data) && !empty($table_data) ? "" : "d-none";
                         <div class="input-group-append">
                           <button class="btn btn-outline-secondary" type="button" id="btn-pesquisa-usuario"><i class="fas fa-search"></i></button>
                         </div>
+                        <div class="input-group-append">
+                          <button class="btn btn-secondary" type="button" id="btn-limpa-busca" title="Limpar Filtro"><i class="fas fa-times"></i></i></button>
+                        </div>
                       </div>
                     </div>
                     <div class="col-8">
                       <a href="novo_cadastro.php ">
-                        <button type="button" class="btn btn-secondary btn-lg  ">Novo Cadastro</button>
+                        <button type="button" class="btn btn-secondary btn-lg  ">+ Novo Cadastro</button>
                       </a>
                     </div>
 
@@ -107,8 +139,7 @@ $d_none = isset($table_data) && !empty($table_data) ? "" : "d-none";
                         <th>Nome</th>
                         <th>CPF</th>
                         <th>E-mail</th>
-                        <!-- <th>Ações</th>-->
-
+                        <th>Ações</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -118,9 +149,7 @@ $d_none = isset($table_data) && !empty($table_data) ? "" : "d-none";
                       }
 
                       ?>
-
                     </tbody>
-
                   </table>
                 </div>
                 <!-- /.card-body -->
@@ -152,7 +181,7 @@ $d_none = isset($table_data) && !empty($table_data) ? "" : "d-none";
                   <div class="input-group-prepend ">
                     <span class="input-group-text "><i class="fas fa-lock"></i></span>
                   </div>
-                  <input type="password" name="password" class="form-control" required>
+                  <input type="password" name="password" id="remove-pass" class="form-control" required>
                 </div>
               </div>
               <div class="col-md-6">
@@ -161,13 +190,19 @@ $d_none = isset($table_data) && !empty($table_data) ? "" : "d-none";
                   <div class="input-group-prepend ">
                     <span class="input-group-text "><i class="fas fa-lock"></i></span>
                   </div>
-                  <input type="password" name="cpassword" class="form-control" required>
+                  <input type="password" name="cpassword" id="remove-cpass" class="form-control" required>
+                </div>
+              </div>
+
+              <div class="col-md-12 d-none" id="senhas-diferentes" style="justify-content: center; text-align: center; color: red;">
+                <div>
+                  <p>Senhas não estão iguais</p>
                 </div>
               </div>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Fechar</button>
-              <button type="button" class="btn btn-outline-secondary">Salvar mudanças</button>
+              <button id="btn-remover-usuario" disabled type="button" class="btn btn-outline-secondary" title="Informe a senha antes de prosseguir" onclick="validaUserBeforeRemove()">Salvar mudanças</button>
             </div>
           </div>
         </div>
@@ -179,6 +214,7 @@ $d_none = isset($table_data) && !empty($table_data) ? "" : "d-none";
     ?>
     <!-- Control Sidebar -->
     <aside class="control-sidebar control-sidebar-dark">
+
       <!-- Control sidebar content goes here -->
     </aside>
     <!-- /.control-sidebar -->
@@ -187,6 +223,7 @@ $d_none = isset($table_data) && !empty($table_data) ? "" : "d-none";
 
   <!-- jQuery -->
   <script src="plugins/jquery/jquery.min.js"></script>
+
   <!-- Bootstrap 4 -->
   <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
   <!-- DataTables -->
@@ -202,6 +239,7 @@ $d_none = isset($table_data) && !empty($table_data) ? "" : "d-none";
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
   <script src="js/pesquisaUsuario.js"> </script>
+  <script src="js/removeUsuario.js"></script>
 </body>
 
 </html>

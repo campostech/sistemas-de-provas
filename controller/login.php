@@ -22,7 +22,7 @@ $senha = md5($senha);
 
 
 
-    $query = "select * from users where CPF ='$usuario' and SENHA = '$senha'";
+    $query = "select * from users where CPF ='$usuario' and SENHA = '$senha' and STATUS_USER = 1";
     $select =  mysqli_query($conexao,$query);
 
   $nome = $select->fetch_assoc();

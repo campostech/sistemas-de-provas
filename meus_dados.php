@@ -36,234 +36,203 @@ $row_usuario = mysqli_fetch_assoc($resultado_usuario);
 
 <body class="hold-transition sidebar-mini text-sm accent-orange">
 
-  <?php
-    require_once('case.php');
-    cabecalho();
+	<?php
+	require_once('case.php');
+	cabecalho();
 	nav();
-  ?>
-		<div class="content-wrapper">
-			<!-- Content Header (Page header) -->
-			<!--Mensagem de Alerta do cadastro-->
+	?>
+	<div class="content-wrapper">
+		<!-- Content Header (Page header) -->
+		<!--Mensagem de Alerta do cadastro-->
 
-			<div class="alerta-cadastro-container">
-				<div class="alerta-cadastro mt-2">
-					<?php
-					if (isset($_REQUEST['status'])) {
-						if ($_REQUEST['status'] == '200') {
-							echo '
+		<div class="alerta-cadastro-container">
+			<div class="alerta-cadastro mt-2">
+				<?php
+				if (isset($_REQUEST['status'])) {
+					if ($_REQUEST['status'] == '200') {
+						echo '
 								<div class="alert alert-success alert-dismissible fade show" role="alert">
 									Usuário atualizado com sucesso.
 									<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 									<span aria-hidden="true">&times;</span>
 									</button>
 								</div>';
-						} else {
-							echo '
+					} else {
+						echo '
 									<div class="alert alert-danger alert-dismissible fade show" role="alert">
 										Erro na atualização do usuário, verifique e tente novamente.
 										<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 										<span aria-hidden="true">&times;</span>
 										</button>
 									</div>';
-						}
 					}
-					?>
-				</div>
+				}
+				?>
 			</div>
+		</div>
 
-			<section class="content-header">
-				<div class="container-fluid">
-					<div class="row mb-2">
-						<div class="col-sm-6">
-							<h1>Consultar Cadastro</h1>
-						</div>
+		<section class="content-header">
+			<div class="container-fluid">
+				<div class="row mb-2">
+					<div class="col-sm-6">
+						<h1>Consultar Cadastro</h1>
 					</div>
-				</div><!-- /.container-fluid -->
-			</section>
+				</div>
+			</div><!-- /.container-fluid -->
+		</section>
 
 
 
 
 
-			<section class="content">
-				<div class="row">
-					<div class="col-12">
-						<div class="card">
+		<section class="content">
+			<div class="row">
+				<div class="col-12">
+					<div class="card">
 
-							<div class="card-header container">
-								<h3 class="minititulo elevation-2">Meus dados</h3>
-							</div>
-							<!-- /.card-header -->
-							<form method="POST" action="controller/edituser.php" onsubmit="return verificarSenha();">
+						<div class="card-header container">
+							<h3 class="minititulo elevation-2">Meus dados</h3>
+						</div>
+						<!-- /.card-header -->
+						<form method="POST" action="controller/edituser.php" onsubmit="return verificarSenha();">
+							<input type="hidden" name="id" value="<?php echo $row_usuario['ID']; ?>">
+							<div class="container card-body jumbotron ">
+								<div class="row">
+									<div class="col-md-6">
+										<label>NOME</label>
+										<div class="input-group mb-3">
+											<div class="input-group-prepend">
+												<span class="input-group-text "><i class="fas fa-user"></i></span>
+											</div>
+											<input type="text" name="nome" class="form-control" value="<?php echo $row_usuario['NOME']; ?>" required id="inputedit1" disabled>
+										</div>
+									</div>
+									<div class="col-md-6">
+										<label>E-MAIL</label>
+										<div class="input-group mb-3">
+											<div class="input-group-prepend ">
+												<span class="input-group-text "><i class="fas fa-envelope"></i></span>
+											</div>
+											<input type="email" name="email" class="form-control" value="<?php echo $row_usuario['EMAIL']; ?>" required id="inputedit2" disabled>
+										</div>
+									</div>
+								</div>
 
-										<input type="hidden" name="id" value="<?php echo $row_usuario['ID'];?>"
 
-									<div class>
-												<!-- IMAGEM
-												<div class="imgtop">
-													<img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2 " alt="User Image">
-													<br>
-													<br>
-													<button type="submit" class="btn btn-light elevation-1" name="alterar-imagem">
-													<i class="fas fa-pen"></i> Alterar Imagem
-													</button>
-													<br>
-													<br>
-												</div>
-												-->
+								<div class="row">
+									<div class="col-md-6">
+										<label>CPF</label>
+										<div class="input-group mb-3">
+											<div class="input-group-prepend ">
+												<span class="input-group-text "><i class="fas fa-credit-card"></i></span>
+											</div>
+											<input type="text" name="cpf" class="form-control" value="<?php echo $row_usuario['CPF']; ?>" required onkeydown="fMasc(this, mCPF)" maxlength="14" id="inputedit3" disabled>
+										</div>
 									</div>
 
 
-
-								<div class="container card-body jumbotron " >
-
-
-
-											<div class="row">
-
-
-												<div class="col-md-6">
-													<label>NOME</label>
-
-													<div class="input-group mb-3">
-														<div class="input-group-prepend">
-															<span class="input-group-text "><i class="fas fa-user"></i></span>
-														</div>
-														<input type="text" name="nome" class="form-control" value="<?php echo $row_usuario['NOME'];?>" required id="inputedit1" disabled>
-													</div>
-
-												</div>
-
-
-												<div class="col-md-6">
-													<label>E-MAIL</label>
-													<div class="input-group mb-3">
-														<div class="input-group-prepend ">
-															<span class="input-group-text "><i class="fas fa-envelope"></i></span>
-														</div>
-														<input type="email" name="email" class="form-control" value="<?php echo $row_usuario['EMAIL'];?>" required id="inputedit2" disabled>
-													</div>
-												</div>
+									<div class="col-md-6">
+										<label>Perfil</label>
+										<div class="input-group mb-3">
+											<div class="input-group-prepend ">
+												<span class="input-group-text "><i class="fas fa-address-card"></i></span>
 											</div>
 
 
-											<div class="row">
-												<div class="col-md-6">
-													<label>CPF</label>
-													<div class="input-group mb-3">
-														<div class="input-group-prepend ">
-															<span class="input-group-text "><i class="fas fa-credit-card"></i></span>
-														</div>
-														<input type="text" name="cpf" class="form-control" value="<?php echo $row_usuario['CPF'];?>" required onkeydown="fMasc(this, mCPF)" maxlength="14" id="inputedit3" disabled>
-													</div>
-												</div>
+											<input type="text" name="perfil" class="form-control" value="<?php $row_usuario['ID_PERFIL'];
+																											if ($row_usuario['ID_PERFIL'] == '1') {
 
+																												echo "Administrador";
+																											} elseif ($row_usuario['ID_PERFIL'] == '2') {
+																												echo "Professor";
+																											}
 
-												<div class="col-md-6" >
-															<label>Perfil</label>
-															<div class="input-group mb-3">
-																<div class="input-group-prepend ">
-																	<span class="input-group-text "><i class="fas fa-address-card"></i></span>
-																</div>
+																											?>" required onkeydown="fMasc(this, mCPF)" maxlength="14" disabled>
 
-
-																<input type="text" name="perfil" class="form-control" value="<?php $row_usuario['ID_PERFIL'];
-																if($row_usuario['ID_PERFIL'] == '1'){
-
-																	echo "Administrador";
-
-																}
-																elseif($row_usuario['ID_PERFIL'] == '2'){
-																echo "Professor";
-
-																}
-
-																?>" required onkeydown="fMasc(this, mCPF)" maxlength="14" disabled>
-
-
-															</div>
-												</div>
-											</div>
-
-											
-											
-
-
-											<div class="row">
-												<div class="col-md-6"  id="aparecersenha" style="display:none">
-
-														<label>NOVA SENHA</label>
-														<div class="input-group mb-3">
-															<div class="input-group-prepend ">
-																<span class="input-group-text "><i class="fas fa-lock"></i></span>
-															</div>
-														<input type="password" name="npassword" class="form-control" value=""  >
-
-													</div>
-												</div>
-
-
-												<div class="col-md-6" id="aparecersenha4" style="display:none">
-
-														<label>CONFIRME A NOVA SENHA</label>
-														<div class="input-group mb-3">
-															<div class="input-group-prepend ">
-																<span class="input-group-text "><i class="fas fa-lock"></i></span>
-															</div>
-														<input type="password" name="cnpassword" class="form-control" value=""  >
-														</div>
-
-												</div>
-											</div>
-											<p class="senhaInvalida">A NOVA SENHA deve conter no mínimo 8 dígitos e ser igual a confirmação de NOVA SENHA!</p>
-
-											<div class="row">
-
-
-												<div class="col-md-6">
-													<label>SUA SENHA ATUAL</label>
-
-													<div class="input-group mb-3">
-														<div class="input-group-prepend">
-															<span class="input-group-text "><i class="fas fa-user"></i></span>
-														</div>
-														<input type="password" name="password" class="form-control" value="*********" required id="inputedit4" disabled>
-													</div>
-
-												</div>
-											</div>
-
-
-
-
-										<div class="text-right">
-											<div id="aparecersenha2" style="display:block">
-											<input type="button" value="Editar" onClick="mostra() " class="btn btn-app elevation-1"/>
-											</div>
-											
-											<div id="aparecersenha1" style="display:none">
-													<div id="aparecersenha6" style="display:block">
-													<input type="button" value="Nova senha" onClick="mostra2() " class="btn btn-app elevation-1"/>
-													</div>
-												<button type="submit" class="btn btn-app elevation-1" >
-												<i class="fas fa-save"></i> Salvar
-												</button>
-
-											</div>
 
 										</div>
-										</div>
-
+									</div>
 								</div>
 
-							</form>
-						</div>
+
+
+
+
+								<div class="row">
+									<div class="col-md-6" id="aparecersenha" style="display:none">
+
+										<label>NOVA SENHA</label>
+										<div class="input-group mb-3">
+											<div class="input-group-prepend ">
+												<span class="input-group-text "><i class="fas fa-lock"></i></span>
+											</div>
+											<input type="password" name="npassword" class="form-control" value="">
+
+										</div>
+									</div>
+
+
+									<div class="col-md-6" id="aparecersenha4" style="display:none">
+
+										<label>CONFIRME A NOVA SENHA</label>
+										<div class="input-group mb-3">
+											<div class="input-group-prepend ">
+												<span class="input-group-text "><i class="fas fa-lock"></i></span>
+											</div>
+											<input type="password" name="cnpassword" class="form-control" value="">
+										</div>
+
+									</div>
+								</div>
+								<p class="senhaInvalida">A NOVA SENHA deve conter no mínimo 8 dígitos e ser igual a confirmação de NOVA SENHA!</p>
+
+								<div class="row">
+
+
+									<div class="col-md-6">
+										<label>SUA SENHA ATUAL</label>
+
+										<div class="input-group mb-3">
+											<div class="input-group-prepend">
+												<span class="input-group-text "><i class="fas fa-user"></i></span>
+											</div>
+											<input type="password" name="password" class="form-control" value="*********" required id="inputedit4" disabled>
+										</div>
+
+									</div>
+								</div>
+
+
+
+
+								<div class="text-right">
+									<div id="aparecersenha2" style="display:block">
+										<input type="button" value="Editar" onClick="mostra() " class="btn btn-app elevation-1" />
+									</div>
+
+									<div id="aparecersenha1" style="display:none">
+										<div id="aparecersenha6" style="display:block">
+											<input type="button" value="Nova senha" onClick="mostra2() " class="btn btn-app elevation-1" />
+										</div>
+										<button type="submit" class="btn btn-app elevation-1">
+											<i class="fas fa-save"></i> Salvar
+										</button>
+
+									</div>
+
+								</div>
+							</div>
 
 					</div>
 
+					</form>
 				</div>
-				<!-- /.row -->
-			</section>
+
+			</div>
+
+	</div>
+	<!-- /.row -->
+	</section>
 
 
 
@@ -271,15 +240,15 @@ $row_usuario = mysqli_fetch_assoc($resultado_usuario);
 
 
 
-		<?php
-    rodape();
-		?>
+	<?php
+	rodape();
+	?>
 
-		<!-- Control Sidebar -->
-		<aside class="control-sidebar control-sidebar-dark">
-			<!-- Control sidebar content goes here -->
-		</aside>
-		<!-- /.control-sidebar -->
+	<!-- Control Sidebar -->
+	<aside class="control-sidebar control-sidebar-dark">
+		<!-- Control sidebar content goes here -->
+	</aside>
+	<!-- /.control-sidebar -->
 	</div>
 	<!-- ./wrapper -->
 
@@ -298,7 +267,8 @@ $row_usuario = mysqli_fetch_assoc($resultado_usuario);
 	<!-- page script -->
 	<script>
 		var trocarSenha = false;
-		function mostra(){
+
+		function mostra() {
 			document.getElementById('aparecersenha1').style.display = 'block';
 			document.getElementById('aparecersenha2').style.display = 'none';
 			document.getElementById('inputedit1').disabled = false;
@@ -308,11 +278,11 @@ $row_usuario = mysqli_fetch_assoc($resultado_usuario);
 			document.getElementById('inputedit4').value = "";
 		}
 
-		function mostra2(){
+		function mostra2() {
 			document.getElementById('aparecersenha').style.display = 'block';
-			document.getElementById('aparecersenha4').style.display = 'block';		
-			document.getElementById('aparecersenha').attributes.required = "required"; 
-			document.getElementById('aparecersenha4').attributes.required = "required"; 
+			document.getElementById('aparecersenha4').style.display = 'block';
+			document.getElementById('aparecersenha').attributes.required = "required";
+			document.getElementById('aparecersenha4').attributes.required = "required";
 			document.getElementById('aparecersenha6').style.display = 'none';
 			trocarSenha = true;
 			document.getElementsByName('cnpassword')[0].value = "";
@@ -333,16 +303,16 @@ $row_usuario = mysqli_fetch_assoc($resultado_usuario);
 			});
 		});
 
-		function verificarSenha(){
-			if(!trocarSenha){
+		function verificarSenha() {
+			if (!trocarSenha) {
 				document.getElementsByName('cnpassword')[0].value = document.getElementsByName('password')[0].value;
 				document.getElementsByName('npassword')[0].value = document.getElementsByName('cnpassword')[0].value;
 				return true;
 			}
-			if(document.getElementsByName('npassword')[0].value === document.getElementsByName('cnpassword')[0].value && document.getElementsByName('npassword')[0].value.length > 7){
+			if (document.getElementsByName('npassword')[0].value === document.getElementsByName('cnpassword')[0].value && document.getElementsByName('npassword')[0].value.length > 7) {
 				document.getElementsByClassName('senhaInvalida')[0].style.display = 'none';
 				return true;
-			}else{
+			} else {
 				document.getElementsByClassName('senhaInvalida')[0].style.display = 'block';
 				return false;
 			}

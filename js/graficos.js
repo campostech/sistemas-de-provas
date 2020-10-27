@@ -5,6 +5,9 @@ function montaGrafico(dados, idElemento="", tipoDoGrafico="pie", idSemConetudo="
         return false
     }
 
+    console.log(dados)
+
+    
     let labelsIn = []
     
     dados.forEach(element => {
