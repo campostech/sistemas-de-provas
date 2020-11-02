@@ -20,7 +20,6 @@ var_dump($_FILES);
 if(isset($_REQUEST['salvar-solicitacao']) ){
     foreach($_REQUEST as $indice => $valor){
         if(empty($valor) && !isset($valor)){            
-            // echo "Campo não informado ".$indice;
             $valores_validos = false;
             break;
         }
@@ -73,11 +72,19 @@ if(isset($_REQUEST['salvar-solicitacao']) ){
         $status = "403";
  //       echo 'Não é possível continuar, pois um ou mais valores estão incorretos.';
     }else{
+        //remove inject sql
+        $tipo_de_impressao = mysqli_real_escape_string($conexao, $valores_form['tipo_de_impressao']);
+        $nome_curso = mysqli_real_escape_string($conexao , $valores_form['nome']);
+        $disciplina = mysqli_real_escape_string($conexao , $valores_form['disciplina']);
+        $quantidade = mysqli_real_escape_string($conexao , $valores_form['quantidade']);
+        $isFrenteVerso = mysqli_real_escape_string($conexao , $valores_form['check_frente_verso']);
+        $id_professor = mysqli_real_escape_string($conexao ,$valores_form['idProf']);
+
         $data = date("Y-m-d h:m:s");
         
         //continua o código 
         $query = "INSERT INTO impressoes (ID_TIPO_IMPRESSOES, CURSO, DISCIPLINA, QUANTIDADE, FRENTE_VERSO, STATUS, FILE, DATA_SOLICITACAO, ID_PROFESSOR) 
-        VALUES ('$valores_form[tipo_de_impressao]', '$valores_form[nome]', '$valores_form[disciplina]', '$valores_form[quantidade]', '$valores_form[check_frente_verso]', '1', '$name', '$data', '$valores_form[idProf]')";
+        VALUES ('$tipo_de_impressao', '$nome_curso', '$disciplina', '$quantidade', '$isFrenteVerso', '1', '$name', '$data', '$id_professor')";
         $select =  mysqli_query($conexao,$query);
         
         $urlRedirect = $urlDefault."/solicitar_impressao.php?status=";

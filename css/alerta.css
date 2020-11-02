@@ -1,10 +1,12 @@
-.alerta-login-pagina{
-    position: absolute;
-    z-index: 1000;
-    left: 38%;
-    margin-top: 10px;
+.alerta-login-pagina{    
+    z-index: 1000;    
+    margin-top: 1.5rem;
 }
 
+
+.container-login-margin{
+    margin-top: 1.5rem;
+}
 
 .alerta-cadastro-container{
     display: flex;

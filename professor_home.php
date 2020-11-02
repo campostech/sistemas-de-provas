@@ -173,7 +173,7 @@ $d_none_status = $json_status_data == 0 ? "d-none" : "";
 	<script src="js/graficos.js"></script>
 	<script>
 		var jsonTotalXConcluidas = <?= $json_totalxconcluidos_data; ?>;
-		var jsonStatusData = <?= $json_status_data; ?>;
+		var jsonStatusData = <?= $json_status_data; ?>;		
 		var montaGraficoTotalXConcluidas = montaGrafico(jsonTotalXConcluidas, 'solicitacao-total-solicitacoes', 'pie', 'container-solicitacoes-total-sem-conteudo')
 		var montaGraficoStatus = montaGrafico(jsonStatusData, 'solicitacao-por-status', 'pie', 'container-status-sem-conteudo')
 	</script>

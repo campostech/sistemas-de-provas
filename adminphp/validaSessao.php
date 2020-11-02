@@ -14,7 +14,7 @@ function logout(){
     $_SESSION['LOGIN'] = FALSE;
     session_start();
     session_destroy();
-    header('Location: ../login.php');
+    header('Location: ../login.php?status=402');
     die();
 }
 ?>

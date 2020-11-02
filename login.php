@@ -1,6 +1,16 @@
 <?php
 require_once('adminphp/verificausuario.php');
-$d_none = isset($_REQUEST['status']) ? "" : "d-none";
+
+if (isset($_REQUEST['status']) and $_REQUEST['status'] == 401) {
+	$d_none = "";
+	$msg_alerta = "Usuário ou Senha informados inválidos";
+} else if (isset($_REQUEST['status']) and $_REQUEST['status'] == 402) {
+	$d_none = "";
+	$msg_alerta = "Seu usuário não tem permissão para acessar a página requisitada. Faça login novamente.";
+} else {
+	$d_none = "d-none";
+	$msg_alerta = "";
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -47,16 +57,18 @@ $d_none = isset($_REQUEST['status']) ? "" : "d-none";
 
 
 	<!-- /main navbar -->
-	<div class="alerta-cadastro-container alerta-login-pagina <?php echo $d_none; ?>">
+	<!-- <div class="">
+		<div class="alerta-cadastro-container alerta-login-pagina <?php echo $d_none; ?>">			
 		<div clas="alerta-cadastro">
-			<div class="alert alert-warning alert-dismissible fade show" role="alert">
-				Usuário não autenticado. Favor fazer login imediatamente.
-				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
-			</div>'
+				<div class="alert alert-warning alert-dismissible fade show" role="alert">
+					<?php echo $msg_alerta; ?>
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>'
+			</div>
 		</div>
-	</div>
+	</div> -->
 
 	<!-- Page content -->
 	<div class="page-content" id="body">
@@ -65,42 +77,55 @@ $d_none = isset($_REQUEST['status']) ? "" : "d-none";
 		<div class="content-wrapper">
 
 			<!-- Content area -->
-			<div class="content d-flex justify-content-center align-items-center">
+			<div class="content justify-content-center align-items-center">
+
+				<div class="alerta-cadastro-container alerta-login-pagina <?php echo $d_none; ?>">
+					<div>
+						<div class="alert alert-warning alert-dismissible fade show" role="alert">
+							<?php echo $msg_alerta; ?>
+							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>'
+					</div>
+				</div>
 
 				<!-- Login form -->
-				<form class="login-form" method="POST" action="controller/login.php">
-					<div class="card mb-0">
-						<div class="card-body">
-							<div class="text-center mb-3">
-								<i class="icon-reading icon-2x text-slate-300 border-slate-300 border-3 rounded-round p-3 mb-3 mt-1"></i>
-								<h5 class="mb-0">Entre com sua conta</h5>
-								<span class="d-block text-muted">Digite suas credenciais</span>
-							</div>
-							<div class="form-group form-group-feedback form-group-feedback-left">
-								<input name="cpf" type="text" class="form-control" placeholder="CPF">
-								<div class="form-control-feedback">
-									<i class="icon-user text-muted"></i>
+				<div class="content d-flex justify-content-center align-items-center container-login-margin">
+					<form class="login-form" method="POST" action="controller/login.php">
+						<div class="card mb-0">
+							<div class="card-body">
+								<div class="text-center mb-3">
+									<i class="icon-reading icon-2x text-slate-300 border-slate-300 border-3 rounded-round p-3 mb-3 mt-1"></i>
+									<h5 class="mb-0">Entre com sua conta</h5>
+									<span class="d-block text-muted">Digite suas credenciais</span>
 								</div>
-							</div>
-
-							<div class="form-group form-group-feedback form-group-feedback-left">
-								<input name="senha" type="password" class="form-control" placeholder="Password">
-								<div class="form-control-feedback">
-									<i class="icon-lock2 text-muted"></i>
+								<div class="form-group form-group-feedback form-group-feedback-left">
+									<input onkeydown="fMasc(this, mCPF)" maxlength="14" name="cpf" type="text" class="form-control" placeholder="CPF">
+									<div class="form-control-feedback">
+										<i class="icon-user text-muted"></i>
+									</div>
 								</div>
-							</div>
-							<div class="form-group">
-								<button type="submit" class="btn btn-primary btn-block">Login<i class="icon-circle-right2 ml-2"></i></button>
-							</div>
 
-							<div class="form-group text-center text-muted content-divider">
-								<a href="#">Esqueceu sua Senha ?</a>
+								<div class="form-group form-group-feedback form-group-feedback-left">
+									<input name="senha" type="password" class="form-control" placeholder="Password">
+									<div class="form-control-feedback">
+										<i class="icon-lock2 text-muted"></i>
+									</div>
+								</div>
+								<div class="form-group">
+									<button type="submit" class="btn btn-primary btn-block">Login<i class="icon-circle-right2 ml-2"></i></button>
+								</div>
+
+								<div class="form-group text-center text-muted content-divider">
+									<a href="#">Esqueceu sua Senha ?</a>
+								</div>
+
+
 							</div>
-
-
 						</div>
-					</div>
-				</form>
+					</form>
+				</div>
 				<!-- /login form -->
 
 			</div>
@@ -118,5 +143,6 @@ $d_none = isset($_REQUEST['status']) ? "" : "d-none";
 	<!-- /page content -->
 
 </body>
+<script src="utils/masks.js"></script>
 
 </html>

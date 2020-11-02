@@ -132,7 +132,7 @@ if ($_SESSION['PERFIL'] != 2) {
 												<div class="input-group-prepend ">
 													<span class="input-group "></span>
 												</div>
-												<input type="number" name="quantidade" class="form-control" placeholder="100" required>
+												<input type="number" name="quantidade" max="200" class="form-control" placeholder="100" required>
 											</div>
 										</div>
 										<div class="col-md-6">
@@ -156,7 +156,7 @@ if ($_SESSION['PERFIL'] != 2) {
 												<div class="form-group">
 													<label for="exampleFormControlFile1">SELECIONE O ARQUIVO PARA ENVIO</label>
 													<input type="file" name='fileT' class="form-control-file" id="exampleFormControlFile1" required>
-													<input type="txt" id="b64File" name="fileData" hidden required>
+													<input type="txt" id="b64File" name="fileData" hidden>
 												</div>
 											</form>
 										</div>

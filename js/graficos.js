@@ -3,9 +3,7 @@ function montaGrafico(dados, idElemento="", tipoDoGrafico="pie", idSemConetudo="
     if(!(!!dados)){        
         document.getElementById(idSemConetudo).innerHTML = '<div class="sem-conteudo"><div class="sem-conteudo-icon"><i class="fas fa-mug-hot"></i></div><div class="sem-conteudo-texto"><p>Nenhum registro foi carregado</p></div></div>'        
         return false
-    }
-
-    console.log(dados)
+    }   
 
     
     let labelsIn = []
