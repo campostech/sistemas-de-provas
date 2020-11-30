@@ -23,6 +23,11 @@
         "name": "Solicitações",
         "icon": "fa-print",
         "url": "solicitacoes.php"
+      },
+      "3": {
+        "name": "Informações Perfil",
+        "icon": "fa-user",
+        "url": "meus_dados.php"
       }
     },
     "2": {

@@ -1,7 +1,7 @@
 <?php
 require_once('adminphp/validaSessao.php');
 if ($_SESSION['PERFIL'] != 2) {
-	logout();
+	logout(true);
 }
 ?>
 
@@ -140,7 +140,7 @@ if ($_SESSION['PERFIL'] != 2) {
 
 											<label>FRENTE E VERSO</label>
 											<div class="form-check">
-												<input class="form-inline-check-input  " type="radio" id="check_frente_verso" name="check_frente_verso" value=1  required>
+												<input class="form-inline-check-input  " type="radio" id="check_frente_verso" name="check_frente_verso" value=1 checked="checked" required>
 												<label class="form-check-label">Sim</label>
 											</div>
 											<div class="form-check">
@@ -155,7 +155,7 @@ if ($_SESSION['PERFIL'] != 2) {
 											<form>
 												<div class="form-group">
 													<label for="exampleFormControlFile1">SELECIONE O ARQUIVO PARA ENVIO</label>
-													<input type="file" name='fileT' class="form-control-file" id="exampleFormControlFile1" required>
+													<input type="file" accept="application/pdf" name='fileT' class="form-control-file" id="exampleFormControlFile1" required>
 													<input type="txt" id="b64File" name="fileData" hidden>
 												</div>
 											</form>

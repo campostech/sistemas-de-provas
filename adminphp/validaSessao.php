@@ -9,12 +9,13 @@ if(!isset($_SESSION['LOGIN'])){
 }
 
 
-function logout(){
+function logout($isFromErro=false){
+    $status = $isFromErro ? "status?402" : "";
     $_SESSION['PERFIL']=0;
     $_SESSION['LOGIN'] = FALSE;
     session_start();
     session_destroy();
-    header('Location: ../login.php?status=402');
+    header('Location: ../login.php'.$status);
     die();
 }
 ?>

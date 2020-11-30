@@ -4,7 +4,7 @@ require_once('adminphp/conecta.php');
 require_once('controller/getHomeData.php');
 require_once('controller/getHomeGraficosData.php');
 if($_SESSION['PERFIL'] != 1){
-	logout();
+	logout(true);
 }
 
 $d_none = isset($table_data) && !empty($table_data) ? "" : "d-none";

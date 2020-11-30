@@ -1,7 +1,7 @@
 <?php
 	require_once('adminphp/validaSessao.php');
 	if($_SESSION['PERFIL'] != 1){
-		logout();
+		logout(true);
 	}
 ?>
 

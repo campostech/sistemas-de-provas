@@ -5,7 +5,7 @@ require_once('controller/getHomeData.php');
 require_once('controller/getHomeGraficosData.php');
 require_once('controller/getHomeProfessorGrafico.php');
 if($_SESSION['PERFIL'] != 2){
-	logout();
+	logout(true);
 }
 
 $d_none = isset($table_data) && !empty($table_data) ? "" : "d-none";
