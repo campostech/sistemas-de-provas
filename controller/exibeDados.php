@@ -38,7 +38,7 @@ if ($select) {
             if($valor['STATUS'] == 'Pendente'){
                 $botao = '<button type="button" class="btn btn-outline-secondary" onclick="openRemoveModal('.$valor["ID"].');">Cancelar</button>';
             }else if($valor['STATUS'] == 'Recusada'){
-                $botao = '<button type="button" class="btn btn-outline-info" onclick="alert(\''.str_replace('\'',"",str_replace('"',"",$valor["OBS"])).'\');">Info</button>';
+                $botao = '<button type="button" class="btn btn-outline-info" onclick="openObsModal(\''.str_replace('\'',"",str_replace('"',"",$valor["OBS"])).'\');">Info</button>';                
             }
 
 

@@ -155,7 +155,7 @@ if ($_SESSION['PERFIL'] != 2) {
       <!-- /.content -->
     </div>
 
-    <!-- MODAL -->
+    <!-- MODAL CANCELAR-->
     <div class="modal" id="cancelar_solicitacao" tabindex="-1" role="dialog" aria-labelledby="confirma_exclusao" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -170,6 +170,29 @@ if ($_SESSION['PERFIL'] != 2) {
             <div class="modal-footer">
               <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Não</button>
               <button type="button" class="btn btn-secondary" onclick="remove();">Sim</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<!-- MODAL INFO RECUSA-->
+        <div class="modal" id="obs_recusada" tabindex="-1" role="dialog" aria-labelledby="motivo_recusa" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="motivo_recusa">Motivo da Recusa</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div id="motivo-recusa-text">
+
+            </div>
+            
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" data-dismiss="modal">Ok</button>              
             </div>
           </div>
         </div>
@@ -211,6 +234,12 @@ if ($_SESSION['PERFIL'] != 2) {
         "autoWidth": false,
       });
     });
+
+    function openObsModal(motivo){   
+      let motivoTexto = document.getElementById("motivo-recusa-text")
+      motivoTexto.innerHTML = motivo;
+      $("#obs_recusada").modal();
+    }
 
     function remove() {
       window.location.href = 'controller/changeStatus.php?id=' + idRemocao + '&status=4';

@@ -1,10 +1,48 @@
 .d-none{
     display: none;
 }
-
-
-
 #btn-limpa-busca:hover{
     background-color: white;
     color: #6c757d;
+}
+
+
+/*Solicitacoes Modal*/
+
+.container-status-solicitacao{
+    margin-top: 5px;    
+    display: grid;  
+    grid-template-columns: 1fr;  
+    grid-template-rows: 1fr;
+    grid-template-areas: 'input-status' 'recusa-status';
+
+}
+
+
+.label-input-status{
+    grid-area: status;
+
+}
+
+.input-status{
+    grid-area: input-status;
+    width: 50%;
+}
+
+.motivo-recusa-input{
+    grid-area: recusa-status;
+}
+
+
+
+/*Modal Recusa*/
+
+#obs_recusada .modal-footer{
+    padding: 5px 0 0 0;
+    
+}
+
+#motivo-recusa-text{
+    padding: 5px;
+    font-size: 1em;
 }

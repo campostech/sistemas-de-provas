@@ -39,26 +39,26 @@ if($select_todas_solicitacoes && $select_solicitacoes_resolvidas){
             $status_data = [
                 "dataset" => $valor['count_solicitacoes'],
                 "label" => "Solicitadas",
-                "color" => "#2f83d6",
-                
+                "color" => "#2f83d6",                
             ];
             array_push($json_totalxconcluidos_data, $status_data);
             $status_data = [];            
         }
-    }
+    }       
     if($dados_solicitacoes_resolvidas){
         foreach ($dados_solicitacoes_resolvidas as $indice => $valor) {
             $status_data = [
                 "dataset" => $valor['count_solicitacoes_aprovadas'],
                 "label" => "Resolvidas",
                 "color" => "#20d638",
-            ];
+            ];    
             array_push($json_totalxconcluidos_data, $status_data);
             $status_data = [];
                   
         }
     }            
     $json_totalxconcluidos_data = json_encode($json_totalxconcluidos_data);    
+    
 }
 else{
     $json_totalxconcluidos_data = 0;

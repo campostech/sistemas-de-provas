@@ -113,22 +113,29 @@ if ($_SESSION['PERFIL'] != 1) {
                   Status: Pendente<br>
                   Data de Solicitação: 17/09/2020<br>
                 </div>
-                <a class="btn btn-info" style="color:white;" target="_blank" id="downloadLink" href="">Baixar Arquivo</a>
               </div>
+              <div class="container-status-solicitacao container">
+                <div class="input-status">
+                  <select class="form-control mb-3 optionStatus" onChange="selectedStatus()" name="status_impressao" id="dropStatus" style="display:none;" required>
+                    <option value="1">Pendente</option>
+                    <option value="2">Resolvido</option>
+                    <option value="3">Recusado</option>
+                  </select>
+                </div>
+                <div class="motivo-recusa-input">
+                <textarea type="text" rows="2" class="form-control" value="" placeholder="Motivo" required id="obsStatus" style="display:none;"></textarea>
+                </div>
+              </div>
+
+
             </div>
             <div class="modal-footer">
-              <div class="input-group-prepend ">
-                <select class="form-control mb-3 optionStatus" onChange="selectedStatus()" name="status_impressao" id="dropStatus" style="display:none;" required>
-                  <option value="1" style='background-color: blue; color: white;'>Pendente</option>
-                  <option value="2" style='background-color: green; color: white;'>Resolvido</option>
-                  <option value="3" style='background-color: red; color: white;'>Recusado</option>
-                </select>
-                <input type="text" class="form-control optionStatus" value="" placeholder="Motivo" required id="obsStatus" disabled style="display:none;">
-              </div>
               <button type="button" class="btn btn-success optionStatus" onclick="saveStatus();" style="display:none;">Salvar</button>
               <button type="button" class="btn btn-danger optionStatus" onclick="optionStatus('none');" style="display:none;">Cancelar</button>
               <button type="button" class="btn btn-warning" onclick="optionStatus('block');" id="optionStatusBtn">Mudar Status</button>
+              <a class="btn btn-info" style="color:white;" target="_blank" id="downloadLink" href="">Baixar Arquivo</a>              
             </div>
+            
           </div>
         </div>
       </div>
@@ -235,10 +242,12 @@ if ($_SESSION['PERFIL'] != 1) {
 
     function optionStatus(value) {
       var optionsMenu = document.getElementsByClassName("optionStatus");
+      document.getElementById('dropStatus').value = 1;
       for (var i = 0; i < optionsMenu.length; i++) {
         optionsMenu[i].style.display = value; // depending on what you're doing
       }
       document.getElementById('optionStatusBtn').style.display = value == 'none' ? 'block' : 'none';
+      document.getElementById('obsStatus').style.display = "none";
     }
 
     function downloadPDF() {
@@ -261,8 +270,10 @@ if ($_SESSION['PERFIL'] != 1) {
 
     function selectedStatus() {
       var inputMotivo = document.getElementById('obsStatus');
+      let isStatusRecusado = (document.getElementById('dropStatus').value != 3)
       inputMotivo.value = "";
-      inputMotivo.disabled = (document.getElementById('dropStatus').value != 3);
+      inputMotivo.disabled = isStatusRecusado
+      inputMotivo.style.display = !isStatusRecusado ? "block" : "none";
     }
 
     function saveStatus() {

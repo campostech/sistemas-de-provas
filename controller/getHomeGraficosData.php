@@ -67,7 +67,7 @@ if ($select_solicitacoes_status) {
             $status_data = [
                 "dataset" => $valor['COUNT_STATUS'],
                 "label" => $valor['STATUS'],
-                "color" => "",
+                "color" => $valor['color'],
             ];
             array_push($json_status_data, $status_data);
             $status_data = [];
