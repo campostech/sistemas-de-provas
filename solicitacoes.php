@@ -129,11 +129,12 @@ if ($_SESSION['PERFIL'] != 1) {
 
 
             </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-success optionStatus" onclick="saveStatus();" style="display:none;">Salvar</button>
+            <div class="modal-footer">             
+            <a class="btn btn-info" style="color:white;" target="_blank" id="downloadLink" href="">Baixar Arquivo</a>              
               <button type="button" class="btn btn-danger optionStatus" onclick="optionStatus('none');" style="display:none;">Cancelar</button>
+              <button type="button" class="btn btn-success optionStatus" onclick="saveStatus();" style="display:none;">Salvar</button>
               <button type="button" class="btn btn-warning" onclick="optionStatus('block');" id="optionStatusBtn">Mudar Status</button>
-              <a class="btn btn-info" style="color:white;" target="_blank" id="downloadLink" href="">Baixar Arquivo</a>              
+              
             </div>
             
           </div>
@@ -264,7 +265,7 @@ if ($_SESSION['PERFIL'] != 1) {
 
       document.getElementById('downloadLink').href = 'files/' + v["FILE"];
       document.getElementById('modalTitle').innerHTML = v["NOME"] + " - " + v["STATUS"];
-      document.getElementById('modalInfo').innerHTML = 'Professor: ' + v["NOME"] + '<br>Disciplina: ' + v["DISCIPLINA"] + '<br>Curso: ' + v["CURSO"] + '<br>Tipo de Impressão: ' + v["DESCRICAO"] + '<br>Quantidade: ' + v["QUANTIDADE"] + '<br>Frente e Verso: ' + (v["FRENTE_VERSO"] == '1' ? 'SIM' : 'NÃO') + '<br>Status: ' + v["STATUS"] + '<br>Data de Solicitação: ' + v["DATA_SOLICITACAO"] + '<br>' + ((v["OBS"] == null || v["OBS"] == "") ? '<br>' : ('Observação ADMIN: ' + v["OBS"] + '<br>'));
+      document.getElementById('modalInfo').innerHTML = '<b>Professor</b>: ' + v["NOME"] + '<br><b>Disciplina</b>: ' + v["DISCIPLINA"] + '<br><b>Curso</b>: ' + v["CURSO"] + '<br><b>Tipo de Impressão</b>: ' + v["DESCRICAO"] + '<br><b>Quantidade</b>: ' + v["QUANTIDADE"] + '<br><b>Frente e Verso</b>: ' + (v["FRENTE_VERSO"] == '1' ? 'SIM' : 'NÃO') + '<br><b>Status</b>: ' + v["STATUS"] + '<br><b>Data de Solicitação</b>: ' + v["DATA_SOLICITACAO"] + '<br>' + ((v["OBS"] == null || v["OBS"] == "") ? '<br>' : ('Observação ADMIN: ' + v["OBS"] + '<br>'));
       $('#infoModal').modal('show');
     }
 
